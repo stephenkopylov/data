@@ -41,13 +41,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="ts" value="685" />
+          <entry key="ts" value="741" />
           <entry key="tsx" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="TypeScript" value="685" />
+          <entry key="TypeScript" value="741" />
           <entry key="TypeScript JSX" value="20" />
         </counts>
       </usages-collector>
@@ -70,10 +70,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FetchManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="88" column="22" lean-forward="true" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+            <state relative-caret-position="582">
+              <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
               <folding>
-                <marker date="1536854329354" expanded="true" signature="911:1378" ph="..." />
+                <marker date="1536854885827" expanded="true" signature="911:1378" ph="..." />
               </folding>
             </state>
           </provider>
@@ -200,12 +200,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1536845702056</updated>
-      <workItem from="1536845703612" duration="8260000" />
+      <workItem from="1536845703612" duration="8766000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8260000" />
+    <option name="totallyTimeSpent" value="8766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1362" extended-state="6" />
@@ -258,10 +258,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FetchManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="88" column="22" lean-forward="true" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+        <state relative-caret-position="582">
+          <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
           <folding>
-            <marker date="1536854329354" expanded="true" signature="911:1378" ph="..." />
+            <marker date="1536854885827" expanded="true" signature="911:1378" ph="..." />
           </folding>
         </state>
       </provider>
