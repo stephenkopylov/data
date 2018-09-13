@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 export class FetchManager {
+
     public static testFetch() {
         axios({
             method: 'post',
-            url: 'https://simfin.com/api/v1/info/find-id/ticker/AAPL?api-key=uwAPKLPaWmwjxnYA8nwmsC7tm6zQsswO'
+            url: 'https://simfin.com/api/v1/companies/id/111052/ratios?api-key=uwAPKLPaWmwjxnYA8nwmsC7tm6zQsswO'
         }).then(function (response) {
             console.log('data = ', response.data);
         });
@@ -14,6 +15,11 @@ export class FetchManager {
     public static testFetchNew(year: number, category: number): Promise<any> {
         return new Promise((resolve, reject) => {
             let period: any = [
+                {
+                    "id": 6,
+                    "value": "q1",
+                    "operator": "eq"
+                },
                 {
                     "id": 7,
                     "value": year,
@@ -26,6 +32,9 @@ export class FetchManager {
                 JSON.stringify({
                     "resultsPerPage": 300,
                     "search": [
+                        {
+                            "indicatorId": "0-1"
+                        },
                         {
                             "indicatorId": "0-6"
                         },

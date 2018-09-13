@@ -1,4 +1,5 @@
 export enum Indicator {
+    IndicatorNameOfCompany,
     IndicatorRevenues,
     IndicatorCostOfGoodsSold,
     IndicatorSellingGeneralAndAdministrative,
@@ -14,6 +15,7 @@ export enum Indicator {
 }
 
 export const IndicatorCode: {} = {
+    IndicatorNameOfCompany: '0-1',
     IndicatorRevenues: '1-1',
     IndicatorCostOfGoodsSold: '1-2',
     IndicatorSellingGeneralAndAdministrative: '1-12',
@@ -30,6 +32,7 @@ export const IndicatorCode: {} = {
 
 
 export class CompanyData {
+    private name: string = '';
     private revenues: Number = 0;
     private costOfGoodsSold: Number = 0;
     private sellingGeneralAndAdministrative: Number = 0;
@@ -55,6 +58,12 @@ export class CompanyData {
             const enumKey: Indicator = Indicator[getKeyByValue(IndicatorCode, key)] as any;
 
             switch (enumKey) {
+                case Indicator.IndicatorNameOfCompany: {
+                    companyData.name = value;
+                    break;
+                }
+
+
                 case Indicator.IndicatorRevenues: {
                     companyData.revenues = value;
                     break;

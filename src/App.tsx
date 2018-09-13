@@ -8,6 +8,7 @@ import { DataManager } from "./DataManager";
 class App extends React.Component {
     public componentDidMount() {
         DataManager.loadAllData();
+        // FetchManager.testFetch();
     }
 
     public render() {
