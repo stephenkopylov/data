@@ -6,7 +6,7 @@ import { FetchManager } from "./FetchManager";
 
 class App extends React.Component {
     public componentDidMount() {
-        FetchManager.testFetch();
+        FetchManager.testFetchNew();
     }
 
     public render() {
