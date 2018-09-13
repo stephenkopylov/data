@@ -52,9 +52,7 @@ export class CompanyData {
             const key: string = data['indicatorId'];
             const value: any = data['value'];
 
-            const enumKey: Indicator = getKeyByValue(IndicatorCode, key);
-
-            console.log('ENum key = ', enumKey, ' ', value);
+            const enumKey: Indicator = Indicator[getKeyByValue(IndicatorCode, key)] as any;
 
             switch (enumKey) {
                 case Indicator.IndicatorRevenues: {
