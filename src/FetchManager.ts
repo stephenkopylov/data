@@ -11,8 +11,7 @@ export class FetchManager {
 
     }
 
-    public static testFetchNew() {
-
+    public static testFetchNew(year: number) {
         let period: any = [
             {
                 "id": 6,
@@ -21,7 +20,7 @@ export class FetchManager {
             },
             {
                 "id": 7,
-                "value": 2015,
+                "value": year,
                 "operator": "eq"
             }
         ];
@@ -32,31 +31,21 @@ export class FetchManager {
                 "resultsPerPage": 300,
                 "search": [
                     // {
-                    //     "indicatorId": "0-73",
-                    //     "meta": [
-                    //         {
-                    //             "value": "Diversified Holdings",
-                    //             "operator": "eq"
-                    //         }
-                    //     ],
+                    //     "indicatorId": "0-1",
                     //     "condition": {
-                    //         "value": "Diversified Holdings",
+                    //         "value": "Apple",
+                    //         "operator": "like"
+                    //     }
+                    // },
+                    // {
+                    //     "indicatorId": "0-73",
+                    //     "condition": {
+                    //         "value": 101,
                     //         "operator": "eq"
                     //     }
                     // },
                     {
-                        "indicatorId": "0-1",
-                        "condition": {
-                            "value": "Apple",
-                            "operator": "like"
-                        }
-                    },
-                    {
-                        "indicatorId": "0-73",
-                        "condition": {
-                            "value": "everages",
-                            "operator": "like"
-                        }
+                        "indicatorId": "0-73"
                     },
                     {
                         "indicatorId": "1-1",//Revenues
@@ -110,7 +99,7 @@ export class FetchManager {
                 ]
             })
         ).then(function (response) {
-            response.data
+            console.log("data = ", response.data);
         });
 
         // var myHeaders = new Headers();
