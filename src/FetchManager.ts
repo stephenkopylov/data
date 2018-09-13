@@ -12,10 +12,9 @@ export class FetchManager {
     }
 
     public static testFetchNew() {
-        axios({
-            method: 'post',
-            url: 'https://simfin.com/api/v1/finder?api-key=uwAPKLPaWmwjxnYA8nwmsC7tm6zQsswO',
-            data: {
+        axios.post(
+            'https://simfin.com/api/v1/finder?api-key=uwAPKLPaWmwjxnYA8nwmsC7tm6zQsswO',
+            JSON.stringify({
                 "search": [
                     {
                         "indicatorId": "1-1",
@@ -37,8 +36,8 @@ export class FetchManager {
                         }
                     }
                 ]
-            }
-        }).then(function (response) {
+            })
+        ).then(function (response) {
             response.data
         });
 
