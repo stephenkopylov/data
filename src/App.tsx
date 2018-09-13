@@ -3,10 +3,11 @@ import './App.css';
 
 import logo from './logo.svg';
 import { FetchManager } from "./FetchManager";
+import { DataManager } from "./DataManager";
 
 class App extends React.Component {
     public componentDidMount() {
-        FetchManager.testFetchNew(1997, 101002);
+        DataManager.loadAllData();
     }
 
     public render() {
