@@ -16,6 +16,12 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@types/axios@^0.14.0":
+  version "0.14.0"
+  resolved "https://npmjs.eoadm.com/@types%2faxios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+  dependencies:
+    axios "*"
+
 "@types/jest@^23.3.2":
   version "23.3.2"
   resolved "https://npmjs.eoadm.com/@types%2fjest/-/jest-23.3.2.tgz#07b90f6adf75d42c34230c026a2529e56c249dbb"
@@ -360,6 +366,13 @@ aws-sign2@~0.7.0:
 aws4@^1.8.0:
   version "1.8.0"
   resolved "https://npmjs.eoadm.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
+
+axios@*, axios@^0.18.0:
+  version "0.18.0"
+  resolved "https://npmjs.eoadm.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+  dependencies:
+    follow-redirects "^1.3.0"
+    is-buffer "^1.1.5"
 
 babel-code-frame@6.26.0, babel-code-frame@^6.11.0, babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
   version "6.26.0"
@@ -2675,7 +2688,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.3.0:
   version "1.5.8"
   resolved "https://npmjs.eoadm.com/follow-redirects/-/follow-redirects-1.5.8.tgz#1dbfe13e45ad969f813e86c00e5296f525c885a1"
   dependencies:

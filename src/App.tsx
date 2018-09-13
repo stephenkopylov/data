@@ -2,10 +2,11 @@ import * as React from 'react';
 import './App.css';
 
 import logo from './logo.svg';
+import { FetchManager } from "./FetchManager";
 
 class App extends React.Component {
     public componentDidMount() {
-        console.log('123123')
+        FetchManager.testFetch();
     }
 
     public render() {
