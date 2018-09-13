@@ -35,8 +35,8 @@ export const IndicatorCode: {} = {
 
 export class CompanyData {
     private name: string = '';
-    private currentYearData: CompanyDataByYear = null;
-    private nextYearData: CompanyDataByYear = null;
+    private currentYearData: CompanyDataByYear = new CompanyDataByYear();
+    private nextYearData: CompanyDataByYear = new CompanyDataByYear();
 
     public static createWithJson(data: any): CompanyData {
         const companyData: CompanyData = new CompanyData();
