@@ -1,7 +1,6 @@
 export enum Indicator {
     IndicatorNameOfCompany,
     IndicatorRevenues,
-    IndicatorCostOfGoodsSold,
     IndicatorSellingGeneralAndAdministrative,
     IndicatorIncomeFromContinuingOperations,
     IndicatorReceivablesNet,
@@ -12,12 +11,13 @@ export enum Indicator {
     IndicatorTotalDebt,
     IndicatorDepreciationAmortisation,
     IndicatorOperatingCashFlow,
+    IndicatorGrossMargin,
+    IndicatorDebtToAssetRation,
 }
 
 export const IndicatorCode: {} = {
     IndicatorNameOfCompany: '0-1',
     IndicatorRevenues: '1-1',
-    IndicatorCostOfGoodsSold: '1-2',
     IndicatorSellingGeneralAndAdministrative: '1-12',
     IndicatorIncomeFromContinuingOperations: '1-49',
     IndicatorReceivablesNet: '2-5',
@@ -28,13 +28,14 @@ export const IndicatorCode: {} = {
     IndicatorTotalDebt: '4-6',
     IndicatorDepreciationAmortisation: '3-2',
     IndicatorOperatingCashFlow: '3-13',
+    IndicatorGrossMargin: '4-0',
+    IndicatorDebtToAssetRation: '4-5',
 };
 
 
 export class CompanyData {
     private name: string = '';
     private revenues: Number = 0;
-    private costOfGoodsSold: Number = 0;
     private sellingGeneralAndAdministrative: Number = 0;
     private incomeFromContinuingOperations: Number = 0;
     private receivablesNet: Number = 0;
@@ -45,6 +46,8 @@ export class CompanyData {
     private totalDebt: Number = 0;
     private depreciationAmortisation: Number = 0;
     private operatingCashFlow: Number = 0;
+    private grossMargin: Number = 0;
+    private debtToAssetRation: Number = 0;
 
     public static createWithJson(data: any): CompanyData {
         const companyData: CompanyData = new CompanyData();
@@ -66,11 +69,6 @@ export class CompanyData {
 
                 case Indicator.IndicatorRevenues: {
                     companyData.revenues = value;
-                    break;
-                }
-
-                case Indicator.IndicatorCostOfGoodsSold: {
-                    companyData.costOfGoodsSold = value;
                     break;
                 }
 
@@ -121,6 +119,16 @@ export class CompanyData {
 
                 case Indicator.IndicatorOperatingCashFlow: {
                     companyData.operatingCashFlow = value;
+                    break;
+                }
+
+                case Indicator.IndicatorGrossMargin: {
+                    companyData.grossMargin = value;
+                    break;
+                }
+
+                case Indicator.IndicatorDebtToAssetRation: {
+                    companyData.debtToAssetRation = value;
                     break;
                 }
             }

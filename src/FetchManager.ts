@@ -14,7 +14,21 @@ export class FetchManager {
 
     public static testFetchNew(year: number, category: number): Promise<any> {
         return new Promise((resolve, reject) => {
-            let period: any = [
+            let periodYear: any = [
+                {
+                    "id": 6,
+                    "value": "fy",
+                    "operator": "eq"
+                },
+                {
+                    "id": 7,
+                    "value": year,
+                    "operator": "eq"
+                }
+            ];
+
+
+            let periodQuarter: any = [
                 {
                     "id": 6,
                     "value": "q1",
@@ -44,52 +58,55 @@ export class FetchManager {
                         },
                         {
                             "indicatorId": "1-1",//Revenues
-                            "meta": period
-                        },
-                        {
-                            "indicatorId": "1-2",//Cost of Goods Sold
-                            "meta": period
+                            "meta": periodYear
                         },
                         {
                             "indicatorId": "1-12",//Selling, General and Administrative
-                            "meta": period
+                            "meta": periodYear
                         },
                         {
                             "indicatorId": "1-49",//Income from Continuing Operations
-                            "meta": period
+                            "meta": periodYear
                         },
                         {
                             "indicatorId": "2-5",//Receivables, net
-                            "meta": period
+                            "meta": periodQuarter
                         },
                         {
                             "indicatorId": "2-21",//Total Current Assets
-                            "meta": period
+                            "meta": periodQuarter
                         },
                         {
                             "indicatorId": "2-22",//Property, Plant and Equipment, net
-                            "meta": period
+                            "meta": periodQuarter
                         },
                         {
                             "indicatorId": "2-41",//Total Assets
-                            "meta": period
+                            "meta": periodQuarter
                         },
                         {
                             "indicatorId": "2-57",//Total Current Liabilities
-                            "meta": period
+                            "meta": periodQuarter
                         },
                         {
                             "indicatorId": "4-6",//Total Debt
-                            "meta": period
+                            "meta": periodQuarter
                         },
-
                         {
                             "indicatorId": "3-2",//Depreciation & Amortisation
-                            "meta": period
+                            "meta": periodYear
                         },
                         {
                             "indicatorId": "3-13",//Operating Cash Flow
-                            "meta": period
+                            "meta": periodYear
+                        },
+                        {
+                            "indicatorId": "4-0",//Gross margin
+                            "meta": periodYear
+                        },
+                        {
+                            "indicatorId": "4-5",//Debt to asset ration = leverage
+                            "meta": periodYear
                         }
                     ]
                 })

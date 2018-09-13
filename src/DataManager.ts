@@ -28,7 +28,7 @@ export class DataManager {
     ]
 
     public static loadAllData() {
-        this.loadData(new RequestData(2012, 101003, 38))
+        this.loadData(new RequestData(2015, 101003, 38))
     }
 
     private static loadData(requestData: RequestData) {
