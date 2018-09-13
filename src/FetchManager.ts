@@ -11,7 +11,7 @@ export class FetchManager {
 
     }
 
-    public static testFetchNew(year: number) {
+    public static testFetchNew(year: number, category: number) {
         let period: any = [
             {
                 "id": 6,
@@ -30,22 +30,12 @@ export class FetchManager {
             JSON.stringify({
                 "resultsPerPage": 300,
                 "search": [
-                    // {
-                    //     "indicatorId": "0-1",
-                    //     "condition": {
-                    //         "value": "Apple",
-                    //         "operator": "like"
-                    //     }
-                    // },
-                    // {
-                    //     "indicatorId": "0-73",
-                    //     "condition": {
-                    //         "value": 101,
-                    //         "operator": "eq"
-                    //     }
-                    // },
                     {
-                        "indicatorId": "0-73"
+                        "indicatorId": "0-6"
+                    },
+                    {
+                        "indicatorId": "0-73",
+                        "condition": {"operator": "eq", "value": category}
                     },
                     {
                         "indicatorId": "1-1",//Revenues
