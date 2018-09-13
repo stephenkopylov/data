@@ -15,11 +15,6 @@ export class FetchManager {
         return new Promise((resolve, reject) => {
             let period: any = [
                 {
-                    "id": 6,
-                    "value": "fy",
-                    "operator": "eq"
-                },
-                {
                     "id": 7,
                     "value": year,
                     "operator": "eq"
