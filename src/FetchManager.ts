@@ -17,6 +17,22 @@ export class FetchManager {
             JSON.stringify({
                 "search": [
                     {
+                        "indicatorId": "0-73",
+                        "meta": [
+                            {
+                                "value": "Diversified Holdings",
+                                "operator": "eq"
+                            }
+                        ],
+                        "condition": {
+                            "value": "Diversified Holdings",
+                            "operator": "eq"
+                        }
+                    },
+                    {
+                        "indicatorId": "0-73"
+                    },
+                    {
                         "indicatorId": "1-1",
                         "meta": [
                             {
@@ -34,7 +50,46 @@ export class FetchManager {
                             "operator": "bt",
                             "value": 1000000
                         }
-                    }
+                    },
+                    {
+                        "indicatorId": "1-2",
+                        "meta": [
+                            {
+                                "id": 6,
+                                "value": "q1",
+                                "operator": "eq"
+                            },
+                            {
+                                "id": 7,
+                                "value": 2015,
+                                "operator": "eq"
+                            }
+                        ],
+                        "condition": {
+                            "operator": "bt",
+                            "value": 1000000
+                        }
+                    },
+                    {
+                        "indicatorId": "1-49",
+                        "meta": [
+                            {
+                                "id": 6,
+                                "value": "q1",
+                                "operator": "eq"
+                            },
+                            {
+                                "id": 7,
+                                "value": 2015,
+                                "operator": "eq"
+                            }
+                        ],
+                        "condition": {
+                            "operator": "bt",
+                            "value": 1000000
+                        }
+                    },
+
                 ]
             })
         ).then(function (response) {
