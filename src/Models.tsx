@@ -35,6 +35,146 @@ export const IndicatorCode: {} = {
 
 export class CompanyData {
     private name: string = '';
+    private currentYearData: CompanyDataByYear = null;
+    private nextYearData: CompanyDataByYear = null;
+
+    public static createWithJson(data: any): CompanyData {
+        const companyData: CompanyData = new CompanyData();
+
+        const currentYear: CompanyDataByYear = new CompanyDataByYear();
+        const nextYear: CompanyDataByYear = new CompanyDataByYear();
+
+        const valuesRaw: [] = data['values'];
+
+        const addedKeys: string[] = [];
+
+        valuesRaw.forEach((data) => {
+            const key: string = data['indicatorId'];
+            const value: any = data['value'];
+
+            const enumKey: Indicator = Indicator[getKeyByValue(IndicatorCode, key)] as any;
+
+            switch (enumKey) {
+                case Indicator.IndicatorNameOfCompany: {
+                    companyData.name = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorRevenues: {
+                    companyData.revenues = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorSellingGeneralAndAdministrative: {
+                    companyData.sellingGeneralAndAdministrative = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorIncomeFromContinuingOperations: {
+                    companyData.incomeFromContinuingOperations = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorReceivablesNet: {
+                    companyData.receivablesNet = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorTotalCurrentAssets: {
+                    companyData.totalCurrentAssets = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorPropertyPlantAndEquipmentNet: {
+                    companyData.propertyPlantAndEquipmentNet = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorTotalAssets: {
+                    companyData.totalAssets = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorTotalCurrentLiabilities: {
+                    companyData.totalCurrentLiabilities = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorTotalDebt: {
+                    companyData.totalDebt = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorDepreciationAmortisation: {
+                    companyData.depreciationAmortisation = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorOperatingCashFlow: {
+                    companyData.operatingCashFlow = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorGrossMargin: {
+                    companyData.grossMargin = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+
+                case Indicator.IndicatorDebtToAssetRation: {
+                    companyData.debtToAssetRation = value;
+
+                    addedKeys.push(key);
+
+                    break;
+                }
+            }
+        });
+
+        return companyData;
+    }
+}
+
+
+export class CompanyDataByYear {
     private revenues: Number = 0;
     private sellingGeneralAndAdministrative: Number = 0;
     private incomeFromContinuingOperations: Number = 0;
@@ -48,95 +188,8 @@ export class CompanyData {
     private operatingCashFlow: Number = 0;
     private grossMargin: Number = 0;
     private debtToAssetRation: Number = 0;
-
-    public static createWithJson(data: any): CompanyData {
-        const companyData: CompanyData = new CompanyData();
-
-        const valuesRaw: [] = data['values'];
-
-        valuesRaw.forEach((data) => {
-            const key: string = data['indicatorId'];
-            const value: any = data['value'];
-
-            const enumKey: Indicator = Indicator[getKeyByValue(IndicatorCode, key)] as any;
-
-            switch (enumKey) {
-                case Indicator.IndicatorNameOfCompany: {
-                    companyData.name = value;
-                    break;
-                }
-
-
-                case Indicator.IndicatorRevenues: {
-                    companyData.revenues = value;
-                    break;
-                }
-
-                case Indicator.IndicatorSellingGeneralAndAdministrative: {
-                    companyData.sellingGeneralAndAdministrative = value;
-                    break;
-                }
-
-                case Indicator.IndicatorIncomeFromContinuingOperations: {
-                    companyData.incomeFromContinuingOperations = value;
-                    break;
-                }
-
-                case Indicator.IndicatorReceivablesNet: {
-                    companyData.receivablesNet = value;
-                    break;
-                }
-
-                case Indicator.IndicatorTotalCurrentAssets: {
-                    companyData.totalCurrentAssets = value;
-                    break;
-                }
-
-                case Indicator.IndicatorPropertyPlantAndEquipmentNet: {
-                    companyData.propertyPlantAndEquipmentNet = value;
-                    break;
-                }
-
-                case Indicator.IndicatorTotalAssets: {
-                    companyData.totalAssets = value;
-                    break;
-                }
-
-                case Indicator.IndicatorTotalCurrentLiabilities: {
-                    companyData.totalCurrentLiabilities = value;
-                    break;
-                }
-
-                case Indicator.IndicatorTotalDebt: {
-                    companyData.totalDebt = value;
-                    break;
-                }
-
-                case Indicator.IndicatorDepreciationAmortisation: {
-                    companyData.depreciationAmortisation = value;
-                    break;
-                }
-
-                case Indicator.IndicatorOperatingCashFlow: {
-                    companyData.operatingCashFlow = value;
-                    break;
-                }
-
-                case Indicator.IndicatorGrossMargin: {
-                    companyData.grossMargin = value;
-                    break;
-                }
-
-                case Indicator.IndicatorDebtToAssetRation: {
-                    companyData.debtToAssetRation = value;
-                    break;
-                }
-            }
-        });
-
-        return companyData;
-    }
 }
+
 
 function getKeyByValue(object: any, value: any): any {
     return Object.keys(object).find(key => object[key] === value);
