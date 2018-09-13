@@ -52,122 +52,105 @@ export class CompanyData {
             const key: string = data['indicatorId'];
             const value: any = data['value'];
 
+            let currentContainer: CompanyDataByYear = currentYear;
+
+            if (addedKeys.indexOf(key) != -1) {
+                currentContainer = nextYear;
+            }
+
             const enumKey: Indicator = Indicator[getKeyByValue(IndicatorCode, key)] as any;
 
             switch (enumKey) {
                 case Indicator.IndicatorNameOfCompany: {
                     companyData.name = value;
 
-                    addedKeys.push(key);
-
                     break;
                 }
 
                 case Indicator.IndicatorRevenues: {
-                    companyData.revenues = value;
-
-                    addedKeys.push(key);
+                    currentContainer.revenues = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorSellingGeneralAndAdministrative: {
-                    companyData.sellingGeneralAndAdministrative = value;
-
-                    addedKeys.push(key);
+                    currentContainer.sellingGeneralAndAdministrative = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorIncomeFromContinuingOperations: {
-                    companyData.incomeFromContinuingOperations = value;
-
-                    addedKeys.push(key);
+                    currentContainer.incomeFromContinuingOperations = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorReceivablesNet: {
-                    companyData.receivablesNet = value;
-
-                    addedKeys.push(key);
+                    currentContainer.receivablesNet = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorTotalCurrentAssets: {
-                    companyData.totalCurrentAssets = value;
-
-                    addedKeys.push(key);
+                    currentContainer.totalCurrentAssets = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorPropertyPlantAndEquipmentNet: {
-                    companyData.propertyPlantAndEquipmentNet = value;
-
-                    addedKeys.push(key);
+                    currentContainer.propertyPlantAndEquipmentNet = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorTotalAssets: {
-                    companyData.totalAssets = value;
-
-                    addedKeys.push(key);
+                    currentContainer.totalAssets = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorTotalCurrentLiabilities: {
-                    companyData.totalCurrentLiabilities = value;
-
-                    addedKeys.push(key);
+                    currentContainer.totalCurrentLiabilities = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorTotalDebt: {
-                    companyData.totalDebt = value;
-
-                    addedKeys.push(key);
+                    currentContainer.totalDebt = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorDepreciationAmortisation: {
-                    companyData.depreciationAmortisation = value;
-
-                    addedKeys.push(key);
+                    currentContainer.depreciationAmortisation = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorOperatingCashFlow: {
-                    companyData.operatingCashFlow = value;
-
-                    addedKeys.push(key);
+                    currentContainer.operatingCashFlow = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorGrossMargin: {
-                    companyData.grossMargin = value;
-
-                    addedKeys.push(key);
+                    currentContainer.grossMargin = value;
 
                     break;
                 }
 
                 case Indicator.IndicatorDebtToAssetRation: {
-                    companyData.debtToAssetRation = value;
-
-                    addedKeys.push(key);
+                    currentContainer.debtToAssetRation = value;
 
                     break;
                 }
             }
+
+            addedKeys.push(key);
         });
+
+        companyData.currentYearData = currentYear;
+        companyData.nextYearData = nextYear;
 
         return companyData;
     }
@@ -175,19 +158,19 @@ export class CompanyData {
 
 
 export class CompanyDataByYear {
-    private revenues: Number = 0;
-    private sellingGeneralAndAdministrative: Number = 0;
-    private incomeFromContinuingOperations: Number = 0;
-    private receivablesNet: Number = 0;
-    private totalCurrentAssets: Number = 0;
-    private propertyPlantAndEquipmentNet: Number = 0;
-    private totalAssets: Number = 0;
-    private totalCurrentLiabilities: Number = 0;
-    private totalDebt: Number = 0;
-    private depreciationAmortisation: Number = 0;
-    private operatingCashFlow: Number = 0;
-    private grossMargin: Number = 0;
-    private debtToAssetRation: Number = 0;
+    public revenues: Number = 0;
+    public sellingGeneralAndAdministrative: Number = 0;
+    public incomeFromContinuingOperations: Number = 0;
+    public receivablesNet: Number = 0;
+    public totalCurrentAssets: Number = 0;
+    public propertyPlantAndEquipmentNet: Number = 0;
+    public totalAssets: Number = 0;
+    public totalCurrentLiabilities: Number = 0;
+    public totalDebt: Number = 0;
+    public depreciationAmortisation: Number = 0;
+    public operatingCashFlow: Number = 0;
+    public grossMargin: Number = 0;
+    public debtToAssetRation: Number = 0;
 }
 
 
