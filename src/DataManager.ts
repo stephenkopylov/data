@@ -150,11 +150,11 @@ export class RequestData {
 
 const companiesData: CategoryRequestData[] = [
     new CategoryRequestData(2012, Category.BasicMaterials, 38),
-    new CategoryRequestData(2008, Category.BasicMaterials, 38),
+    // new CategoryRequestData(2008, Category.BasicMaterials, 38),
 
     // new CategoryRequestData(2001, Category.ConsumerCyclical, 38),
     //
-    // new CategoryRequestData(2009, Category.ConsumerDefensive, 77),
+    new CategoryRequestData(2009, Category.ConsumerDefensive, 77),
     //
     // new CategoryRequestData(2006, Category.Energy, 38),
     // new CategoryRequestData(1999, Category.Energy, 38),
