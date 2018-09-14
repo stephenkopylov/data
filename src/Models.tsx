@@ -46,6 +46,32 @@ export class CompanyData {
     public Accruals: number = 0;
     public LEVI: number = 0;
 
+    public calculateVars() {
+        //DSR
+        this.DSR = (this.nextYearData.receivablesNet / this.nextYearData.revenues) / (this.currentYearData.receivablesNet / this.currentYearData.revenues);
+        //GMI
+        this.GMI = this.currentYearData.grossMargin / this.nextYearData.grossMargin;
+        //AQI
+        // this.AQI = this.currentYearData.grossMargin / this.nextYearData.grossMargin;
+
+        //SGI
+        this.SGI = this.nextYearData.revenues / this.currentYearData.revenues;
+
+        //Depi
+        const currentYearDeprecationRate = this.currentYearData.depreciationAmortisation / (this.currentYearData.depreciationAmortisation + this.currentYearData.propertyPlantAndEquipmentNet);
+        const nextYearDeprecationRate = this.nextYearData.depreciationAmortisation / (this.nextYearData.depreciationAmortisation + this.nextYearData.propertyPlantAndEquipmentNet);
+        this.DEPI = currentYearDeprecationRate / nextYearDeprecationRate;
+
+        //SGAI
+        this.SGAI = (this.nextYearData.sellingGeneralAndAdministrative / this.nextYearData.revenues) / (this.currentYearData.sellingGeneralAndAdministrative / this.currentYearData.revenues);
+
+        //Acrruals
+        this.Accruals = (this.nextYearData.incomeFromContinuingOperations - this.nextYearData.operatingCashFlow) / this.nextYearData.totalAssets;
+
+        //LEVI
+        this.LEVI = (this.nextYearData.incomeFromContinuingOperations / this.nextYearData.operatingCashFlow) / this.nextYearData.totalAssets;
+    }
+
     public static createWithJson(data: any, year: number, skipNulls: boolean): CompanyData {
         const companyData: CompanyData = new CompanyData();
 
@@ -175,25 +201,27 @@ export class CompanyData {
             return null;
         }
 
+        companyData.calculateVars();
+
         return companyData;
     }
 }
 
 export class CompanyDataByYear {
     public year: number = 0;
-    public revenues: Number = 0;
-    public sellingGeneralAndAdministrative: Number = 0;
-    public incomeFromContinuingOperations: Number = 0;
-    public receivablesNet: Number = 0;
-    public totalCurrentAssets: Number = 0;
-    public propertyPlantAndEquipmentNet: Number = 0;
-    public totalAssets: Number = 0;
-    public totalCurrentLiabilities: Number = 0;
-    public totalDebt: Number = 0;
-    public depreciationAmortisation: Number = 0;
-    public operatingCashFlow: Number = 0;
-    public grossMargin: Number = 0;
-    public debtToAssetRatio: Number = 0;
+    public revenues: number = 0;
+    public sellingGeneralAndAdministrative: number = 0;
+    public incomeFromContinuingOperations: number = 0;
+    public receivablesNet: number = 0;
+    public totalCurrentAssets: number = 0;
+    public propertyPlantAndEquipmentNet: number = 0;
+    public totalAssets: number = 0;
+    public totalCurrentLiabilities: number = 0;
+    public totalDebt: number = 0;
+    public depreciationAmortisation: number = 0;
+    public operatingCashFlow: number = 0;
+    public grossMargin: number = 0;
+    public debtToAssetRatio: number = 0;
 
     constructor(year: number) {
         this.year = year;
