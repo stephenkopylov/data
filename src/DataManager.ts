@@ -31,7 +31,7 @@ export class DataManager {
         return new Promise((resolve, reject) => {
             const categories: CompanyCategory[] = [];
 
-            this.loadDataByCategory(2013, Category.RealEstate, 38).then((category: CompanyCategory) => {
+            this.loadDataByCategory(2013, Category.Technology, 38).then((category: CompanyCategory) => {
                 categories.push(category);
 
                 resolve(categories);
