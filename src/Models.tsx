@@ -240,6 +240,8 @@ export class CompanyCategory {
 
         categories.forEach((category: CompanyCategory) => {
             catJson.push([category.categoryId]);
+
+            catJson.push(CompanySubCategory.subCategoriesToJson(category.subCategories));
         });
 
         return catJson;
@@ -253,5 +255,15 @@ export class CompanySubCategory {
     constructor(subCategoryId: number, companies: CompanyData[]) {
         this.subCategoryId = subCategoryId;
         this.companies = companies;
+    }
+
+    public static subCategoriesToJson(subcategories: CompanySubCategory[]): any[] {
+        const subcatJson: any[] = [];
+
+        subcategories.forEach((subcategory: CompanySubCategory) => {
+            subcatJson.push([subcategory.subCategoryId]);
+        });
+
+        return subcatJson;
     }
 }

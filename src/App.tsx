@@ -42,10 +42,21 @@ class App extends React.Component<AppProps, AppState> {
                 </div>
                 <button
                     onClick={() => {
+                        // const sheet = XLSX.utils.json_to_sheet(
+                        //     [
+                        //         ["id", "name", "value"],
+                        //         [1, "sheetjs", 7262],
+                        //         [2, "js-xlsx", 6969]
+                        //     ],
+                        //     {skipHeader: true}
+                        // );
+
                         DataManager.loadAllData().then((categories: CompanyCategory[]) => {
                             console.log('loaded categories = ', categories);
 
                             const catsArray: any[] = CompanyCategory.categoriesToJson(categories);
+
+                            console.log('json = ', catsArray);
 
                             const sheet = XLSX.utils.json_to_sheet(
                                 catsArray,
