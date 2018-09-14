@@ -276,12 +276,12 @@ export class CompanyCategory {
 
         categories.forEach((category: CompanyCategory) => {
             if (category.companies.length > 0 && category.subCategories.length > 0 && category.subCategories[0].companies.length > 0) {
-                catJson.push([category.categoryName]);
+                catJson.push(['']);
 
                 const currentYear = category.subCategories[0].companies[0].currentYearData.year;
                 const nextYear = category.subCategories[0].companies[0].nextYearData.year;
 
-                catJson.push(['',
+                catJson.push([`${category.categoryName}(${currentYear}-${nextYear})`,
                     currentYear, nextYear,
                     currentYear, nextYear,
                     currentYear, nextYear,
