@@ -388,99 +388,37 @@ export class CompanyCategory {
         return catJson;
     }
 
-
     public static categoriesCalculatedToJson(categories: CompanyCategory[]): any[] {
-        const catJson: any[] = [[
-            '',
-            'Revenues', '',
-            'Selling general and administrative', '',
-            'Income from continuing operations', '',
-            'Receivables Net', '',
-            'Total Current Assets', '',
-            'Property Plant And Equipment Net', '',
-            'Total Assets', '',
-            'Total Current Liabilities', '',
-            'Total Debt', '',
-            'Depreciation Amortisation', '',
-            'Operating Cash Flow', '',
-            'Gross Margin', '',
-            'Debt To Asset Ratio', '',
-        ]];
+
+        const names: any[] = ['Company name:',];
+
+        const DSR: any[] = ['DSR:'];
+        const GMI: any[] = ['GMI:'];
+        const AQI: any[] = ['AQI:'];
+        const SGI: any[] = ['SGI:'];
+        const DEPI: any[] = ['DEPI:'];
+        const SGAI: any[] = ['SGAI:'];
+        const Accruals: any[] = ['Accruals:'];
+        const LEVI: any[] = ['LEVI:'];
 
         categories.forEach((category: CompanyCategory) => {
             if (category.companies.length > 0 && category.subCategories.length > 0 && category.subCategories[0].companies.length > 0) {
-                catJson.push(['']);
-
-                const currentYear = category.subCategories[0].companies[0].currentYearData.year;
-                const nextYear = category.subCategories[0].companies[0].nextYearData.year;
-
-                catJson.push([`${category.categoryName}(${currentYear}-${nextYear})`,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                ]);
-
                 category.companies.forEach((company: CompanyData) => {
-                    const companyArray: any[] = [];
+                    names.push(company.name);
 
-                    companyArray.push(company.name);
-
-                    companyArray.push(company.currentYearData.revenues);
-                    companyArray.push(company.nextYearData.revenues);
-
-                    companyArray.push(company.currentYearData.sellingGeneralAndAdministrative);
-                    companyArray.push(company.nextYearData.sellingGeneralAndAdministrative);
-
-                    companyArray.push(company.currentYearData.incomeFromContinuingOperations);
-                    companyArray.push(company.nextYearData.incomeFromContinuingOperations);
-
-
-                    companyArray.push(company.currentYearData.receivablesNet);
-                    companyArray.push(company.nextYearData.receivablesNet);
-
-                    companyArray.push(company.currentYearData.totalCurrentAssets);
-                    companyArray.push(company.nextYearData.totalCurrentAssets);
-
-                    companyArray.push(company.currentYearData.propertyPlantAndEquipmentNet);
-                    companyArray.push(company.nextYearData.propertyPlantAndEquipmentNet);
-
-                    companyArray.push(company.currentYearData.totalAssets);
-                    companyArray.push(company.nextYearData.totalAssets);
-
-                    companyArray.push(company.currentYearData.totalCurrentLiabilities);
-                    companyArray.push(company.nextYearData.totalCurrentLiabilities);
-
-                    companyArray.push(company.currentYearData.totalDebt);
-                    companyArray.push(company.nextYearData.totalDebt);
-
-                    companyArray.push(company.currentYearData.depreciationAmortisation);
-                    companyArray.push(company.nextYearData.depreciationAmortisation);
-
-                    companyArray.push(company.currentYearData.operatingCashFlow);
-                    companyArray.push(company.nextYearData.operatingCashFlow);
-
-                    companyArray.push(company.currentYearData.grossMargin);
-                    companyArray.push(company.nextYearData.grossMargin);
-
-                    companyArray.push(company.currentYearData.debtToAssetRatio);
-                    companyArray.push(company.nextYearData.debtToAssetRatio);
-
-                    catJson.push(companyArray);
+                    DSR.push(company.DSR);
+                    GMI.push(company.GMI);
+                    AQI.push(company.AQI);
+                    SGI.push(company.SGI);
+                    DEPI.push(company.DEPI);
+                    SGAI.push(company.SGAI);
+                    Accruals.push(company.Accruals);
+                    LEVI.push(company.LEVI);
                 });
             }
         });
 
-        return catJson;
+        return [names, DSR, GMI, AQI, SGI, DEPI, SGAI, Accruals, LEVI];
     }
 }
 
