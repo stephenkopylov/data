@@ -3,22 +3,44 @@ import { Category, CompanyCategory, CompanyData, CompanySubCategory, SubCategori
 
 
 export class DataManager {
+    public static loadedCategories: CompanyCategory[] = [];
+
+    public static endCallback: (loadedCategories: CompanyCategory[]) => void = null;
+
     public static loadAllData(): Promise<any> {
         return new Promise((resolve, reject) => {
-            const categories: CompanyCategory[] = [];
 
-            companiesData.forEach((categoryRequestData: CategoryRequestData) => {
-                this.loadDataByCategory(categoryRequestData.year, categoryRequestData.category, categoryRequestData.numberOfCompanies).then((category: CompanyCategory) => {
-                    categories.push(category);
+            this.loadedCategories = [];
 
-                    if (categories.length == companiesData.length) {
-                        resolve(categories);
-                    }
-                });
-            });
+            this.endCallback = () => {
+                resolve(this.loadedCategories);
+            };
+
+            this.loadNext();
         });
     }
 
+    private static loadNext() {
+        this.loadRequestData(companiesData[this.loadedCategories.length]).then((category: CompanyCategory) => {
+            this.loadedCategories.push(category);
+
+            if (this.loadedCategories.length == companiesData.length) {
+                if (this.endCallback) {
+                    this.endCallback(this.loadedCategories);
+                }
+            } else {
+                this.loadNext();
+            }
+        })
+    }
+
+    public static loadRequestData(categoryRequestData: CategoryRequestData): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.loadDataByCategory(categoryRequestData.year, categoryRequestData.category, categoryRequestData.numberOfCompanies).then((category: CompanyCategory) => {
+                resolve(category);
+            });
+        });
+    }
 
     public static loadDataByCategory(year: number, category: Category, numberOfCompanies: number): Promise<any> {
         return new Promise((resolve, reject) => {
