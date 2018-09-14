@@ -11,33 +11,38 @@ interface AppProps {
 
 interface AppState {
     categories: CompanyCategory[];
-    sheet: any;
-    jsonData: any;
+    sheetRaw: any;
+    sheetCalculated: any;
 }
 
 class App extends React.Component<AppProps, AppState> {
     state: AppState = {
         categories: [],
-        sheet: null,
-        jsonData: null,
+        sheetRaw: null,
+        sheetCalculated: null,
     };
 
     public componentDidMount() {
-        var savedJson = JSON.parse(localStorage.getItem('data'));
+        var savedRawJson = JSON.parse(localStorage.getItem('rawData'));
+        if (savedRawJson) {
+            this.setRawJson(savedRawJson);
+        }
 
-        if (savedJson) {
-            this.setJson(savedJson);
+        var savedCalculatedJson = JSON.parse(localStorage.getItem('calculatedData'));
+        if (savedCalculatedJson) {
+            this.setCalculatedJson(savedCalculatedJson);
         }
     }
 
     public render() {
+        let htmlRaw: any = null;
+        if (this.state.sheetRaw) {
+            htmlRaw = XLSX.utils.sheet_to_html(this.state.sheetRaw);
+        }
 
-        let html: any = null;
-
-        if (this.state.sheet) {
-            const parsedHtml = XLSX.utils.sheet_to_html(this.state.sheet);
-
-            html = parsedHtml;
+        let htmlCalculated: any = null;
+        if (this.state.sheetCalculated) {
+            htmlCalculated = XLSX.utils.sheet_to_html(this.state.sheetCalculated);
         }
 
         return (
@@ -49,32 +54,49 @@ class App extends React.Component<AppProps, AppState> {
                     onClick={() => {
                         DataManager.loadAllData().then((categories: CompanyCategory[]) => {
                             const catsArray: any[] = CompanyCategory.categoriesToJson(categories);
+                            localStorage.setItem('rawData', JSON.stringify(catsArray));
 
-                            localStorage.setItem('data', JSON.stringify(catsArray));
+                            const catsArrayCalculated: any[] = CompanyCategory.categoriesToJson(categories);
+                            localStorage.setItem('calculatedData', JSON.stringify(catsArray));
 
-                            this.setJson(catsArray);
+                            this.setRawJson(catsArray);
+                            this.setCalculatedJson(catsArrayCalculated);
                         });
                     }}>
                     Load data
                 </button>
-                <div dangerouslySetInnerHTML={{__html: html}}/>
-                <button
-                    onClick={() => {
-                        if (this.state.sheet) {
-                            const wb = XLSX.utils.book_new();
+                <div dangerouslySetInnerHTML={{__html: htmlRaw}}/>
+                <div>
+                    <button
+                        onClick={() => {
+                            if (this.state.sheetRaw) {
+                                const wb = XLSX.utils.book_new();
 
-                            XLSX.utils.book_append_sheet(wb, this.state.sheet, "test");
+                                XLSX.utils.book_append_sheet(wb, this.state.sheetRaw, "raw");
 
-                            XLSX.writeFile(wb, 'out.xlsb');
-                        }
-                    }}>
-                    Download table
-                </button>
+                                XLSX.writeFile(wb, 'raw.xlsb');
+                            }
+                        }}>
+                        Download raw table
+                    </button>
+                    <button
+                        onClick={() => {
+                            if (this.state.sheetCalculated) {
+                                const wb = XLSX.utils.book_new();
+
+                                XLSX.utils.book_append_sheet(wb, this.state.sheetCalculated, "calculated");
+
+                                XLSX.writeFile(wb, 'calculated.xlsb');
+                            }
+                        }}>
+                        Download calculated table
+                    </button>
+                </div>
             </div>
         );
     }
 
-    private setJson(jsonData: any) {
+    private setRawJson(jsonData: any) {
         const sheet = XLSX.utils.json_to_sheet(
             jsonData,
             {skipHeader: true}
@@ -94,8 +116,18 @@ class App extends React.Component<AppProps, AppState> {
         sheet['!merges'].push({s: {r: 0, c: 21}, e: {r: 0, c: 22}});
 
         this.setState({
-            sheet: sheet,
-            jsonData: jsonData
+            sheetRaw: sheet,
+        });
+    }
+
+    private setCalculatedJson(jsonData: any) {
+        const sheet = XLSX.utils.json_to_sheet(
+            jsonData,
+            {skipHeader: true}
+        );
+
+        this.setState({
+            sheetRaw: sheet,
         });
     }
 }

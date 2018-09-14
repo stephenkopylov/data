@@ -297,7 +297,6 @@ export class CompanyCategory {
     public static categoriesToJson(categories: CompanyCategory[]): any[] {
         const catJson: any[] = [[
             '',
-
             'Revenues', '',
             'Selling general and administrative', '',
             'Income from continuing operations', '',
