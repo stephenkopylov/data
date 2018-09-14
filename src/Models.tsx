@@ -37,7 +37,7 @@ export class CompanyData {
     private currentYearData: CompanyDataByYear;
     private nextYearData: CompanyDataByYear;
 
-    public static createWithJson(data: any, year: number): CompanyData {
+    public static createWithJson(data: any, year: number, skipNulls: boolean): CompanyData {
         const companyData: CompanyData = new CompanyData();
 
         const currentYear: CompanyDataByYear = new CompanyDataByYear(year);
@@ -47,9 +47,20 @@ export class CompanyData {
 
         const addedKeys: string[] = [];
 
+        let allValuesIsEmpty: boolean = true;
+        let nullExists: boolean = false;
+
         valuesRaw.forEach((data) => {
             const key: string = data['indicatorId'];
             const value: any = data['value'];
+
+            if (value === null) {
+                nullExists = true;
+            }
+
+            if (value != 0 && allValuesIsEmpty) {
+                allValuesIsEmpty = false;
+            }
 
             let currentContainer: CompanyDataByYear = currentYear;
 
@@ -151,6 +162,10 @@ export class CompanyData {
         companyData.currentYearData = currentYear;
         companyData.nextYearData = nextYear;
 
+        if (nullExists || allValuesIsEmpty) {
+            return null;
+        }
+
         return companyData;
     }
 }
@@ -212,5 +227,17 @@ export const SubCategories: FooMap = {
 };
 
 export class CompanyCategory {
+    public subCategories: CompanySubCategory[] = [];
 
+    constructor(subCategories: CompanySubCategory[]) {
+        this.subCategories = subCategories;
+    }
+}
+
+export class CompanySubCategory {
+    public companies: CompanyData[];
+
+    constructor(companies: CompanyData[]) {
+        this.companies = companies;
+    }
 }

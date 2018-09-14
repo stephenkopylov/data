@@ -72,9 +72,11 @@ export class DataManager {
                 const resultParsed: CompanyData[] = [];
 
                 resultRaw.forEach((companyDataRaw: {}) => {
-                    const companyData: CompanyData = CompanyData.createWithJson(companyDataRaw, requestData.year);
+                    const companyData: CompanyData = CompanyData.createWithJson(companyDataRaw, requestData.year, true);
 
-                    resultParsed.push(companyData);
+                    if (companyData) {
+                        resultParsed.push(companyData);
+                    }
                 });
 
                 resolve(resultParsed);
