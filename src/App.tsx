@@ -56,7 +56,7 @@ class App extends React.Component<AppProps, AppState> {
                             const catsArray: any[] = CompanyCategory.categoriesToJson(categories);
                             localStorage.setItem('rawData', JSON.stringify(catsArray));
 
-                            const catsArrayCalculated: any[] = CompanyCategory.categoriesToJson(categories);
+                            const catsArrayCalculated: any[] = CompanyCategory.categoriesCalculatedToJson(categories);
                             localStorage.setItem('calculatedData', JSON.stringify(catsArray));
 
                             this.setRawJson(catsArray);
@@ -65,7 +65,6 @@ class App extends React.Component<AppProps, AppState> {
                     }}>
                     Load data
                 </button>
-                <div dangerouslySetInnerHTML={{__html: htmlRaw}}/>
                 <div>
                     <button
                         onClick={() => {
@@ -92,6 +91,8 @@ class App extends React.Component<AppProps, AppState> {
                         Download calculated table
                     </button>
                 </div>
+                <div dangerouslySetInnerHTML={{__html: htmlRaw}}/>
+                <div dangerouslySetInnerHTML={{__html: htmlCalculated}}/>
             </div>
         );
     }
@@ -127,7 +128,7 @@ class App extends React.Component<AppProps, AppState> {
         );
 
         this.setState({
-            sheetRaw: sheet,
+            sheetCalculated: sheet,
         });
     }
 }
