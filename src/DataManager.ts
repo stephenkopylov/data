@@ -1,40 +1,20 @@
 import { FetchManager } from "./FetchManager";
 import { Category, CompanyCategory, CompanyData, CompanySubCategory, SubCategories } from "./Models";
 
-export class DataManager {
-    private companiesData: RequestData[] = [
-        // new RequestData(2012, 'Basic Materials', 38),
-        // new RequestData(2008, 'Basic Materials', 38),
-        // new RequestData(2001, 'Consumer Cyclicals', 38),
-        // new RequestData(2009, 'Consumer Non-Cyclicals', 77),
-        // new RequestData(2006, 'Energy', 38),
-        // new RequestData(1999, 'Energy', 38),
-        // new RequestData(2013, 'Healthcare', 38),
-        // new RequestData(2014, 'Healthcare', 38),
-        // new RequestData(2012, 'Healthcare', 38),
-        // new RequestData(2010, 'Healthcare', 38),
-        // new RequestData(2009, 'Healthcare', 38),
-        // new RequestData(1996, 'Healthcare', 38),
-        // new RequestData(2011, 'Healthcare', 38),
-        // new RequestData(2010, 'Technology', 77),
-        // new RequestData(2011, 'Technology', 77),
-        // new RequestData(1997, 'Technology', 77),
-        // new RequestData(1996, 'Technology', 38),
-        // new RequestData(2005, 'Technology', 38),
-        // new RequestData(2000, 'Technology', 38),
-        // new RequestData(1998, 'Technology', 38),
-        // new RequestData(1999, 'Technology', 38),
-        // new RequestData(2007, 'Technology', 38),
-    ];
 
+export class DataManager {
     public static loadAllData(): Promise<any> {
         return new Promise((resolve, reject) => {
             const categories: CompanyCategory[] = [];
 
-            this.loadDataByCategory(2013, Category.Technology, 38).then((category: CompanyCategory) => {
-                categories.push(category);
+            companiesData.forEach((categoryRequestData: CategoryRequestData) => {
+                this.loadDataByCategory(categoryRequestData.year, categoryRequestData.category, categoryRequestData.numberOfCompanies).then((category: CompanyCategory) => {
+                    categories.push(category);
 
-                resolve(categories);
+                    if (categories.length == companiesData.length) {
+                        resolve(categories);
+                    }
+                });
             });
         });
     }
@@ -46,7 +26,7 @@ export class DataManager {
 
             const subCategories: CompanySubCategory[] = [];
 
-            const companies: CompanyData[] = [];
+            let companies: CompanyData[] = [];
 
             const categoryType: Category = category;
 
@@ -57,7 +37,7 @@ export class DataManager {
 
                     subCategories.push(subCategory);
 
-                    companies.concat(result);
+                    companies = companies.concat(result);
 
                     if (subCategories.length == subCategorieCodes.length) {
                         const category: CompanyCategory = new CompanyCategory(categoryType, subCategories, companies);
@@ -71,7 +51,7 @@ export class DataManager {
 
     public static loadDataBySubCategory(year: number, subCategory: number): Promise<any> {
         return new Promise((resolve, reject) => {
-            const requestData: RequestData = new RequestData(year, subCategory, 38);
+            const requestData: RequestData = new RequestData(year, subCategory);
 
             this.loadData(requestData).then((result: CompanyData[]) => {
                 resolve(result);
@@ -100,14 +80,55 @@ export class DataManager {
     }
 }
 
-export class RequestData {
+export class CategoryRequestData {
     public year: number;
-    public subCategory: number;
+    public category: Category;
     public numberOfCompanies: number;
 
-    constructor(year: number, subCategory: number, numberOfCompanies: number) {
+    constructor(year: number, category: Category, numberOfCompanies: number) {
         this.year = year;
-        this.subCategory = subCategory;
+        this.category = category;
         this.numberOfCompanies = numberOfCompanies;
     }
 }
+
+export class RequestData {
+    public year: number;
+    public subCategory: number;
+
+    constructor(year: number, subCategory: number) {
+        this.year = year;
+        this.subCategory = subCategory;
+    }
+}
+
+
+const companiesData: CategoryRequestData[] = [
+    new CategoryRequestData(2012, Category.BasicMaterials, 38),
+    new CategoryRequestData(2008, Category.BasicMaterials, 38),
+
+    new CategoryRequestData(2001, Category.ConsumerCyclical, 38),
+
+    new CategoryRequestData(2009, Category.ConsumerDefensive, 77),
+
+    new CategoryRequestData(2006, Category.Energy, 38),
+    new CategoryRequestData(1999, Category.Energy, 38),
+
+    new CategoryRequestData(2013, Category.Healthcare, 38),
+    new CategoryRequestData(2014, Category.Healthcare, 38),
+    new CategoryRequestData(2012, Category.Healthcare, 38),
+    new CategoryRequestData(2010, Category.Healthcare, 38),
+    new CategoryRequestData(2009, Category.Healthcare, 38),
+    new CategoryRequestData(1996, Category.Healthcare, 38),
+    new CategoryRequestData(2011, Category.Healthcare, 38),
+
+    new CategoryRequestData(2010, Category.Technology, 77),
+    new CategoryRequestData(2011, Category.Technology, 77),
+    new CategoryRequestData(1997, Category.Technology, 77),
+    new CategoryRequestData(1996, Category.Technology, 38),
+    new CategoryRequestData(2005, Category.Technology, 38),
+    new CategoryRequestData(2000, Category.Technology, 38),
+    new CategoryRequestData(1998, Category.Technology, 38),
+    new CategoryRequestData(1999, Category.Technology, 38),
+    new CategoryRequestData(2007, Category.Technology, 38),
+];
