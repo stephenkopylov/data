@@ -208,6 +208,22 @@ export enum Category {
 }
 
 
+export const CategoryNames = {
+    [Category.Industrials]: 'Industrials',
+    [Category.Technology]: 'Technology',
+    [Category.ConsumerDefensive]: 'Consumer Defensive',
+    [Category.ConsumerCyclical]: 'Consumer Cyclical',
+    [Category.FinancialServices]: 'Financial Services',
+    [Category.Utilities]: 'Utilities',
+    [Category.Healthcare]: 'Healthcare',
+    [Category.Energy]: 'Energy',
+    [Category.BusinessServices]: 'Business Services',
+    [Category.RealEstate]: 'Real Estate',
+    [Category.BasicMaterials]: 'Basic Materials',
+    [Category.Other]: 'Other',
+    [Category.CommunicationServices]: 'Communication Services'
+};
+
 type FooMap = { [key in Category]: number[] }
 
 export const SubCategories: FooMap = {
@@ -227,11 +243,13 @@ export const SubCategories: FooMap = {
 };
 
 export class CompanyCategory {
-    public categoryId: number = 0;
+    public category: Category = 0;
+    public categoryName: string = '';
     public subCategories: CompanySubCategory[] = [];
 
-    constructor(categoryId: number, subCategories: CompanySubCategory[]) {
-        this.categoryId = categoryId;
+    constructor(category: Category, subCategories: CompanySubCategory[]) {
+        this.category = category;
+        this.categoryName = CategoryNames[category];
         this.subCategories = subCategories;
     }
 
@@ -239,14 +257,13 @@ export class CompanyCategory {
         const catJson: any[] = [['', 'Revenues', '', 'Selling general and administrative', '', 'Income from continuing operations', '']];
 
         categories.forEach((category: CompanyCategory) => {
-            catJson.push([category.categoryId]);
+            catJson.push([category.categoryName]);
 
             const currentYear = category.subCategories[0].companies[0].currentYearData.year;
             const nextYear = category.subCategories[0].companies[0].nextYearData.year;
 
-            catJson.push(['', currentYear, nextYear, currentYear, nextYear])
+            catJson.push(['', currentYear, nextYear, currentYear, nextYear, currentYear, nextYear])
             category.subCategories.forEach((subCategory: CompanySubCategory) => {
-                catJson.push([subCategory.subCategoryId]);
 
                 subCategory.companies.forEach((company: CompanyData) => {
                     const companyArray: any[] = [];
