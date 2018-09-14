@@ -1,20 +1,21 @@
 import * as React from 'react';
 import { CompanyCategory, CompanySubCategory } from "./Models";
+import { SubcategoryRow } from "./SubcategoryRow";
 
-interface TableProps {
+interface CategoryRowProps {
     category: CompanyCategory;
 }
 
-export class CategoryRow extends React.Component<TableProps> {
+export class CategoryRow extends React.Component<CategoryRowProps> {
     render() {
         const subCategoriesRows: any[] = [];
         if (this.props.category) {
-            console.log("category = ", this.props.category);
-
             this.props.category.subCategories.forEach((subCategory: CompanySubCategory, index: number) => {
-                console.log("subcategory id = ", subCategory.subCategoryId);
+                subCategoriesRows.push(
+                    <SubcategoryRow key={index} subCategory={subCategory}>
 
-                subCategoriesRows.push(<div key={index}>{subCategory.subCategoryId}</div>);
+                    </SubcategoryRow>
+                );
             });
         }
 
