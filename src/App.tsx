@@ -52,11 +52,7 @@ class App extends React.Component<AppProps, AppState> {
                         // );
 
                         DataManager.loadAllData().then((categories: CompanyCategory[]) => {
-                            console.log('loaded categories = ', categories);
-
                             const catsArray: any[] = CompanyCategory.categoriesToJson(categories);
-
-                            console.log('json = ', catsArray);
 
                             const sheet = XLSX.utils.json_to_sheet(
                                 catsArray,
@@ -79,8 +75,6 @@ class App extends React.Component<AppProps, AppState> {
                             const html = XLSX.utils.sheet_to_html(sheet);
 
                             this.setState({htmlData: html, sheet: sheet});
-
-                            // this.setState({categories: categories});
                         });
                     }}>
                     Load data

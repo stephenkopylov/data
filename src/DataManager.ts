@@ -46,6 +46,8 @@ export class DataManager {
 
             const subCategories: CompanySubCategory[] = [];
 
+            const companies: CompanyData[] = [];
+
             const categoryType: Category = category;
 
             subCategorieCodes.forEach((subCategoryCode: number) => {
@@ -55,8 +57,10 @@ export class DataManager {
 
                     subCategories.push(subCategory);
 
+                    companies.concat(result);
+
                     if (subCategories.length == subCategorieCodes.length) {
-                        const category: CompanyCategory = new CompanyCategory(categoryType, subCategories);
+                        const category: CompanyCategory = new CompanyCategory(categoryType, subCategories, companies);
 
                         resolve(category);
                     }
