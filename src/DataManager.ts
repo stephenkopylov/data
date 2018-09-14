@@ -34,7 +34,7 @@ export class DataManager {
             this.loadDataByCategory(2013, Category.RealEstate, 38).then((category: CompanyCategory) => {
                 categories.push(category);
 
-                resolve(category);
+                resolve(categories);
             });
         });
     }
@@ -44,21 +44,17 @@ export class DataManager {
         return new Promise((resolve, reject) => {
             const subCategorieCodes: number[] = SubCategories[category];
 
-            let numberOfLoadedCategories: number = 0;
-
             const subCategories: CompanySubCategory[] = [];
 
             subCategorieCodes.forEach((subCategoryCode: number) => {
                 this.loadDataBySubCategory(year, subCategoryCode).then((result: CompanyData[]) => {
 
-                    const subCategory: CompanySubCategory = new CompanySubCategory(result);
+                    const subCategory: CompanySubCategory = new CompanySubCategory(subCategoryCode, result);
 
                     subCategories.push(subCategory);
 
-                    numberOfLoadedCategories++;
-
-                    if (numberOfLoadedCategories == subCategories.length) {
-                        const category: CompanyCategory = new CompanyCategory(subCategories);
+                    if (subCategories.length == subCategorieCodes.length) {
+                        const category: CompanyCategory = new CompanyCategory(1, subCategories);
 
                         resolve(category);
                     }

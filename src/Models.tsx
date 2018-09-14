@@ -227,17 +227,21 @@ export const SubCategories: FooMap = {
 };
 
 export class CompanyCategory {
+    public categoryId: number = 0;
     public subCategories: CompanySubCategory[] = [];
 
-    constructor(subCategories: CompanySubCategory[]) {
+    constructor(categoryId: number, subCategories: CompanySubCategory[]) {
+        this.categoryId = categoryId;
         this.subCategories = subCategories;
     }
 }
 
 export class CompanySubCategory {
+    public subCategoryId: number = 0;
     public companies: CompanyData[];
 
-    constructor(companies: CompanyData[]) {
+    constructor(subCategoryId: number, companies: CompanyData[]) {
+        this.subCategoryId = subCategoryId;
         this.companies = companies;
     }
 }

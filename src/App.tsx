@@ -29,6 +29,8 @@ class App extends React.Component<AppProps, AppState> {
                 <button
                     onClick={() => {
                         DataManager.loadAllData().then((categories: CompanyCategory[]) => {
+                            console.log('loaded categories = ', categories);
+
                             this.setState({categories: categories});
                         });
                     }}>
