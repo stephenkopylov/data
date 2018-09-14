@@ -54,7 +54,7 @@ export class CompanyData {
         this.GMI = this.currentYearData.grossMargin / this.nextYearData.grossMargin;
 
         //AQI
-        this.AQI = (1 - (this.nextYearData.receivablesNet + this.nextYearData.totalCurrentAssets) / this.nextYearData.totalAssets) - (1 - (this.currentYearData.receivablesNet + this.currentYearData.totalCurrentAssets) / this.currentYearData.totalAssets);
+        this.AQI = (1 - (this.nextYearData.propertyPlantAndEquipmentNet + this.nextYearData.totalCurrentAssets) / this.nextYearData.totalAssets) / (1 - (this.currentYearData.propertyPlantAndEquipmentNet + this.currentYearData.totalCurrentAssets) / this.currentYearData.totalAssets);
 
         //SGI
         this.SGI = this.nextYearData.revenues / this.currentYearData.revenues;
