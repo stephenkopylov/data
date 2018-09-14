@@ -49,10 +49,12 @@ export class CompanyData {
     public calculateVars() {
         //DSR
         this.DSR = (this.nextYearData.receivablesNet / this.nextYearData.revenues) / (this.currentYearData.receivablesNet / this.currentYearData.revenues);
+
         //GMI
         this.GMI = this.currentYearData.grossMargin / this.nextYearData.grossMargin;
+
         //AQI
-        // this.AQI = this.currentYearData.grossMargin / this.nextYearData.grossMargin;
+        this.AQI = (1 - (this.nextYearData.receivablesNet + this.nextYearData.totalCurrentAssets) / this.nextYearData.totalAssets) - (1 - (this.currentYearData.receivablesNet + this.currentYearData.totalCurrentAssets) / this.currentYearData.totalAssets);
 
         //SGI
         this.SGI = this.nextYearData.revenues / this.currentYearData.revenues;
@@ -69,7 +71,7 @@ export class CompanyData {
         this.Accruals = (this.nextYearData.incomeFromContinuingOperations - this.nextYearData.operatingCashFlow) / this.nextYearData.totalAssets;
 
         //LEVI
-        this.LEVI = (this.nextYearData.incomeFromContinuingOperations / this.nextYearData.operatingCashFlow) / this.nextYearData.totalAssets;
+        this.LEVI = (this.nextYearData.totalDebt / this.nextYearData.totalAssets) / (this.currentYearData.totalDebt / this.currentYearData.totalAssets);
     }
 
     public static createWithJson(data: any, year: number, skipNulls: boolean): CompanyData {
