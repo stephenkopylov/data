@@ -27,11 +27,15 @@ export class DataManager {
         // new RequestData(2007, 'Technology', 38),
     ];
 
-    public static loadAllData() {
-        // this.loadData(new RequestData(2012, 110001, 38))
+    public static loadAllData(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            const categories: CompanyCategory[] = [];
 
-        this.loadDataByCategory(2013, Category.RealEstate, 38).then((category: CompanyCategory) => {
-            console.log('Loaded category:', category);
+            this.loadDataByCategory(2013, Category.RealEstate, 38).then((category: CompanyCategory) => {
+                categories.push(category);
+
+                resolve(category);
+            });
         });
     }
 

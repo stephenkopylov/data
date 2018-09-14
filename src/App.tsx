@@ -4,10 +4,11 @@ import './App.css';
 import logo from './logo.svg';
 import { FetchManager } from "./FetchManager";
 import { DataManager } from "./DataManager";
+import { CompanyCategory } from "./Models";
 
 class App extends React.Component {
     public componentDidMount() {
-        DataManager.loadAllData();
+        // DataManager.loadAllData();
         // FetchManager.testFetch();
     }
 
@@ -21,6 +22,14 @@ class App extends React.Component {
                 <p className="App-intro">
                     To get started, edit <code>src/App.tsx</code> and save to reload.
                 </p>
+                <button
+                    onClick={() => {
+                        DataManager.loadAllData().then((categories: CompanyCategory[]) => {
+                            console.log('cats loaded = ', categories);
+                        });
+                    }}>
+                    Load data
+                </button>
             </div>
         );
     }
