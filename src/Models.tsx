@@ -199,11 +199,11 @@ export class CompanyData {
         companyData.currentYearData = currentYear;
         companyData.nextYearData = nextYear;
 
+        companyData.calculateVars();
+
         if (nullExists || allValuesIsEmpty) {
             return null;
         }
-
-        companyData.calculateVars();
 
         return companyData;
     }
