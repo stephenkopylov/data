@@ -4,17 +4,31 @@ import './App.css';
 import { DataManager } from "./DataManager";
 import { CompanyCategory } from "./Models";
 import { Table } from "./Table";
+import * as XLSX from 'xlsx';
+
+const data1 = {
+    cols: [{name: "A", key: 0}, {name: "B", key: 1}, {name: "C", key: 2}],
+    data: [
+        ["id", "name", "value"],
+        [1, "sheetjs", 7262],
+        [2, "js-xlsx", 6969]
+    ]
+}
 
 interface AppProps {
 }
 
 interface AppState {
     categories: CompanyCategory[];
+    htmlData: any;
+    sheet: any;
 }
 
 class App extends React.Component<AppProps, AppState> {
     state: AppState = {
-        categories: []
+        categories: [],
+        htmlData: null,
+        sheet: null
     };
 
     public componentDidMount() {
@@ -28,13 +42,37 @@ class App extends React.Component<AppProps, AppState> {
                 </div>
                 <button
                     onClick={() => {
-                        DataManager.loadAllData().then((categories: CompanyCategory[]) => {
-                            console.log('loaded categories = ', categories);
+                        const wb = XLSX.utils.book_new();
+                        const sheet = XLSX.utils.json_to_sheet([
+                            ["id", "name", "value"],
+                            [1, "sheetjs", 7262],
+                            [2, "js-xlsx", 6969]
+                        ]);
 
-                            this.setState({categories: categories});
-                        });
+                        const html = XLSX.utils.sheet_to_html(sheet);
+
+                        this.setState({htmlData: html});
+
+                        console.log(sheet);
+
+                        // DataManager.loadAllData().then((categories: CompanyCategory[]) => {
+                        //     console.log('loaded categories = ', categories);
+                        //
+                        //
+                        //
+                        //     this.setState({categories: categories});
+                        // });
                     }}>
                     Load data
+                </button>
+                <div dangerouslySetInnerHTML={{__html: this.state.htmlData}}/>
+                <button
+                    onClick={() => {
+                        if (this.state.sheet) {
+
+                        }
+                    }}>
+                    Download table
                 </button>
             </div>
         );
