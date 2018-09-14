@@ -150,7 +150,7 @@ export class CompanyData {
                 }
 
                 case Indicator.DebtToAssetRation: {
-                    currentContainer.debtToAssetRation = value;
+                    currentContainer.debtToAssetRatio = value;
 
                     break;
                 }
@@ -184,7 +184,7 @@ export class CompanyDataByYear {
     public depreciationAmortisation: Number = 0;
     public operatingCashFlow: Number = 0;
     public grossMargin: Number = 0;
-    public debtToAssetRation: Number = 0;
+    public debtToAssetRatio: Number = 0;
 
     constructor(year: number) {
         this.year = year;
@@ -254,7 +254,23 @@ export class CompanyCategory {
     }
 
     public static categoriesToJson(categories: CompanyCategory[]): any[] {
-        const catJson: any[] = [['', 'Revenues', '', 'Selling general and administrative', '', 'Income from continuing operations', '']];
+        const catJson: any[] = [[
+            '',
+
+            'Revenues', '',
+            'Selling general and administrative', '',
+            'Income from continuing operations', '',
+            'Receivables Net', '',
+            'Total Current Assets', '',
+            'Property Plant And Equipment Net', '',
+            'Total Assets', '',
+            'Total Current Liabilities', '',
+            'Total Debt', '',
+            'Depreciation Amortisation', '',
+            'Operating Cash Flow', '',
+            'Gross Margin', '',
+            'Debt To Asset Ratio', '',
+        ]];
 
         categories.forEach((category: CompanyCategory) => {
             catJson.push([category.categoryName]);
@@ -278,6 +294,37 @@ export class CompanyCategory {
 
                     companyArray.push(company.currentYearData.incomeFromContinuingOperations);
                     companyArray.push(company.nextYearData.incomeFromContinuingOperations);
+
+
+                    companyArray.push(company.currentYearData.receivablesNet);
+                    companyArray.push(company.nextYearData.receivablesNet);
+
+                    companyArray.push(company.currentYearData.totalCurrentAssets);
+                    companyArray.push(company.nextYearData.totalCurrentAssets);
+
+                    companyArray.push(company.currentYearData.propertyPlantAndEquipmentNet);
+                    companyArray.push(company.nextYearData.propertyPlantAndEquipmentNet);
+
+                    companyArray.push(company.currentYearData.totalAssets);
+                    companyArray.push(company.nextYearData.totalAssets);
+
+                    companyArray.push(company.currentYearData.totalCurrentLiabilities);
+                    companyArray.push(company.nextYearData.totalCurrentLiabilities);
+
+                    companyArray.push(company.currentYearData.totalDebt);
+                    companyArray.push(company.nextYearData.totalDebt);
+
+                    companyArray.push(company.currentYearData.depreciationAmortisation);
+                    companyArray.push(company.nextYearData.depreciationAmortisation);
+
+                    companyArray.push(company.currentYearData.operatingCashFlow);
+                    companyArray.push(company.nextYearData.operatingCashFlow);
+
+                    companyArray.push(company.currentYearData.grossMargin);
+                    companyArray.push(company.nextYearData.grossMargin);
+
+                    companyArray.push(company.currentYearData.debtToAssetRatio);
+                    companyArray.push(company.nextYearData.debtToAssetRatio);
 
                     catJson.push(companyArray);
                 });

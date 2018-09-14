@@ -67,6 +67,14 @@ class App extends React.Component<AppProps, AppState> {
                             sheet['!merges'].push({s: {r: 0, c: 1}, e: {r: 0, c: 2}});
                             sheet['!merges'].push({s: {r: 0, c: 3}, e: {r: 0, c: 4}});
                             sheet['!merges'].push({s: {r: 0, c: 5}, e: {r: 0, c: 6}});
+                            sheet['!merges'].push({s: {r: 0, c: 7}, e: {r: 0, c: 8}});
+                            sheet['!merges'].push({s: {r: 0, c: 9}, e: {r: 0, c: 10}});
+                            sheet['!merges'].push({s: {r: 0, c: 11}, e: {r: 0, c: 12}});
+                            sheet['!merges'].push({s: {r: 0, c: 13}, e: {r: 0, c: 14}});
+                            sheet['!merges'].push({s: {r: 0, c: 15}, e: {r: 0, c: 16}});
+                            sheet['!merges'].push({s: {r: 0, c: 17}, e: {r: 0, c: 18}});
+                            sheet['!merges'].push({s: {r: 0, c: 19}, e: {r: 0, c: 20}});
+                            sheet['!merges'].push({s: {r: 0, c: 21}, e: {r: 0, c: 22}});
 
                             const html = XLSX.utils.sheet_to_html(sheet);
 
