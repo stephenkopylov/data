@@ -1,5 +1,5 @@
 import { FetchManager } from "./FetchManager";
-import { Category, CompanyData, SubCategories } from "./Models";
+import { Category, CompanyCategory, CompanyData, CompanySubCategory, SubCategories } from "./Models";
 
 export class DataManager {
     private companiesData: RequestData[] = [
@@ -30,26 +30,35 @@ export class DataManager {
     public static loadAllData() {
         // this.loadData(new RequestData(2012, 110001, 38))
 
-        this.loadDataByCategory(2013, Category.RealEstate, 38);
+        this.loadDataByCategory(2013, Category.RealEstate, 38).then((category: CompanyCategory) => {
+            console.log('Loaded category:', category);
+        });
     }
 
 
-    public static loadDataByCategory(year: number, category: Category, numberOfCompanies: number) {
-        const subCategories: number[] = SubCategories[category];
+    public static loadDataByCategory(year: number, category: Category, numberOfCompanies: number): Promise<any> {
+        return new Promise((resolve, reject) => {
+            const subCategorieCodes: number[] = SubCategories[category];
 
-        let numberOfLoadedCategories: number = 0;
+            let numberOfLoadedCategories: number = 0;
 
-        subCategories.forEach((subCategory: number) => {
-            this.loadDataBySubCategory(year, subCategories[numberOfLoadedCategories]).then((result: CompanyData[]) => {
-                console.log('result = ', result);
+            const subCategories: CompanySubCategory[] = [];
 
-                numberOfLoadedCategories++;
+            subCategorieCodes.forEach((subCategoryCode: number) => {
+                this.loadDataBySubCategory(year, subCategoryCode).then((result: CompanyData[]) => {
 
-                if (numberOfLoadedCategories == subCategories.length) {
+                    const subCategory: CompanySubCategory = new CompanySubCategory(result);
 
-                } else {
+                    subCategories.push(subCategory);
 
-                }
+                    numberOfLoadedCategories++;
+
+                    if (numberOfLoadedCategories == subCategories.length) {
+                        const category: CompanyCategory = new CompanyCategory(subCategories);
+
+                        resolve(category);
+                    }
+                });
             });
         });
     }
