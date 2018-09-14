@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02ddec0c-7f4a-4ec5-99ad-9c0e5656a3bf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/FetchManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/FetchManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -27,7 +28,7 @@
           <entry key="html" value="1" />
           <entry key="json" value="4" />
           <entry key="njs" value="1" />
-          <entry key="ts" value="4" />
+          <entry key="ts" value="5" />
           <entry key="tsx" value="7" />
         </counts>
       </usages-collector>
@@ -36,7 +37,7 @@
           <entry key="HTML" value="1" />
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="1" />
-          <entry key="TypeScript" value="4" />
+          <entry key="TypeScript" value="5" />
           <entry key="TypeScript JSX" value="7" />
           <entry key="tsconfig" value="1" />
         </counts>
@@ -51,14 +52,14 @@
         <counts>
           <entry key="html" value="3" />
           <entry key="json" value="6" />
-          <entry key="ts" value="3280" />
+          <entry key="ts" value="3282" />
           <entry key="tsx" value="4514" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="3" />
-          <entry key="TypeScript" value="3280" />
+          <entry key="TypeScript" value="3282" />
           <entry key="TypeScript JSX" value="4514" />
           <entry key="tsconfig" value="6" />
         </counts>
@@ -76,6 +77,15 @@
                 <element signature="e#0#31#0" expanded="true" />
                 <marker date="1536928039019" expanded="true" signature="1407:3209" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/FetchManager.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="662">
+              <caret line="54" column="19" selection-end-line="117" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -156,15 +166,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tslint.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="628">
-              <caret line="293" column="38" selection-end-line="359" selection-end-column="1" />
+            <state relative-caret-position="52">
+              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -191,7 +196,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/DataManager.tsx" />
-        <option value="$PROJECT_DIR$/src/FetchManager.ts" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/src/Table.tsx" />
         <option value="$PROJECT_DIR$/src/CategoryRow.tsx" />
@@ -201,6 +205,7 @@
         <option value="$PROJECT_DIR$/src/DataManager.ts" />
         <option value="$PROJECT_DIR$/src/App.tsx" />
         <option value="$PROJECT_DIR$/src/Models.tsx" />
+        <option value="$PROJECT_DIR$/src/FetchManager.ts" />
       </list>
     </option>
   </component>
@@ -324,12 +329,12 @@
       <option name="presentableId" value="Default" />
       <updated>1536845702056</updated>
       <workItem from="1536845703612" duration="23740000" />
-      <workItem from="1536901705875" duration="15819000" />
+      <workItem from="1536901705875" duration="16494000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39559000" />
+    <option name="totallyTimeSpent" value="40234000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1362" extended-state="6" />
@@ -380,13 +385,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FetchManager.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -477,8 +475,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="628">
-          <caret line="293" column="38" selection-end-line="359" selection-end-column="1" />
+        <state relative-caret-position="52">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FetchManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="54" column="19" selection-end-line="117" selection-end-column="1" />
         </state>
       </provider>
     </entry>

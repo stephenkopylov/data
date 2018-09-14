@@ -12,7 +12,7 @@ export enum Indicator {
     DepreciationAmortisation,
     OperatingCashFlow,
     GrossMargin,
-    DebtToAssetRation,
+    DebtToAssetRatio,
 }
 
 export const IndicatorCode: {} = {
@@ -29,7 +29,7 @@ export const IndicatorCode: {} = {
     '3-2': Indicator.DepreciationAmortisation,
     '3-13': Indicator.OperatingCashFlow,
     '4-0': Indicator.GrossMargin,
-    '4-5': Indicator.DebtToAssetRation
+    '4-5': Indicator.DebtToAssetRatio
 };
 
 export class CompanyData {
@@ -149,7 +149,7 @@ export class CompanyData {
                     break;
                 }
 
-                case Indicator.DebtToAssetRation: {
+                case Indicator.DebtToAssetRatio: {
                     currentContainer.debtToAssetRatio = value;
 
                     break;

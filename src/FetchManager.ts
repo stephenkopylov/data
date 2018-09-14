@@ -21,6 +21,7 @@ export class FetchManager {
                 "2-41", //Total Assets
                 "2-57", //Total Current Liabilities
                 "4-6", //Total Debt
+                "4-5", //Debt to asset ratio = leverage
             ];
 
             const yearsIndicators: string [] = [
@@ -30,7 +31,6 @@ export class FetchManager {
                 "3-2", //Depreciation & Amortisation
                 "3-13", //Operating Cash Flow
                 "4-0", //Gross margin
-                "4-5", //Debt to asset ration = leverage
             ];
 
             let search: any[] = [];
