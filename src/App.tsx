@@ -43,11 +43,14 @@ class App extends React.Component<AppProps, AppState> {
                 <button
                     onClick={() => {
                         const wb = XLSX.utils.book_new();
-                        const sheet = XLSX.utils.json_to_sheet([
-                            ["id", "name", "value"],
-                            [1, "sheetjs", 7262],
-                            [2, "js-xlsx", 6969]
-                        ]);
+                        const sheet = XLSX.utils.json_to_sheet(
+                            [
+                                ["id", "name", "value"],
+                                [1, "sheetjs", 7262],
+                                [2, "js-xlsx", 6969]
+                            ],
+                            {skipHeader: true}
+                        );
 
                         const html = XLSX.utils.sheet_to_html(sheet);
 
