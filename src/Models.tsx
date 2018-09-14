@@ -243,6 +243,15 @@ export class CompanyCategory {
 
             category.subCategories.forEach((subCategory: CompanySubCategory) => {
                 catJson.push([subCategory.subCategoryId]);
+
+                subCategory.companies.forEach((company: CompanyData) => {
+                    const companyArray: any[] = [];
+
+                    companyArray.push(company.name);
+                    companyArray.push(company.currentYearData.revenues);
+
+                    catJson.push(companyArray);
+                });
             })
         });
 

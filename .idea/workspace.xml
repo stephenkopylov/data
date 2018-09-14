@@ -52,14 +52,14 @@
           <entry key="html" value="3" />
           <entry key="json" value="6" />
           <entry key="ts" value="3221" />
-          <entry key="tsx" value="3877" />
+          <entry key="tsx" value="3982" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="3" />
           <entry key="TypeScript" value="3221" />
-          <entry key="TypeScript JSX" value="3877" />
+          <entry key="TypeScript JSX" value="3982" />
           <entry key="tsconfig" value="6" />
         </counts>
       </usages-collector>
@@ -163,8 +163,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="244" column="55" selection-end-line="270" selection-end-column="1" />
+            <state relative-caret-position="648">
+              <caret line="250" column="70" selection-end-line="279" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -324,12 +324,12 @@
       <option name="presentableId" value="Default" />
       <updated>1536845702056</updated>
       <workItem from="1536845703612" duration="23740000" />
-      <workItem from="1536901705875" duration="12432000" />
+      <workItem from="1536901705875" duration="12547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36172000" />
+    <option name="totallyTimeSpent" value="36287000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1362" extended-state="6" />
@@ -489,8 +489,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="244" column="55" selection-end-line="270" selection-end-column="1" />
+        <state relative-caret-position="648">
+          <caret line="250" column="70" selection-end-line="279" selection-end-column="1" />
         </state>
       </provider>
     </entry>
