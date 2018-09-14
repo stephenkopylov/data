@@ -12,7 +12,7 @@ export class FetchManager {
 
     }
 
-    public static testFetchNew(year: number, category: number): Promise<any> {
+    public static testFetchNew(year: number, subCategory: number): Promise<any> {
         return new Promise((resolve, reject) => {
             const quarterIndicators: string[] = [
                 "2-5", //Income from Continuing Operations
@@ -45,7 +45,7 @@ export class FetchManager {
 
             search.push({
                 "indicatorId": "0-73",
-                "condition": {"operator": "eq", "value": category}
+                "condition": {"operator": "eq", "value": subCategory}
             });
 
             quarterIndicators.forEach((indicatorId: string) => {

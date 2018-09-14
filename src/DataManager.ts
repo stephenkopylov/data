@@ -1,5 +1,5 @@
 import { FetchManager } from "./FetchManager";
-import { CompanyData } from "./Models";
+import { Category, CompanyData, SubCategories } from "./Models";
 
 export class DataManager {
     private companiesData: RequestData[] = [
@@ -25,32 +25,72 @@ export class DataManager {
         // new RequestData(1998, 'Technology', 38),
         // new RequestData(1999, 'Technology', 38),
         // new RequestData(2007, 'Technology', 38),
-    ]
+    ];
 
     public static loadAllData() {
-        this.loadData(new RequestData(2012, 110001, 38))
+        // this.loadData(new RequestData(2012, 110001, 38))
+
+        this.loadDataByCategory(2013, Category.RealEstate, 38);
     }
 
-    private static loadData(requestData: RequestData) {
-        FetchManager.testFetchNew(requestData.year, requestData.category).then((result: any) => {
-            const resultRaw: [] = result['results'];
-            resultRaw.forEach((companyDataRaw: {}) => {
-                const companyData: CompanyData = CompanyData.createWithJson(companyDataRaw, requestData.year);
 
-                console.log('companyData = ', companyData);
+    public static loadDataByCategory(year: number, category: Category, numberOfCompanies: number) {
+        const subCategories: number[] = SubCategories[category];
+
+        let numberOfLoadedCategories: number = 0;
+
+        subCategories.forEach((subCategory: number) => {
+            this.loadDataBySubCategory(year, subCategories[numberOfLoadedCategories]).then((result: CompanyData[]) => {
+                console.log('result = ', result);
+
+                numberOfLoadedCategories++;
+
+                if (numberOfLoadedCategories == subCategories.length) {
+
+                } else {
+
+                }
+            });
+        });
+    }
+
+    public static loadDataBySubCategory(year: number, subCategory: number): Promise<any> {
+        return new Promise((resolve, reject) => {
+            const requestData: RequestData = new RequestData(year, subCategory, 38);
+
+            this.loadData(requestData).then((result: CompanyData[]) => {
+                resolve(result);
             })
+        });
+    }
+
+    private static loadData(requestData: RequestData): Promise<any> {
+        return new Promise((resolve, reject) => {
+            FetchManager.testFetchNew(requestData.year, requestData.subCategory).then((result: any) => {
+                const resultRaw: [] = result['results'];
+
+                const resultParsed: CompanyData[] = [];
+
+                resultRaw.forEach((companyDataRaw: {}) => {
+                    const companyData: CompanyData = CompanyData.createWithJson(companyDataRaw, requestData.year);
+
+                    resultParsed.push(companyData);
+                });
+
+                resolve(resultParsed);
+            });
         });
     }
 }
 
 export class RequestData {
     public year: number;
-    public category: number;
+    public subCategory: number;
     public numberOfCompanies: number;
 
-    constructor(year: number, category: number, numberOfCompanies: number) {
+    constructor(year: number, subCategory: number, numberOfCompanies: number) {
         this.year = year;
-        this.category = category;
+        this.subCategory = subCategory;
         this.numberOfCompanies = numberOfCompanies;
     }
 }

@@ -195,7 +195,7 @@ export enum Category {
 
 type FooMap = { [key in Category]: number[] }
 
-const SubCategories: FooMap = {
+export const SubCategories: FooMap = {
     [Category.Industrials]: [100001, 100002, 100003, 100004, 100005, 100006, 100007, 100008, 100009, 100010, 100011, 100012, 100013],
     [Category.Technology]: [101001, 101002, 101003, 101004, 101005],
     [Category.ConsumerDefensive]: [102001, 102002, 102003, 102004, 102005, 102006],
