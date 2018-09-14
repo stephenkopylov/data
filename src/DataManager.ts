@@ -35,7 +35,7 @@ export class DataManager {
         FetchManager.testFetchNew(requestData.year, requestData.category).then((result: any) => {
             const resultRaw: [] = result['results'];
             resultRaw.forEach((companyDataRaw: {}) => {
-                const companyData: CompanyData = CompanyData.createWithJson(companyDataRaw);
+                const companyData: CompanyData = CompanyData.createWithJson(companyDataRaw, requestData.year);
 
                 console.log('companyData = ', companyData);
             })

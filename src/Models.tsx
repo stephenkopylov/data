@@ -1,48 +1,47 @@
 export enum Indicator {
-    IndicatorNameOfCompany,
-    IndicatorRevenues,
-    IndicatorSellingGeneralAndAdministrative,
-    IndicatorIncomeFromContinuingOperations,
-    IndicatorReceivablesNet,
-    IndicatorTotalCurrentAssets,
-    IndicatorPropertyPlantAndEquipmentNet,
-    IndicatorTotalAssets,
-    IndicatorTotalCurrentLiabilities,
-    IndicatorTotalDebt,
-    IndicatorDepreciationAmortisation,
-    IndicatorOperatingCashFlow,
-    IndicatorGrossMargin,
-    IndicatorDebtToAssetRation,
+    NameOfCompany,
+    Revenues,
+    SellingGeneralAndAdministrative,
+    IncomeFromContinuingOperations,
+    ReceivablesNet,
+    TotalCurrentAssets,
+    PropertyPlantAndEquipmentNet,
+    TotalAssets,
+    TotalCurrentLiabilities,
+    TotalDebt,
+    DepreciationAmortisation,
+    OperatingCashFlow,
+    GrossMargin,
+    DebtToAssetRation,
 }
 
 export const IndicatorCode: {} = {
-    IndicatorNameOfCompany: '0-1',
-    IndicatorRevenues: '1-1',
-    IndicatorSellingGeneralAndAdministrative: '1-12',
-    IndicatorIncomeFromContinuingOperations: '1-49',
-    IndicatorReceivablesNet: '2-5',
-    IndicatorTotalCurrentAssets: '2-21',
-    IndicatorPropertyPlantAndEquipmentNet: '2-22',
-    IndicatorTotalAssets: '2-41',
-    IndicatorTotalCurrentLiabilities: '2-57',
-    IndicatorTotalDebt: '4-6',
-    IndicatorDepreciationAmortisation: '3-2',
-    IndicatorOperatingCashFlow: '3-13',
-    IndicatorGrossMargin: '4-0',
-    IndicatorDebtToAssetRation: '4-5',
+    '0-1': Indicator.NameOfCompany,
+    '1-1': Indicator.Revenues,
+    '1-12': Indicator.SellingGeneralAndAdministrative,
+    '1-49': Indicator.IncomeFromContinuingOperations,
+    '2-5': Indicator.ReceivablesNet,
+    '2-21': Indicator.TotalCurrentAssets,
+    '2-22': Indicator.PropertyPlantAndEquipmentNet,
+    '2-41': Indicator.TotalAssets,
+    '2-57': Indicator.TotalCurrentLiabilities,
+    '4-6': Indicator.TotalDebt,
+    '3-2': Indicator.DepreciationAmortisation,
+    '3-13': Indicator.OperatingCashFlow,
+    '4-0': Indicator.GrossMargin,
+    '4-5': Indicator.DebtToAssetRation
 };
-
 
 export class CompanyData {
     private name: string = '';
-    private currentYearData: CompanyDataByYear = new CompanyDataByYear();
-    private nextYearData: CompanyDataByYear = new CompanyDataByYear();
+    private currentYearData: CompanyDataByYear;
+    private nextYearData: CompanyDataByYear;
 
-    public static createWithJson(data: any): CompanyData {
+    public static createWithJson(data: any, year: number): CompanyData {
         const companyData: CompanyData = new CompanyData();
 
-        const currentYear: CompanyDataByYear = new CompanyDataByYear();
-        const nextYear: CompanyDataByYear = new CompanyDataByYear();
+        const currentYear: CompanyDataByYear = new CompanyDataByYear(year);
+        const nextYear: CompanyDataByYear = new CompanyDataByYear(year + 1);
 
         const valuesRaw: [] = data['values'];
 
@@ -58,88 +57,88 @@ export class CompanyData {
                 currentContainer = nextYear;
             }
 
-            const enumKey: Indicator = Indicator[getKeyByValue(IndicatorCode, key)] as any;
+            const enumKey: Indicator = IndicatorCode[key];
 
             switch (enumKey) {
-                case Indicator.IndicatorNameOfCompany: {
+                case Indicator.NameOfCompany: {
                     companyData.name = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorRevenues: {
+                case Indicator.Revenues: {
                     currentContainer.revenues = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorSellingGeneralAndAdministrative: {
+                case Indicator.SellingGeneralAndAdministrative: {
                     currentContainer.sellingGeneralAndAdministrative = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorIncomeFromContinuingOperations: {
+                case Indicator.IncomeFromContinuingOperations: {
                     currentContainer.incomeFromContinuingOperations = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorReceivablesNet: {
+                case Indicator.ReceivablesNet: {
                     currentContainer.receivablesNet = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorTotalCurrentAssets: {
+                case Indicator.TotalCurrentAssets: {
                     currentContainer.totalCurrentAssets = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorPropertyPlantAndEquipmentNet: {
+                case Indicator.PropertyPlantAndEquipmentNet: {
                     currentContainer.propertyPlantAndEquipmentNet = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorTotalAssets: {
+                case Indicator.TotalAssets: {
                     currentContainer.totalAssets = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorTotalCurrentLiabilities: {
+                case Indicator.TotalCurrentLiabilities: {
                     currentContainer.totalCurrentLiabilities = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorTotalDebt: {
+                case Indicator.TotalDebt: {
                     currentContainer.totalDebt = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorDepreciationAmortisation: {
+                case Indicator.DepreciationAmortisation: {
                     currentContainer.depreciationAmortisation = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorOperatingCashFlow: {
+                case Indicator.OperatingCashFlow: {
                     currentContainer.operatingCashFlow = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorGrossMargin: {
+                case Indicator.GrossMargin: {
                     currentContainer.grossMargin = value;
 
                     break;
                 }
 
-                case Indicator.IndicatorDebtToAssetRation: {
+                case Indicator.DebtToAssetRation: {
                     currentContainer.debtToAssetRation = value;
 
                     break;
@@ -158,6 +157,7 @@ export class CompanyData {
 
 
 export class CompanyDataByYear {
+    public year: number = 0;
     public revenues: Number = 0;
     public sellingGeneralAndAdministrative: Number = 0;
     public incomeFromContinuingOperations: Number = 0;
@@ -171,6 +171,10 @@ export class CompanyDataByYear {
     public operatingCashFlow: Number = 0;
     public grossMargin: Number = 0;
     public debtToAssetRation: Number = 0;
+
+    constructor(year: number) {
+        this.year = year;
+    }
 }
 
 
