@@ -63,6 +63,11 @@ class App extends React.Component<AppProps, AppState> {
                                 {skipHeader: true}
                             );
 
+                            if (!sheet['!merges']) sheet['!merges'] = [];
+                            sheet['!merges'].push({s: {r: 0, c: 1}, e: {r: 0, c: 2}});
+                            sheet['!merges'].push({s: {r: 0, c: 3}, e: {r: 0, c: 4}});
+                            sheet['!merges'].push({s: {r: 0, c: 5}, e: {r: 0, c: 6}});
+
                             const html = XLSX.utils.sheet_to_html(sheet);
 
                             this.setState({htmlData: html, sheet: sheet});

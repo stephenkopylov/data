@@ -236,11 +236,15 @@ export class CompanyCategory {
     }
 
     public static categoriesToJson(categories: CompanyCategory[]): any[] {
-        const catJson: any[] = [];
+        const catJson: any[] = [['', 'Revenues', '', 'Selling general and administrative', '', 'Income from continuing operations', '']];
 
         categories.forEach((category: CompanyCategory) => {
             catJson.push([category.categoryId]);
 
+            const currentYear = category.subCategories[0].companies[0].currentYearData.year;
+            const nextYear = category.subCategories[0].companies[0].nextYearData.year;
+
+            catJson.push(['', currentYear, nextYear, currentYear, nextYear])
             category.subCategories.forEach((subCategory: CompanySubCategory) => {
                 catJson.push([subCategory.subCategoryId]);
 
@@ -248,7 +252,15 @@ export class CompanyCategory {
                     const companyArray: any[] = [];
 
                     companyArray.push(company.name);
+
                     companyArray.push(company.currentYearData.revenues);
+                    companyArray.push(company.nextYearData.revenues);
+
+                    companyArray.push(company.currentYearData.sellingGeneralAndAdministrative);
+                    companyArray.push(company.nextYearData.sellingGeneralAndAdministrative);
+
+                    companyArray.push(company.currentYearData.incomeFromContinuingOperations);
+                    companyArray.push(company.nextYearData.incomeFromContinuingOperations);
 
                     catJson.push(companyArray);
                 });
@@ -267,14 +279,4 @@ export class CompanySubCategory {
         this.subCategoryId = subCategoryId;
         this.companies = companies;
     }
-
-    // public static subCategoriesToJson(subcategories: CompanySubCategory[]): any[] {
-    //     const subcatJson: any[] = [];
-    //
-    //     subcategories.forEach((subcategory: CompanySubCategory) => {
-    //         subcatJson.push(subcategory.subCategoryId);
-    //     });
-    //
-    //     return subcatJson;
-    // }
 }
