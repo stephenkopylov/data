@@ -155,7 +155,6 @@ export class CompanyData {
     }
 }
 
-
 export class CompanyDataByYear {
     public year: number = 0;
     public revenues: Number = 0;
@@ -177,7 +176,41 @@ export class CompanyDataByYear {
     }
 }
 
+export enum Category {
+    Industrials,
+    Technology,
+    ConsumerDefensive,
+    ConsumerCyclical,
+    FinancialServices,
+    Utilities,
+    Healthcare,
+    Energy,
+    BusinessServices,
+    RealEstate,
+    BasicMaterials,
+    Other,
+    CommunicationServices
+}
 
-function getKeyByValue(object: any, value: any): any {
-    return Object.keys(object).find(key => object[key] === value);
+
+type FooMap = { [key in Category]: number[] }
+
+const SubCategories: FooMap = {
+    [Category.Industrials]: [100001, 100002, 100003, 100004, 100005, 100006, 100007, 100008, 100009, 100010, 100011, 100012, 100013],
+    [Category.Technology]: [123, 123, 123],
+    [Category.ConsumerDefensive]: [123, 123, 123],
+    [Category.ConsumerCyclical]: [123, 123, 123],
+    [Category.FinancialServices]: [123, 123, 123],
+    [Category.Utilities]: [123, 123, 123],
+    [Category.Healthcare]: [123, 123, 123],
+    [Category.Energy]: [123, 123, 123],
+    [Category.BusinessServices]: [123, 123, 123],
+    [Category.RealEstate]: [123, 123, 123],
+    [Category.BasicMaterials]: [123, 123, 123],
+    [Category.Other]: [123, 123, 123],
+    [Category.CommunicationServices]: [123, 123, 123],
+};
+
+export class CompanyCategory {
+
 }
