@@ -234,6 +234,16 @@ export class CompanyCategory {
         this.categoryId = categoryId;
         this.subCategories = subCategories;
     }
+
+    public static categoriesToJson(categories: CompanyCategory[]): any[] {
+        const catJson: any[] = [];
+
+        categories.forEach((category: CompanyCategory) => {
+            catJson.push([category.categoryId]);
+        });
+
+        return catJson;
+    }
 }
 
 export class CompanySubCategory {

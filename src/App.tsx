@@ -42,29 +42,22 @@ class App extends React.Component<AppProps, AppState> {
                 </div>
                 <button
                     onClick={() => {
-                        const wb = XLSX.utils.book_new();
-                        const sheet = XLSX.utils.json_to_sheet(
-                            [
-                                ["id", "name", "value"],
-                                [1, "sheetjs", 7262],
-                                [2, "js-xlsx", 6969]
-                            ],
-                            {skipHeader: true}
-                        );
+                        DataManager.loadAllData().then((categories: CompanyCategory[]) => {
+                            console.log('loaded categories = ', categories);
 
-                        const html = XLSX.utils.sheet_to_html(sheet);
+                            const catsArray: any[] = CompanyCategory.categoriesToJson(categories);
 
-                        this.setState({htmlData: html, sheet: sheet});
+                            const sheet = XLSX.utils.json_to_sheet(
+                                catsArray,
+                                {skipHeader: true}
+                            );
 
-                        console.log(sheet);
+                            const html = XLSX.utils.sheet_to_html(sheet);
 
-                        // DataManager.loadAllData().then((categories: CompanyCategory[]) => {
-                        //     console.log('loaded categories = ', categories);
-                        //
-                        //
-                        //
-                        //     this.setState({categories: categories});
-                        // });
+                            this.setState({htmlData: html, sheet: sheet});
+
+                            // this.setState({categories: categories});
+                        });
                     }}>
                     Load data
                 </button>
