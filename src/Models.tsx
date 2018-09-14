@@ -275,7 +275,7 @@ export class CompanyCategory {
         ]];
 
         categories.forEach((category: CompanyCategory) => {
-            if (category.companies.length) {
+            if (category.companies.length > 0 && category.subCategories.length > 0) {
                 catJson.push([category.categoryName]);
 
                 const currentYear = category.subCategories[0].companies[0].currentYearData.year;
