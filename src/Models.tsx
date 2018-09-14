@@ -59,7 +59,7 @@ export class CompanyData {
         //SGI
         this.SGI = this.nextYearData.revenues / this.currentYearData.revenues;
 
-        //Depi
+        //DEPI
         const currentYearDeprecationRate = this.currentYearData.depreciationAmortisation / (this.currentYearData.depreciationAmortisation + this.currentYearData.propertyPlantAndEquipmentNet);
         const nextYearDeprecationRate = this.nextYearData.depreciationAmortisation / (this.nextYearData.depreciationAmortisation + this.nextYearData.propertyPlantAndEquipmentNet);
         this.DEPI = currentYearDeprecationRate / nextYearDeprecationRate;
