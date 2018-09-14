@@ -197,18 +197,18 @@ type FooMap = { [key in Category]: number[] }
 
 const SubCategories: FooMap = {
     [Category.Industrials]: [100001, 100002, 100003, 100004, 100005, 100006, 100007, 100008, 100009, 100010, 100011, 100012, 100013],
-    [Category.Technology]: [123, 123, 123],
-    [Category.ConsumerDefensive]: [123, 123, 123],
-    [Category.ConsumerCyclical]: [123, 123, 123],
-    [Category.FinancialServices]: [123, 123, 123],
-    [Category.Utilities]: [123, 123, 123],
-    [Category.Healthcare]: [123, 123, 123],
-    [Category.Energy]: [123, 123, 123],
-    [Category.BusinessServices]: [123, 123, 123],
-    [Category.RealEstate]: [123, 123, 123],
-    [Category.BasicMaterials]: [123, 123, 123],
-    [Category.Other]: [123, 123, 123],
-    [Category.CommunicationServices]: [123, 123, 123],
+    [Category.Technology]: [101001, 101002, 101003, 101004, 101005],
+    [Category.ConsumerDefensive]: [102001, 102002, 102003, 102004, 102005, 102006],
+    [Category.ConsumerCyclical]: [103001, 103002, 103003, 103004, 103005, 103011, 103013, 103015, 103018, 103020, 103026],
+    [Category.FinancialServices]: [104001, 104002, 104003, 104004, 104005, 104006, 104007, 104013],
+    [Category.Utilities]: [105001, 105002],
+    [Category.Healthcare]: [106001, 106002, 106003, 106004, 106005, 106006, 106011, 106014],
+    [Category.Energy]: [107001, 107002, 107003, 107004, 107005, 107006],
+    [Category.BusinessServices]: [108001, 108002],
+    [Category.RealEstate]: [109001, 109002],
+    [Category.BasicMaterials]: [110001, 110002, 110003, 110004, 110005, 110006, 110007],
+    [Category.Other]: [111001],
+    [Category.CommunicationServices]: [112001],
 };
 
 export class CompanyCategory {
