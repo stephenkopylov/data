@@ -278,7 +278,21 @@ export class CompanyCategory {
             const currentYear = category.subCategories[0].companies[0].currentYearData.year;
             const nextYear = category.subCategories[0].companies[0].nextYearData.year;
 
-            catJson.push(['', currentYear, nextYear, currentYear, nextYear, currentYear, nextYear])
+            catJson.push(['',
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+                currentYear, nextYear,
+            ]);
             category.subCategories.forEach((subCategory: CompanySubCategory) => {
 
                 subCategory.companies.forEach((company: CompanyData) => {
