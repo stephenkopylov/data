@@ -51,7 +51,7 @@ class App extends React.Component<AppProps, AppState> {
 
                         const html = XLSX.utils.sheet_to_html(sheet);
 
-                        this.setState({htmlData: html});
+                        this.setState({htmlData: html, sheet: sheet});
 
                         console.log(sheet);
 
@@ -69,7 +69,11 @@ class App extends React.Component<AppProps, AppState> {
                 <button
                     onClick={() => {
                         if (this.state.sheet) {
+                            const wb = XLSX.utils.book_new();
 
+                            XLSX.utils.book_append_sheet(wb, this.state.sheet, "test");
+
+                            XLSX.writeFile(wb, 'out.xlsb');
                         }
                     }}>
                     Download table
