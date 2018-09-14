@@ -21,23 +21,40 @@ export class DataManager {
     }
 
     private static loadNext() {
-        this.loadRequestData(companiesData[this.loadedCategories.length]).then((category: CompanyCategory) => {
-            this.loadedCategories.push(category);
 
-            if (this.loadedCategories.length == companiesData.length) {
-                if (this.endCallback) {
-                    this.endCallback(this.loadedCategories);
-                }
-            } else {
-                this.loadNext();
+        const categoryRequestData: CategoryRequestData = companiesData[this.loadedCategories.length];
+
+        this.loadRequestData(categoryRequestData)
+            .then((category: CompanyCategory) => {
+                this.loadedCategories.push(category);
+
+                this.checkLoaded();
+            })
+            .catch(() => {
+                console.log('loadRequestDataFailed');
+                this.loadedCategories.push(new CompanyCategory(categoryRequestData.category, [], []));
+
+                this.checkLoaded();
+            });
+    }
+
+    private static checkLoaded() {
+        if (this.loadedCategories.length == companiesData.length) {
+            if (this.endCallback) {
+                this.endCallback(this.loadedCategories);
             }
-        })
+        } else {
+            this.loadNext();
+        }
     }
 
     public static loadRequestData(categoryRequestData: CategoryRequestData): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.loadDataByCategory(categoryRequestData.year, categoryRequestData.category, categoryRequestData.numberOfCompanies).then((category: CompanyCategory) => {
-                resolve(category);
+            this.loadDataByCategory(categoryRequestData.year, categoryRequestData.category, categoryRequestData.numberOfCompanies)
+                .then((category: CompanyCategory) => {
+                    resolve(category);
+                }).catch(() => {
+                reject();
             });
         });
     }
@@ -66,6 +83,8 @@ export class DataManager {
 
                         resolve(category);
                     }
+                }).catch(() => {
+                    reject();
                 });
             });
         });
@@ -77,6 +96,8 @@ export class DataManager {
 
             this.loadData(requestData).then((result: CompanyData[]) => {
                 resolve(result);
+            }).catch(() => {
+                reject();
             })
         });
     }
@@ -97,6 +118,8 @@ export class DataManager {
                 });
 
                 resolve(resultParsed);
+            }).catch(() => {
+                reject();
             });
         });
     }
