@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02ddec0c-7f4a-4ec5-99ad-9c0e5656a3bf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/DataManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -53,14 +54,14 @@
           <entry key="html" value="3" />
           <entry key="json" value="6" />
           <entry key="ts" value="4231" />
-          <entry key="tsx" value="4628" />
+          <entry key="tsx" value="4648" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="3" />
           <entry key="TypeScript" value="4231" />
-          <entry key="TypeScript JSX" value="4628" />
+          <entry key="TypeScript JSX" value="4648" />
           <entry key="tsconfig" value="6" />
         </counts>
       </usages-collector>
@@ -150,11 +151,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="651">
+              <caret line="154" selection-end-line="178" selection-end-column="2" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
               </folding>
@@ -162,11 +163,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="277" column="67" selection-start-line="277" selection-start-column="67" selection-end-line="277" selection-end-column="67" />
+            <state relative-caret-position="383">
+              <caret line="279" lean-forward="true" selection-start-line="279" selection-end-line="279" />
             </state>
           </provider>
         </entry>
@@ -202,8 +203,8 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/FetchManager.ts" />
         <option value="$PROJECT_DIR$/src/App.tsx" />
-        <option value="$PROJECT_DIR$/src/DataManager.ts" />
         <option value="$PROJECT_DIR$/src/Models.tsx" />
+        <option value="$PROJECT_DIR$/src/DataManager.ts" />
       </list>
     </option>
   </component>
@@ -223,7 +224,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="21" />
     <option name="y" value="23" />
     <option name="width" value="2560" />
@@ -315,24 +316,24 @@
       <option name="presentableId" value="Default" />
       <updated>1536845702056</updated>
       <workItem from="1536845703612" duration="23740000" />
-      <workItem from="1536901705875" duration="21809000" />
+      <workItem from="1536901705875" duration="22494000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45549000" />
+    <option name="totallyTimeSpent" value="46234000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="822" extended-state="6" />
+    <frame x="21" y="23" width="2560" height="1362" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31712472" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17723513" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.13013698" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.07480315" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -484,20 +485,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
+    <entry file="file://$PROJECT_DIR$/src/Models.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="383">
+          <caret line="279" lean-forward="true" selection-start-line="279" selection-end-line="279" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models.tsx">
+    <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="277" column="67" selection-start-line="277" selection-start-column="67" selection-end-line="277" selection-end-column="67" />
+        <state relative-caret-position="651">
+          <caret line="154" selection-end-line="178" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
