@@ -37,6 +37,15 @@ export class CompanyData {
     public currentYearData: CompanyDataByYear;
     public nextYearData: CompanyDataByYear;
 
+    public DSR: number = 0;
+    public GMI: number = 0;
+    public AQI: number = 0;
+    public SGI: number = 0;
+    public DEPI: number = 0;
+    public SGAI: number = 0;
+    public Accruals: number = 0;
+    public LEVI: number = 0;
+
     public static createWithJson(data: any, year: number, skipNulls: boolean): CompanyData {
         const companyData: CompanyData = new CompanyData();
 
