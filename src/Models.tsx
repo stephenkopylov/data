@@ -107,6 +107,8 @@ export class CompanyData {
 
             const enumKey: Indicator = IndicatorCode[key];
 
+            const stringValue = this.nFormatter(value);
+
             switch (enumKey) {
                 case Indicator.NameOfCompany: {
                     companyData.name = value;
@@ -116,78 +118,91 @@ export class CompanyData {
 
                 case Indicator.Revenues: {
                     currentContainer.revenues = value;
+                    currentContainer.sRevenues = stringValue;
 
                     break;
                 }
 
                 case Indicator.SellingGeneralAndAdministrative: {
                     currentContainer.sellingGeneralAndAdministrative = value;
+                    currentContainer.sSellingGeneralAndAdministrative = stringValue;
 
                     break;
                 }
 
                 case Indicator.IncomeFromContinuingOperations: {
                     currentContainer.incomeFromContinuingOperations = value;
+                    currentContainer.sIncomeFromContinuingOperations = stringValue;
 
                     break;
                 }
 
                 case Indicator.ReceivablesNet: {
                     currentContainer.receivablesNet = value;
+                    currentContainer.sReceivablesNet = stringValue;
 
                     break;
                 }
 
                 case Indicator.TotalCurrentAssets: {
                     currentContainer.totalCurrentAssets = value;
+                    currentContainer.sTotalCurrentAssets = stringValue;
 
                     break;
                 }
 
                 case Indicator.PropertyPlantAndEquipmentNet: {
                     currentContainer.propertyPlantAndEquipmentNet = value;
+                    currentContainer.sPropertyPlantAndEquipmentNet = stringValue;
 
                     break;
                 }
 
                 case Indicator.TotalAssets: {
                     currentContainer.totalAssets = value;
+                    currentContainer.sTotalAssets = stringValue;
 
                     break;
                 }
 
                 case Indicator.TotalCurrentLiabilities: {
                     currentContainer.totalCurrentLiabilities = value;
+                    currentContainer.sTotalCurrentLiabilities = stringValue;
 
                     break;
                 }
 
                 case Indicator.TotalDebt: {
                     currentContainer.totalDebt = value;
+                    currentContainer.sTotalDebt = stringValue;
 
                     break;
                 }
 
                 case Indicator.DepreciationAmortisation: {
                     currentContainer.depreciationAmortisation = value;
+                    currentContainer.sDepreciationAmortisation = stringValue;
 
                     break;
                 }
 
                 case Indicator.OperatingCashFlow: {
                     currentContainer.operatingCashFlow = value;
+                    currentContainer.sOperatingCashFlow = stringValue;
 
                     break;
                 }
 
                 case Indicator.GrossMargin: {
                     currentContainer.grossMargin = value;
+                    currentContainer.sGrossMargin = stringValue;
 
                     break;
                 }
 
                 case Indicator.DebtToAssetRatio: {
                     currentContainer.debtToAssetRatio = value;
+                    currentContainer.sDebtToAssetRatio = stringValue;
 
                     break;
                 }
@@ -207,6 +222,19 @@ export class CompanyData {
 
         return companyData;
     }
+
+    private static nFormatter(num: number): string {
+        if (num >= 1000000000) {
+            return (num / 1000000000).toPrecision(3).replace(/\.0$/, '') + 'G';
+        }
+        if (num >= 1000000) {
+            return (num / 1000000).toPrecision(3).replace(/\.0$/, '') + 'M';
+        }
+        if (num >= 1000) {
+            return (num / 1000).toPrecision(3).replace(/\.0$/, '') + 'K';
+        }
+        return num.toString();
+    }
 }
 
 export class CompanyDataByYear {
@@ -224,6 +252,20 @@ export class CompanyDataByYear {
     public operatingCashFlow: number = 0;
     public grossMargin: number = 0;
     public debtToAssetRatio: number = 0;
+
+    public sRevenues: string = '';
+    public sSellingGeneralAndAdministrative: string = '';
+    public sIncomeFromContinuingOperations: string = '';
+    public sReceivablesNet: string = '';
+    public sTotalCurrentAssets: string = '';
+    public sPropertyPlantAndEquipmentNet: string = '';
+    public sTotalAssets: string = '';
+    public sTotalCurrentLiabilities: string = '';
+    public sTotalDebt: string = '';
+    public sDepreciationAmortisation: string = '';
+    public sOperatingCashFlow: string = '';
+    public sGrossMargin: string = '';
+    public sDebtToAssetRatio: string = '';
 
     constructor(year: number) {
         this.year = year;
@@ -340,45 +382,45 @@ export class CompanyCategory {
 
                     companyArray.push(company.name);
 
-                    companyArray.push(company.currentYearData.revenues);
-                    companyArray.push(company.nextYearData.revenues);
+                    companyArray.push(company.currentYearData.sRevenues);
+                    companyArray.push(company.nextYearData.sRevenues);
 
-                    companyArray.push(company.currentYearData.sellingGeneralAndAdministrative);
-                    companyArray.push(company.nextYearData.sellingGeneralAndAdministrative);
+                    companyArray.push(company.currentYearData.sSellingGeneralAndAdministrative);
+                    companyArray.push(company.nextYearData.sSellingGeneralAndAdministrative);
 
-                    companyArray.push(company.currentYearData.incomeFromContinuingOperations);
-                    companyArray.push(company.nextYearData.incomeFromContinuingOperations);
+                    companyArray.push(company.currentYearData.sIncomeFromContinuingOperations);
+                    companyArray.push(company.nextYearData.sIncomeFromContinuingOperations);
 
 
-                    companyArray.push(company.currentYearData.receivablesNet);
-                    companyArray.push(company.nextYearData.receivablesNet);
+                    companyArray.push(company.currentYearData.sReceivablesNet);
+                    companyArray.push(company.nextYearData.sReceivablesNet);
 
-                    companyArray.push(company.currentYearData.totalCurrentAssets);
-                    companyArray.push(company.nextYearData.totalCurrentAssets);
+                    companyArray.push(company.currentYearData.sTotalCurrentAssets);
+                    companyArray.push(company.nextYearData.sTotalCurrentAssets);
 
-                    companyArray.push(company.currentYearData.propertyPlantAndEquipmentNet);
-                    companyArray.push(company.nextYearData.propertyPlantAndEquipmentNet);
+                    companyArray.push(company.currentYearData.sPropertyPlantAndEquipmentNet);
+                    companyArray.push(company.nextYearData.sPropertyPlantAndEquipmentNet);
 
-                    companyArray.push(company.currentYearData.totalAssets);
-                    companyArray.push(company.nextYearData.totalAssets);
+                    companyArray.push(company.currentYearData.sTotalAssets);
+                    companyArray.push(company.nextYearData.sTotalAssets);
 
-                    companyArray.push(company.currentYearData.totalCurrentLiabilities);
-                    companyArray.push(company.nextYearData.totalCurrentLiabilities);
+                    companyArray.push(company.currentYearData.sTotalCurrentLiabilities);
+                    companyArray.push(company.nextYearData.sTotalCurrentLiabilities);
 
-                    companyArray.push(company.currentYearData.totalDebt);
-                    companyArray.push(company.nextYearData.totalDebt);
+                    companyArray.push(company.currentYearData.sTotalDebt);
+                    companyArray.push(company.nextYearData.sTotalDebt);
 
-                    companyArray.push(company.currentYearData.depreciationAmortisation);
-                    companyArray.push(company.nextYearData.depreciationAmortisation);
+                    companyArray.push(company.currentYearData.sDepreciationAmortisation);
+                    companyArray.push(company.nextYearData.sDepreciationAmortisation);
 
-                    companyArray.push(company.currentYearData.operatingCashFlow);
-                    companyArray.push(company.nextYearData.operatingCashFlow);
+                    companyArray.push(company.currentYearData.sOperatingCashFlow);
+                    companyArray.push(company.nextYearData.sOperatingCashFlow);
 
-                    companyArray.push(company.currentYearData.grossMargin);
-                    companyArray.push(company.nextYearData.grossMargin);
+                    companyArray.push(company.currentYearData.sGrossMargin);
+                    companyArray.push(company.nextYearData.sGrossMargin);
 
-                    companyArray.push(company.currentYearData.debtToAssetRatio);
-                    companyArray.push(company.nextYearData.debtToAssetRatio);
+                    companyArray.push(company.currentYearData.sDebtToAssetRatio);
+                    companyArray.push(company.nextYearData.sDebtToAssetRatio);
 
                     catJson.push(companyArray);
                 });
