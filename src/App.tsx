@@ -13,6 +13,7 @@ interface AppState {
     categories: CompanyCategory[];
     sheetRaw: any;
     sheetCalculated: any;
+    sheetMedian: any;
 }
 
 class App extends React.Component<AppProps, AppState> {
@@ -20,6 +21,7 @@ class App extends React.Component<AppProps, AppState> {
         categories: [],
         sheetRaw: null,
         sheetCalculated: null,
+        sheetMedian: null
     };
 
     public componentDidMount() {
@@ -31,6 +33,11 @@ class App extends React.Component<AppProps, AppState> {
         var savedCalculatedJson = JSON.parse(localStorage.getItem('calculatedData'));
         if (savedCalculatedJson) {
             this.setCalculatedJson(savedCalculatedJson);
+        }
+
+        var savedMedianJson = JSON.parse(localStorage.getItem('medianData'));
+        if (savedMedianJson) {
+            this.setMedianJson(savedMedianJson);
         }
     }
 
@@ -44,6 +51,12 @@ class App extends React.Component<AppProps, AppState> {
         if (this.state.sheetCalculated) {
             htmlCalculated = XLSX.utils.sheet_to_html(this.state.sheetCalculated);
         }
+
+        let htmlMedial: any = null;
+        if (this.state.sheetMedian) {
+            htmlMedial = XLSX.utils.sheet_to_html(this.state.sheetMedian);
+        }
+
 
         return (
             <div className="App">
@@ -61,8 +74,12 @@ class App extends React.Component<AppProps, AppState> {
                             const catsArrayCalculated: any[] = CompanyCategory.categoriesCalculatedToJson(categories);
                             localStorage.setItem('calculatedData', JSON.stringify(catsArrayCalculated));
 
+                            const catsArrayMedian: any[] = CompanyCategory.categoriesMedianToJson(categories);
+                            localStorage.setItem('medianData', JSON.stringify(catsArrayMedian));
+
                             this.setRawJson(catsArray);
                             this.setCalculatedJson(catsArrayCalculated);
+                            this.setMedianJson(catsArrayMedian);
                         });
                     }}>
                     Load data
@@ -92,9 +109,22 @@ class App extends React.Component<AppProps, AppState> {
                         }}>
                         Download calculated table
                     </button>
+                    <button
+                        onClick={() => {
+                            if (this.state.sheetMedian) {
+                                const wb = XLSX.utils.book_new();
+
+                                XLSX.utils.book_append_sheet(wb, this.state.sheetMedian, "median");
+
+                                XLSX.writeFile(wb, 'median.xlsb');
+                            }
+                        }}>
+                        Download median table
+                    </button>
                 </div>
                 <div dangerouslySetInnerHTML={{__html: htmlRaw}}/>
                 <div dangerouslySetInnerHTML={{__html: htmlCalculated}}/>
+                <div dangerouslySetInnerHTML={{__html: htmlMedial}}/>
             </div>
         );
     }
@@ -119,9 +149,9 @@ class App extends React.Component<AppProps, AppState> {
         sheet['!merges'].push({s: {r: 0, c: 21}, e: {r: 0, c: 22}});
         sheet['!merges'].push({s: {r: 0, c: 23}, e: {r: 0, c: 24}});
         sheet['!merges'].push({s: {r: 0, c: 25}, e: {r: 0, c: 26}});
-        sheet['!merges'].push({s: {r: 0, c: 27}, e: {r: 0, c: 28}});
-        sheet['!merges'].push({s: {r: 0, c: 29}, e: {r: 0, c: 30}});
-        sheet['!merges'].push({s: {r: 0, c: 31}, e: {r: 0, c: 32}});
+        // sheet['!merges'].push({s: {r: 0, c: 27}, e: {r: 0, c: 28}});
+        sheet['!merges'].push({s: {r: 0, c: 28}, e: {r: 0, c: 29}});
+        sheet['!merges'].push({s: {r: 0, c: 30}, e: {r: 0, c: 31}});
 
         this.setState({
             sheetRaw: sheet,
@@ -136,6 +166,17 @@ class App extends React.Component<AppProps, AppState> {
 
         this.setState({
             sheetCalculated: sheet,
+        });
+    }
+
+    private setMedianJson(jsonData: any) {
+        const sheet = XLSX.utils.json_to_sheet(
+            jsonData,
+            {skipHeader: true}
+        );
+
+        this.setState({
+            sheetMedian: sheet,
         });
     }
 }

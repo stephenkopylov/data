@@ -258,13 +258,6 @@ export class CompanyData {
                     break;
                 }
 
-                case Indicator.MarketCapitalization: {
-                    currentContainer.marketCapitalization = value;
-                    currentContainer.sMarketCapitalization = stringValue;
-
-                    break;
-                }
-
                 case Indicator.CurrentRatio: {
                     currentContainer.currentRatio = value;
                     currentContainer.sCurrentRatio = stringValue;
@@ -330,7 +323,6 @@ export class CompanyDataByYear {
     public operatingCashFlow: number = 0;
     public grossMargin: number = 0;
     public debtToAssetRatio: number = 0;
-    public marketCapitalization: number = 0;
     public currentRatio: number = 0;
     public returnOnAssets: number = 0;
 
@@ -348,7 +340,6 @@ export class CompanyDataByYear {
     public sOperatingCashFlow: string = '';
     public sGrossMargin: string = '';
     public sDebtToAssetRatio: string = '';
-    public sMarketCapitalization: string = '';
     public sCurrentRatio: string = '';
     public sReturnOnAssets: string = '';
 
@@ -437,7 +428,7 @@ export class CompanyCategory {
             'Operating Cash Flow', '',
             'Gross Margin', '',
             'Debt To Asset Ratio', '',
-            'Market capitalization', '',
+            'Market capitalization',
             'Current ratio', '',
             'Return on assets', '',
         ]];
@@ -463,7 +454,7 @@ export class CompanyCategory {
                     currentYear, nextYear,
                     currentYear, nextYear,
                     currentYear, nextYear,
-                    "", "",
+                    "",
                     currentYear, nextYear,
                     currentYear, nextYear,
                 ]);
@@ -513,8 +504,7 @@ export class CompanyCategory {
                     companyArray.push(company.currentYearData.sDebtToAssetRatio);
                     companyArray.push(company.nextYearData.sDebtToAssetRatio);
 
-                    companyArray.push(company.currentYearData.sMarketCapitalization);
-                    companyArray.push(company.nextYearData.sMarketCapitalization);
+                    companyArray.push(company.sMarketCap);
 
                     companyArray.push(company.currentYearData.sCurrentRatio);
                     companyArray.push(company.nextYearData.sCurrentRatio);
@@ -561,6 +551,74 @@ export class CompanyCategory {
         });
 
         return [names, DSR, GMI, AQI, SGI, DEPI, SGAI, Accruals, LEVI];
+    }
+
+    public static categoriesMedianToJson(categories: CompanyCategory[]): any[] {
+        let companies: CompanyData[] = [];
+
+        categories.forEach((category: CompanyCategory) => {
+            if (category.companies.length > 0 && category.subCategories.length > 0 && category.subCategories[0].companies.length > 0) {
+                companies = companies.concat(category.companies);
+            }
+        });
+
+        const assets: number[] = [];
+        const sales: number[] = [];
+        const marketCap: number[] = [];
+
+        const wCapToTotalAssel: number[] = [];
+        const currentRatio: number[] = [];
+        const totalDebtToTotalAssets: number[] = [];
+
+        const returnOnAssets: number[] = [];
+        const salesGrowth: number[] = [];
+
+        companies.forEach((companyData: CompanyData) => {
+            assets.push(companyData.nextYearData.totalAssets);
+            sales.push(companyData.nextYearData.revenues);
+            marketCap.push(companyData.marketCap);
+
+            wCapToTotalAssel.push((companyData.nextYearData.totalCurrentAssets - companyData.nextYearData.totalCurrentLiabilities) / companyData.nextYearData.totalAssets);
+            currentRatio.push(companyData.nextYearData.currentRatio);
+            totalDebtToTotalAssets.push(companyData.nextYearData.debtToAssetRatio);
+
+            returnOnAssets.push(companyData.nextYearData.returnOnAssets);
+            salesGrowth.push((companyData.nextYearData.revenues - companyData.currentYearData.revenues) / companyData.currentYearData.revenues);
+        });
+
+        console.log(marketCap);
+
+        return [
+            ['', 'Mean', 'Median'],
+            ['Size', '', ''],
+            ['Assets', '', this.median(assets).toString()],
+            ['Sales', '', this.median(sales).toString()],
+            ['Market Value', '', this.median(marketCap).toString()],
+            ['', '', ''],
+            ['Leverage/liquidity', '', ''],
+            ['Working capital to total assets', '', this.median(wCapToTotalAssel).toString()],
+            ['Current ratio', '', this.median(currentRatio).toString()],
+            ['Total debt to total assets', '', this.median(totalDebtToTotalAssets).toString()],
+            ['', '', ''],
+            ['Profitability/Growth', '', ''],
+            ['Return on assets', '', this.median(returnOnAssets).toString()],
+            ['Sales Growth', '', this.median(salesGrowth).toString()],
+        ];
+    }
+
+    public static median(values: number[]) {
+        values.sort(function (a, b) {
+            return a - b;
+        });
+
+        if (values.length === 0) return 0;
+
+        var half = Math.floor(values.length / 2);
+
+        if (values.length % 2)
+            return values[half];
+        else
+            return (values[half - 1] + values[half]) / 2.0;
     }
 }
 
