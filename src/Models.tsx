@@ -428,6 +428,9 @@ export class CompanyCategory {
             'Operating Cash Flow', '',
             'Gross Margin', '',
             'Debt To Asset Ratio', '',
+            'Market capitalization', '',
+            'Current ratio', '',
+            'Return on assets', '',
         ]];
 
         categories.forEach((category: CompanyCategory) => {
@@ -438,6 +441,9 @@ export class CompanyCategory {
                 const nextYear = category.subCategories[0].companies[0].nextYearData.year;
 
                 catJson.push([`${category.categoryName}(${currentYear}-${nextYear})`,
+                    currentYear, nextYear,
+                    currentYear, nextYear,
+                    currentYear, nextYear,
                     currentYear, nextYear,
                     currentYear, nextYear,
                     currentYear, nextYear,
@@ -497,6 +503,15 @@ export class CompanyCategory {
 
                     companyArray.push(company.currentYearData.sDebtToAssetRatio);
                     companyArray.push(company.nextYearData.sDebtToAssetRatio);
+
+                    companyArray.push(company.currentYearData.sMarketCapitalization);
+                    companyArray.push(company.nextYearData.sMarketCapitalization);
+
+                    companyArray.push(company.currentYearData.sCurrentRatio);
+                    companyArray.push(company.nextYearData.sCurrentRatio);
+
+                    companyArray.push(company.currentYearData.sReturnOnAssets);
+                    companyArray.push(company.nextYearData.sReturnOnAssets);
 
                     catJson.push(companyArray);
                 });
