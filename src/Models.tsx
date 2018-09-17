@@ -54,7 +54,14 @@ export class CompanyData {
         this.GMI = this.currentYearData.grossMargin / this.nextYearData.grossMargin;
 
         //AQI
-        this.AQI = (1 - (this.nextYearData.propertyPlantAndEquipmentNet + this.nextYearData.totalCurrentAssets) / this.nextYearData.totalAssets) / (1 - (this.currentYearData.propertyPlantAndEquipmentNet + this.currentYearData.totalCurrentAssets) / this.currentYearData.totalAssets);
+        const AQI1 = (1 - (this.nextYearData.propertyPlantAndEquipmentNet + this.nextYearData.totalCurrentAssets) / this.nextYearData.totalAssets);
+        const AQI2 = (1 - (this.currentYearData.propertyPlantAndEquipmentNet + this.currentYearData.totalCurrentAssets) / this.currentYearData.totalAssets);
+
+        if (AQI1 != 0 && AQI2 != 0) {
+            this.AQI = AQI1 / AQI2;
+        } else {
+            this.AQI = 1
+        }
 
         //SGI
         this.SGI = this.nextYearData.revenues / this.currentYearData.revenues;
