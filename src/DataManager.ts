@@ -149,31 +149,31 @@ export class RequestData {
 
 
 const companiesData: CategoryRequestData[] = [
-    new CategoryRequestData(2012, Category.BasicMaterials, 38),
-    new CategoryRequestData(2008, Category.BasicMaterials, 38),
-
-    new CategoryRequestData(2001, Category.ConsumerCyclical, 38),
-
-    new CategoryRequestData(2009, Category.ConsumerDefensive, 77),
-
-    new CategoryRequestData(2006, Category.Energy, 38),
-    new CategoryRequestData(1999, Category.Energy, 38),
-
-    new CategoryRequestData(2013, Category.Healthcare, 38),
-    new CategoryRequestData(2014, Category.Healthcare, 38),
-    new CategoryRequestData(2012, Category.Healthcare, 38),
-    new CategoryRequestData(2010, Category.Healthcare, 38),
-    new CategoryRequestData(2009, Category.Healthcare, 38),
-    new CategoryRequestData(1996, Category.Healthcare, 38),
-    new CategoryRequestData(2011, Category.Healthcare, 38),
-
-    new CategoryRequestData(2010, Category.Technology, 77),
-    new CategoryRequestData(2011, Category.Technology, 77),
-    new CategoryRequestData(1997, Category.Technology, 77),
-    new CategoryRequestData(1996, Category.Technology, 38),
-    new CategoryRequestData(2005, Category.Technology, 38),
-    new CategoryRequestData(2000, Category.Technology, 38),
-    new CategoryRequestData(1998, Category.Technology, 38),
-    new CategoryRequestData(1999, Category.Technology, 38),
-    new CategoryRequestData(2007, Category.Technology, 38),
+    new CategoryRequestData(2015, Category.BasicMaterials, 38),
+    // new CategoryRequestData(2008, Category.BasicMaterials, 38),
+    //
+    // new CategoryRequestData(2001, Category.ConsumerCyclical, 38),
+    //
+    // new CategoryRequestData(2009, Category.ConsumerDefensive, 77),
+    //
+    // new CategoryRequestData(2006, Category.Energy, 38),
+    // new CategoryRequestData(1999, Category.Energy, 38),
+    //
+    // new CategoryRequestData(2013, Category.Healthcare, 38),
+    // new CategoryRequestData(2014, Category.Healthcare, 38),
+    // new CategoryRequestData(2012, Category.Healthcare, 38),
+    // new CategoryRequestData(2010, Category.Healthcare, 38),
+    // new CategoryRequestData(2009, Category.Healthcare, 38),
+    // new CategoryRequestData(1996, Category.Healthcare, 38),
+    // new CategoryRequestData(2011, Category.Healthcare, 38),
+    //
+    // new CategoryRequestData(2010, Category.Technology, 77),
+    // new CategoryRequestData(2011, Category.Technology, 77),
+    // new CategoryRequestData(1997, Category.Technology, 77),
+    // new CategoryRequestData(1996, Category.Technology, 38),
+    // new CategoryRequestData(2005, Category.Technology, 38),
+    // new CategoryRequestData(2000, Category.Technology, 38),
+    // new CategoryRequestData(1998, Category.Technology, 38),
+    // new CategoryRequestData(1999, Category.Technology, 38),
+    // new CategoryRequestData(2007, Category.Technology, 38),
 ];

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02ddec0c-7f4a-4ec5-99ad-9c0e5656a3bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -55,15 +56,15 @@
         <counts>
           <entry key="html" value="3" />
           <entry key="json" value="6" />
-          <entry key="ts" value="4231" />
-          <entry key="tsx" value="6357" />
+          <entry key="ts" value="4237" />
+          <entry key="tsx" value="6543" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="3" />
-          <entry key="TypeScript" value="4231" />
-          <entry key="TypeScript JSX" value="6357" />
+          <entry key="TypeScript" value="4237" />
+          <entry key="TypeScript JSX" value="6543" />
           <entry key="tsconfig" value="6" />
         </counts>
       </usages-collector>
@@ -74,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="8" selection-end-line="136" />
+            <state relative-caret-position="344">
+              <caret line="58" column="64" selection-start-line="58" selection-start-column="64" selection-end-line="58" selection-end-column="64" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -155,12 +156,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1026">
-              <caret line="141" column="31" lean-forward="true" selection-start-line="141" selection-start-column="31" selection-end-line="141" selection-end-column="31" />
+            <state relative-caret-position="257">
+              <caret line="111" column="59" lean-forward="true" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="59" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
-                <marker date="1536944491011" expanded="true" signature="4977:6247" ph="..." />
-                <marker date="1536944491011" expanded="true" signature="5039:6247" ph="..." />
+                <marker date="1537175210316" expanded="true" signature="4977:6340" ph="..." />
+                <marker date="1537175210316" expanded="true" signature="5048:6340" ph="..." />
               </folding>
             </state>
           </provider>
@@ -169,8 +170,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="413" column="86" lean-forward="true" selection-start-line="413" selection-start-column="86" selection-end-line="413" selection-end-column="86" />
+            <state relative-caret-position="625">
+              <caret line="245" column="32" lean-forward="true" selection-start-line="245" selection-start-column="32" selection-end-line="245" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -189,6 +190,8 @@
     <findStrings>
       <find>cols</find>
       <find>RequestData</find>
+      <find>loadRequestDataFailed</find>
+      <find>createWithJson</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,8 +208,8 @@
         <option value="$PROJECT_DIR$/src/CompanyRow.tsx" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/FetchManager.ts" />
-        <option value="$PROJECT_DIR$/src/DataManager.ts" />
         <option value="$PROJECT_DIR$/src/App.tsx" />
+        <option value="$PROJECT_DIR$/src/DataManager.ts" />
         <option value="$PROJECT_DIR$/src/Models.tsx" />
       </list>
     </option>
@@ -322,12 +325,12 @@
       <workItem from="1536845703612" duration="23740000" />
       <workItem from="1536901705875" duration="29511000" />
       <workItem from="1537038832042" duration="78000" />
-      <workItem from="1537173346648" duration="1284000" />
+      <workItem from="1537173346648" duration="2426000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54613000" />
+    <option name="totallyTimeSpent" value="55755000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="23" width="2560" height="1417" extended-state="6" />
@@ -339,7 +342,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.1369863" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23471698" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30641508" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -483,8 +486,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="8" selection-end-line="136" />
+        <state relative-caret-position="344">
+          <caret line="58" column="64" selection-start-line="58" selection-start-column="64" selection-end-line="58" selection-end-column="64" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -493,20 +496,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="141" column="31" lean-forward="true" selection-start-line="141" selection-start-column="31" selection-end-line="141" selection-end-column="31" />
+        <state relative-caret-position="257">
+          <caret line="111" column="59" lean-forward="true" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="59" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
-            <marker date="1536944491011" expanded="true" signature="4977:6247" ph="..." />
-            <marker date="1536944491011" expanded="true" signature="5039:6247" ph="..." />
+            <marker date="1537175210316" expanded="true" signature="4977:6340" ph="..." />
+            <marker date="1537175210316" expanded="true" signature="5048:6340" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="413" column="86" lean-forward="true" selection-start-line="413" selection-start-column="86" selection-end-line="413" selection-end-column="86" />
+        <state relative-caret-position="625">
+          <caret line="245" column="32" lean-forward="true" selection-start-line="245" selection-start-column="32" selection-end-line="245" selection-end-column="32" />
         </state>
       </provider>
     </entry>

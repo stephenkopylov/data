@@ -107,7 +107,11 @@ export class CompanyData {
 
             const enumKey: Indicator = IndicatorCode[key];
 
-            const stringValue = this.nFormatter(value);
+            let stringValue = '';
+
+            if (enumKey != Indicator.NameOfCompany && value != null) {
+                stringValue = this.nFormatter(value);
+            }
 
             switch (enumKey) {
                 case Indicator.NameOfCompany: {
@@ -224,14 +228,14 @@ export class CompanyData {
     }
 
     private static nFormatter(num: number): string {
-        if (num >= 1000000000) {
-            return (num / 1000000000).toPrecision(3).replace(/\.0$/, '') + 'G';
+        if (Math.abs(num) >= 1000000000) {
+            return (num / 1000000000).toPrecision(3).replace(/\.0$/, '') + 'млрд';
         }
-        if (num >= 1000000) {
-            return (num / 1000000).toPrecision(3).replace(/\.0$/, '') + 'M';
+        if (Math.abs(num) >= 1000000) {
+            return (num / 1000000).toPrecision(3).replace(/\.0$/, '') + 'млн';
         }
-        if (num >= 1000) {
-            return (num / 1000).toPrecision(3).replace(/\.0$/, '') + 'K';
+        if (Math.abs(num) >= 1000) {
+            return (num / 1000).toPrecision(3).replace(/\.0$/, '') + 'тыс';
         }
         return num.toString();
     }

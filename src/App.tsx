@@ -56,6 +56,8 @@ class App extends React.Component<AppProps, AppState> {
                             const catsArray: any[] = CompanyCategory.categoriesToJson(categories);
                             localStorage.setItem('rawData', JSON.stringify(catsArray));
 
+                            console.log('123123 = ', catsArray);
+
                             const catsArrayCalculated: any[] = CompanyCategory.categoriesCalculatedToJson(categories);
                             localStorage.setItem('calculatedData', JSON.stringify(catsArrayCalculated));
 
