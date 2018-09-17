@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02ddec0c-7f4a-4ec5-99ad-9c0e5656a3bf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/DataManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -55,14 +56,14 @@
           <entry key="html" value="3" />
           <entry key="json" value="6" />
           <entry key="ts" value="4237" />
-          <entry key="tsx" value="6935" />
+          <entry key="tsx" value="6968" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="3" />
           <entry key="TypeScript" value="4237" />
-          <entry key="TypeScript JSX" value="6935" />
+          <entry key="TypeScript JSX" value="6968" />
           <entry key="tsconfig" value="6" />
         </counts>
       </usages-collector>
@@ -154,12 +155,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1665">
-              <caret line="111" column="59" lean-forward="true" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="59" />
+            <state relative-caret-position="91">
+              <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
-                <marker date="1537175210316" expanded="true" signature="4977:6340" ph="..." />
-                <marker date="1537175210316" expanded="true" signature="5048:6340" ph="..." />
+                <marker date="1537180368708" expanded="true" signature="4977:6247" ph="..." />
+                <marker date="1537180368708" expanded="true" signature="5039:6247" ph="..." />
               </folding>
             </state>
           </provider>
@@ -168,8 +169,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="83" column="25" lean-forward="true" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+            <state relative-caret-position="726">
+              <caret line="105" column="55" lean-forward="true" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -323,12 +324,12 @@
       <workItem from="1536845703612" duration="23740000" />
       <workItem from="1536901705875" duration="29511000" />
       <workItem from="1537038832042" duration="78000" />
-      <workItem from="1537173346648" duration="3920000" />
+      <workItem from="1537173346648" duration="4244000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57249000" />
+    <option name="totallyTimeSpent" value="57573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="23" width="2560" height="1417" extended-state="6" />
@@ -494,20 +495,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1665">
-          <caret line="111" column="59" lean-forward="true" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="59" />
+        <state relative-caret-position="91">
+          <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
-            <marker date="1537175210316" expanded="true" signature="4977:6340" ph="..." />
-            <marker date="1537175210316" expanded="true" signature="5048:6340" ph="..." />
+            <marker date="1537180368708" expanded="true" signature="4977:6247" ph="..." />
+            <marker date="1537180368708" expanded="true" signature="5039:6247" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="83" column="25" lean-forward="true" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+        <state relative-caret-position="726">
+          <caret line="105" column="55" lean-forward="true" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
         </state>
       </provider>
     </entry>

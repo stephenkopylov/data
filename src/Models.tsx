@@ -56,12 +56,7 @@ export class CompanyData {
         //AQI
         const AQI1 = (1 - (this.nextYearData.propertyPlantAndEquipmentNet + this.nextYearData.totalCurrentAssets) / this.nextYearData.totalAssets);
         const AQI2 = (1 - (this.currentYearData.propertyPlantAndEquipmentNet + this.currentYearData.totalCurrentAssets) / this.currentYearData.totalAssets);
-
-        if (AQI1 != 0 && AQI2 != 0) {
-            this.AQI = AQI1 / AQI2;
-        } else {
-            this.AQI = 1
-        }
+        this.AQI = AQI1 / AQI2;
 
         //SGI
         this.SGI = this.nextYearData.revenues / this.currentYearData.revenues;
@@ -88,20 +83,20 @@ export class CompanyData {
             this.GMI = 0;
         }
 
-        if (!isFinite(this.AQI) || isNaN(this.AQI)) {
-            this.AQI = 0;
+        if (!isFinite(this.AQI) || isNaN(this.AQI) || this.AQI == 0) {
+            this.AQI = 1;
         }
 
         if (!isFinite(this.SGI) || isNaN(this.SGI)) {
             this.SGI = 0;
         }
 
-        if (!isFinite(this.DEPI) || isNaN(this.DEPI)) {
-            this.DEPI = 0;
+        if (!isFinite(this.DEPI) || isNaN(this.DEPI) || this.DEPI == 0) {
+            this.DEPI = 1;
         }
 
-        if (!isFinite(this.SGAI) || isNaN(this.SGAI)) {
-            this.SGAI = 0;
+        if (!isFinite(this.SGAI) || isNaN(this.SGAI) || this.SGAI == 0) {
+            this.SGAI = 1;
         }
 
         if (!isFinite(this.Accruals) || isNaN(this.Accruals)) {
