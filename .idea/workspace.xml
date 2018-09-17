@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02ddec0c-7f4a-4ec5-99ad-9c0e5656a3bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FetchManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/FetchManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -57,14 +55,14 @@
           <entry key="html" value="3" />
           <entry key="json" value="6" />
           <entry key="ts" value="4999" />
-          <entry key="tsx" value="8348" />
+          <entry key="tsx" value="8457" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="3" />
           <entry key="TypeScript" value="4999" />
-          <entry key="TypeScript JSX" value="8348" />
+          <entry key="TypeScript JSX" value="8457" />
           <entry key="tsconfig" value="6" />
         </counts>
       </usages-collector>
@@ -170,8 +168,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="459" column="19" selection-end-line="632" selection-end-column="1" />
+            <state relative-caret-position="615">
+              <caret line="603" column="114" lean-forward="true" selection-start-line="603" selection-start-column="114" selection-end-line="603" selection-end-column="114" />
             </state>
           </provider>
         </entry>
@@ -330,12 +328,12 @@
       <workItem from="1536845703612" duration="23740000" />
       <workItem from="1536901705875" duration="29511000" />
       <workItem from="1537038832042" duration="78000" />
-      <workItem from="1537173346648" duration="17915000" />
+      <workItem from="1537173346648" duration="18141000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71244000" />
+    <option name="totallyTimeSpent" value="71470000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="23" width="2560" height="1417" extended-state="6" />
@@ -513,8 +511,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="459" column="19" selection-end-line="632" selection-end-column="1" />
+        <state relative-caret-position="615">
+          <caret line="603" column="114" lean-forward="true" selection-start-line="603" selection-start-column="114" selection-end-line="603" selection-end-column="114" />
         </state>
       </provider>
     </entry>

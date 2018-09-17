@@ -591,18 +591,18 @@ export class CompanyCategory {
         return [
             ['', 'Mean', 'Median'],
             ['Size', '', ''],
-            ['Assets', '', this.median(assets).toString()],
-            ['Sales', '', this.median(sales).toString()],
-            ['Market Value', '', this.median(marketCap).toString()],
+            ['Assets', this.average(assets).toString(), this.median(assets).toString()],
+            ['Sales', this.average(sales).toString(), this.median(sales).toString()],
+            ['Market Value', this.average(marketCap).toString(), this.median(marketCap).toString()],
             ['', '', ''],
             ['Leverage/liquidity', '', ''],
-            ['Working capital to total assets', '', this.median(wCapToTotalAssel).toString()],
-            ['Current ratio', '', this.median(currentRatio).toString()],
-            ['Total debt to total assets', '', this.median(totalDebtToTotalAssets).toString()],
+            ['Working capital to total assets', this.average(wCapToTotalAssel).toString(), this.median(wCapToTotalAssel).toString()],
+            ['Current ratio', this.average(currentRatio).toString(), this.median(currentRatio).toString()],
+            ['Total debt to total assets', this.average(totalDebtToTotalAssets).toString(), this.median(totalDebtToTotalAssets).toString()],
             ['', '', ''],
             ['Profitability/Growth', '', ''],
-            ['Return on assets', '', this.median(returnOnAssets).toString()],
-            ['Sales Growth', '', this.median(salesGrowth).toString()],
+            ['Return on assets', this.average(returnOnAssets).toString(), this.median(returnOnAssets).toString()],
+            ['Sales Growth', this.average(salesGrowth).toString(), this.median(salesGrowth).toString()],
         ];
     }
 
@@ -619,6 +619,20 @@ export class CompanyCategory {
             return values[half];
         else
             return (values[half - 1] + values[half]) / 2.0;
+    }
+
+    public static average(values: number[]) {
+        let sum = 0;
+        let avg = 0;
+
+        if (values.length) {
+            sum = values.reduce(function (a, b) {
+                return a + b;
+            });
+            avg = sum / values.length;
+        }
+
+        return avg;
     }
 }
 
