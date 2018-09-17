@@ -42,6 +42,8 @@ export class CompanyData {
     public name: string = '';
     public currentYearData: CompanyDataByYear;
     public nextYearData: CompanyDataByYear;
+    public marketCap: number;
+    public sMarketCap: string;
 
     public DSR: number = 0;
     public GMI: number = 0;
@@ -276,6 +278,13 @@ export class CompanyData {
 
                     break;
                 }
+
+
+                case Indicator.MarketCapitalization: {
+                    companyData.marketCap = value;
+                    companyData.sMarketCap = stringValue;
+                    break;
+                }
             }
 
             addedKeys.push(key);
@@ -454,7 +463,7 @@ export class CompanyCategory {
                     currentYear, nextYear,
                     currentYear, nextYear,
                     currentYear, nextYear,
-                    currentYear, nextYear,
+                    "", "",
                     currentYear, nextYear,
                     currentYear, nextYear,
                 ]);

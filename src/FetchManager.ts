@@ -31,10 +31,10 @@ export class FetchManager {
                 "3-2", //Depreciation & Amortisation
                 "3-13", //Operating Cash Flow
                 "4-0", //Gross margin
-                "4-11", //Market cap
                 "4-3", //Current ratio
                 "4-9", //Return on assets
             ];
+
 
             let search: any[] = [];
 
@@ -44,6 +44,10 @@ export class FetchManager {
 
             search.push({
                 "indicatorId": "0-6"
+            });
+
+            search.push({
+                "indicatorId": "4-11"
             });
 
             search.push({
