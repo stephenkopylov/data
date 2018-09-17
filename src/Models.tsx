@@ -591,9 +591,9 @@ export class CompanyCategory {
         return [
             ['', 'Mean', 'Median'],
             ['Size', '', ''],
-            ['Assets', this.average(assets).toString(), this.median(assets).toString()],
-            ['Sales', this.average(sales).toString(), this.median(sales).toString()],
-            ['Market Value', this.average(marketCap).toString(), this.median(marketCap).toString()],
+            ['Assets', this.nFormatter(this.average(assets)), this.nFormatter(this.median(assets))],
+            ['Sales', this.nFormatter(this.average(sales)), this.nFormatter(this.median(sales))],
+            ['Market Value', this.nFormatter(this.average(marketCap)), this.nFormatter(this.median(marketCap))],
             ['', '', ''],
             ['Leverage/liquidity', '', ''],
             ['Working capital to total assets', this.average(wCapToTotalAssel).toString(), this.median(wCapToTotalAssel).toString()],
@@ -604,6 +604,18 @@ export class CompanyCategory {
             ['Return on assets', this.average(returnOnAssets).toString(), this.median(returnOnAssets).toString()],
             ['Sales Growth', this.average(salesGrowth).toString(), this.median(salesGrowth).toString()],
         ];
+    }
+
+    private static nFormatter(num: number): string {
+        if (Math.abs(num) >= 1000) {
+            let numberFormatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+
+            console.log('formatter = ', numberFormatter);
+
+            return numberFormatter.format(num / 1000000);
+        }
+
+        return num.toString();
     }
 
     public static median(values: number[]) {
