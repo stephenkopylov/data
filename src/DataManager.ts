@@ -3,9 +3,21 @@ import { Category, CompanyCategory, CompanyData, CompanySubCategory, SubCategori
 
 
 export class DataManager {
+    public static loadedSubCategories: CompanySubCategory[] = [];
+
     public static loadedCategories: CompanyCategory[] = [];
 
     public static endCallback: (loadedCategories: CompanyCategory[]) => void = null;
+
+    public static subCategoriesLoaded: () => void = null;
+
+    public static currentCategory: CategoryRequestData = null;
+
+    public static companies: CompanyData[] = [];
+
+    public static year: number;
+
+    public static category: Category;
 
     public static loadAllData(): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -21,8 +33,9 @@ export class DataManager {
     }
 
     private static loadNext() {
-
         const categoryRequestData: CategoryRequestData = companiesData[this.loadedCategories.length];
+
+        this.currentCategory = categoryRequestData;
 
         this.loadRequestData(categoryRequestData)
             .then((category: CompanyCategory) => {
@@ -50,7 +63,7 @@ export class DataManager {
 
     public static loadRequestData(categoryRequestData: CategoryRequestData): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.loadDataByCategory(categoryRequestData.year, categoryRequestData.category, categoryRequestData.numberOfCompanies)
+            this.loadDataByCategory(categoryRequestData.year, categoryRequestData.category)
                 .then((category: CompanyCategory) => {
                     resolve(category);
                 }).catch(() => {
@@ -59,34 +72,69 @@ export class DataManager {
         });
     }
 
-    public static loadDataByCategory(year: number, category: Category, numberOfCompanies: number): Promise<any> {
+    public static loadDataByCategory(year: number, category: Category): Promise<any> {
         return new Promise((resolve, reject) => {
-            const subCategorieCodes: number[] = SubCategories[category];
-
-            const subCategories: CompanySubCategory[] = [];
-
-            let companies: CompanyData[] = [];
-
             const categoryType: Category = category;
 
-            subCategorieCodes.forEach((subCategoryCode: number) => {
-                this.loadDataBySubCategory(year, subCategoryCode).then((result: CompanyData[]) => {
+            this.loadedSubCategories = [];
 
-                    const subCategory: CompanySubCategory = new CompanySubCategory(subCategoryCode, result);
+            this.companies = [];
 
-                    subCategories.push(subCategory);
+            this.year = year;
 
-                    companies = companies.concat(result);
+            this.category = categoryType;
 
-                    if (subCategories.length == subCategorieCodes.length) {
-                        const category: CompanyCategory = new CompanyCategory(categoryType, subCategories, companies);
+            this.subCategoriesLoaded = () => {
+                const category: CompanyCategory = new CompanyCategory(categoryType, this.loadedSubCategories, this.companies);
 
-                        resolve(category);
-                    }
-                }).catch(() => {
-                    reject();
-                });
-            });
+                resolve(category);
+            };
+
+            this.loadNextSubcateogory();
+
+            // subCategorieCodes.forEach((subCategoryCode: number) => {
+            //     this.loadDataBySubCategory(year, subCategoryCode).then((result: CompanyData[]) => {
+            //
+            //         const subCategory: CompanySubCategory = new CompanySubCategory(subCategoryCode, result);
+            //
+            //         subCategories.push(subCategory);
+            //
+            //         companies = companies.concat(result);
+            //
+            //         if (subCategories.length == subCategorieCodes.length) {
+            //             const category: CompanyCategory = new CompanyCategory(categoryType, subCategories, companies);
+            //
+            //             resolve(category);
+            //         }
+            //     }).catch(() => {
+            //         reject();
+            //     });
+            // });
+        });
+    }
+
+    public static loadNextSubcateogory() {
+        const subCategorieCodes: number[] = SubCategories[this.currentCategory.category];
+
+        const subCategoryCode: number = subCategorieCodes[this.loadedSubCategories.length];
+
+        this.loadDataBySubCategory(this.year, subCategoryCode).then((result: CompanyData[]) => {
+
+            const subCategory: CompanySubCategory = new CompanySubCategory(subCategoryCode, result);
+
+            this.loadedSubCategories.push(subCategory);
+
+            this.companies = this.companies.concat(result);
+
+            if (subCategorieCodes.length == this.loadedSubCategories.length) {
+                if (this.subCategoriesLoaded) {
+                    this.subCategoriesLoaded();
+                }
+            } else {
+                this.loadNextSubcateogory();
+            }
+        }).catch(() => {
+
         });
     }
 
