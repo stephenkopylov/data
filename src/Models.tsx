@@ -79,6 +79,38 @@ export class CompanyData {
 
         //LEVI
         this.LEVI = (this.nextYearData.totalDebt / this.nextYearData.totalAssets) / (this.currentYearData.totalDebt / this.currentYearData.totalAssets);
+
+        if (!isFinite(this.DSR) || isNaN(this.DSR)) {
+            this.DSR = 0;
+        }
+
+        if (!isFinite(this.GMI) || isNaN(this.GMI)) {
+            this.GMI = 0;
+        }
+
+        if (!isFinite(this.AQI) || isNaN(this.AQI)) {
+            this.AQI = 0;
+        }
+
+        if (!isFinite(this.SGI) || isNaN(this.SGI)) {
+            this.SGI = 0;
+        }
+
+        if (!isFinite(this.DEPI) || isNaN(this.DEPI)) {
+            this.DEPI = 0;
+        }
+
+        if (!isFinite(this.SGAI) || isNaN(this.SGAI)) {
+            this.SGAI = 0;
+        }
+
+        if (!isFinite(this.Accruals) || isNaN(this.Accruals)) {
+            this.Accruals = 0;
+        }
+
+        if (!isFinite(this.LEVI) || isNaN(this.LEVI)) {
+            this.LEVI = 0;
+        }
     }
 
     public static createWithJson(data: any, year: number, skipNulls: boolean): CompanyData {
