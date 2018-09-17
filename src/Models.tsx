@@ -46,7 +46,9 @@ export class CompanyData {
     public Accruals: number = 0;
     public LEVI: number = 0;
 
-    public calculateVars() {
+    public calculateVars(): boolean {
+        let calculated: boolean = true;
+
         //DSR
         this.DSR = (this.nextYearData.receivablesNet / this.nextYearData.revenues) / (this.currentYearData.receivablesNet / this.currentYearData.revenues);
 
@@ -75,20 +77,9 @@ export class CompanyData {
         //LEVI
         this.LEVI = (this.nextYearData.totalDebt / this.nextYearData.totalAssets) / (this.currentYearData.totalDebt / this.currentYearData.totalAssets);
 
-        if (!isFinite(this.DSR) || isNaN(this.DSR)) {
-            this.DSR = 0;
-        }
-
-        if (!isFinite(this.GMI) || isNaN(this.GMI)) {
-            this.GMI = 0;
-        }
 
         if (!isFinite(this.AQI) || isNaN(this.AQI) || this.AQI == 0) {
             this.AQI = 1;
-        }
-
-        if (!isFinite(this.SGI) || isNaN(this.SGI)) {
-            this.SGI = 0;
         }
 
         if (!isFinite(this.DEPI) || isNaN(this.DEPI) || this.DEPI == 0) {
@@ -99,13 +90,27 @@ export class CompanyData {
             this.SGAI = 1;
         }
 
+        if (!isFinite(this.SGI) || isNaN(this.SGI)) {
+            calculated = false;
+        }
+
+        if (!isFinite(this.DSR) || isNaN(this.DSR)) {
+            calculated = false;
+        }
+
+        if (!isFinite(this.GMI) || isNaN(this.GMI)) {
+            calculated = false;
+        }
+
         if (!isFinite(this.Accruals) || isNaN(this.Accruals)) {
-            this.Accruals = 0;
+            calculated = false;
         }
 
         if (!isFinite(this.LEVI) || isNaN(this.LEVI)) {
-            this.LEVI = 0;
+            calculated = false;
         }
+
+        return calculated;
     }
 
     public static createWithJson(data: any, year: number, skipNulls: boolean): CompanyData {
