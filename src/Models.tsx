@@ -13,6 +13,9 @@ export enum Indicator {
     OperatingCashFlow,
     GrossMargin,
     DebtToAssetRatio,
+    MarketCapitalization,
+    CurrentRatio,
+    ReturnOnAssets,
 }
 
 export const IndicatorCode: {} = {
@@ -29,7 +32,10 @@ export const IndicatorCode: {} = {
     '3-2': Indicator.DepreciationAmortisation,
     '3-13': Indicator.OperatingCashFlow,
     '4-0': Indicator.GrossMargin,
-    '4-5': Indicator.DebtToAssetRatio
+    '4-5': Indicator.DebtToAssetRatio,
+    '4-11': Indicator.MarketCapitalization,
+    '4-3': Indicator.CurrentRatio,
+    '4-9': Indicator.ReturnOnAssets,
 };
 
 export class CompanyData {
@@ -249,6 +255,27 @@ export class CompanyData {
 
                     break;
                 }
+
+                case Indicator.MarketCapitalization: {
+                    currentContainer.marketCapitalization = value;
+                    currentContainer.sMarketCapitalization = stringValue;
+
+                    break;
+                }
+
+                case Indicator.CurrentRatio: {
+                    currentContainer.currentRatio = value;
+                    currentContainer.sCurrentRatio = stringValue;
+
+                    break;
+                }
+
+                case Indicator.ReturnOnAssets: {
+                    currentContainer.returnOnAssets = value;
+                    currentContainer.sReturnOnAssets = stringValue;
+
+                    break;
+                }
             }
 
             addedKeys.push(key);
@@ -257,9 +284,9 @@ export class CompanyData {
         companyData.currentYearData = currentYear;
         companyData.nextYearData = nextYear;
 
-        companyData.calculateVars();
+        const calculated: boolean = companyData.calculateVars();
 
-        if (nullExists || allValuesIsEmpty) {
+        if (nullExists || allValuesIsEmpty || !calculated) {
             return null;
         }
 
@@ -294,6 +321,10 @@ export class CompanyDataByYear {
     public operatingCashFlow: number = 0;
     public grossMargin: number = 0;
     public debtToAssetRatio: number = 0;
+    public marketCapitalization: number = 0;
+    public currentRatio: number = 0;
+    public returnOnAssets: number = 0;
+
 
     public sRevenues: string = '';
     public sSellingGeneralAndAdministrative: string = '';
@@ -308,6 +339,9 @@ export class CompanyDataByYear {
     public sOperatingCashFlow: string = '';
     public sGrossMargin: string = '';
     public sDebtToAssetRatio: string = '';
+    public sMarketCapitalization: string = '';
+    public sCurrentRatio: string = '';
+    public sReturnOnAssets: string = '';
 
     constructor(year: number) {
         this.year = year;
