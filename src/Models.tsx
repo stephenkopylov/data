@@ -110,7 +110,7 @@ export class CompanyData {
             let stringValue = '';
 
             if (enumKey != Indicator.NameOfCompany && value != null) {
-                stringValue = this.nFormatter(value);
+                stringValue = this.nFormatter(Number(value));
             }
 
             switch (enumKey) {
@@ -228,15 +228,14 @@ export class CompanyData {
     }
 
     private static nFormatter(num: number): string {
-        if (Math.abs(num) >= 1000000000) {
-            return (num / 1000000000).toPrecision(3).replace(/\.0$/, '') + 'млрд';
-        }
-        if (Math.abs(num) >= 1000000) {
-            return (num / 1000000).toPrecision(3).replace(/\.0$/, '') + 'млн';
-        }
         if (Math.abs(num) >= 1000) {
-            return (num / 1000).toPrecision(3).replace(/\.0$/, '') + 'тыс';
+            let numberFormatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+
+            console.log('formatter = ', numberFormatter);
+
+            return numberFormatter.format(num / 1000000);
         }
+
         return num.toString();
     }
 }
@@ -322,7 +321,7 @@ export const SubCategories: FooMap = {
     [Category.Energy]: [107001, 107002, 107003, 107004, 107005, 107006],
     [Category.BusinessServices]: [108001, 108002],
     [Category.RealEstate]: [109001, 109002],
-    [Category.BasicMaterials]: [110001, 110002, 110003, 110004, 110005, 110006, 110007],
+    [Category.BasicMaterials]: [110001],
     [Category.Other]: [111001],
     [Category.CommunicationServices]: [112001],
 };
