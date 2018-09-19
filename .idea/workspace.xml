@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02ddec0c-7f4a-4ec5-99ad-9c0e5656a3bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/DataManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,12 +17,13 @@
     <session id="-892102901">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.15" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.26" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -47,8 +48,8 @@
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="TsLintLanguageService" value="5" />
-          <entry key="TypeScriptServerServiceImpl" value="5" />
+          <entry key="TsLintLanguageService" value="6" />
+          <entry key="TypeScriptServerServiceImpl" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -74,7 +75,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="698">
+            <state relative-caret-position="2205">
               <caret line="153" column="64" selection-start-line="153" selection-start-column="64" selection-end-line="153" selection-end-column="64" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -86,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FetchManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="585">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
             </state>
           </provider>
         </entry>
@@ -143,7 +144,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CompanyRow.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="90">
               <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -152,11 +153,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="245" column="65" selection-start-line="245" selection-start-column="65" selection-end-line="245" selection-end-column="65" />
+            <state relative-caret-position="4170">
+              <caret line="279" column="54" lean-forward="true" selection-start-line="279" selection-start-column="54" selection-end-line="279" selection-end-column="54" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
                 <marker date="1537272975467" expanded="true" signature="12791:14001" ph="..." />
@@ -167,11 +168,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3499">
-              <caret line="351" selection-start-line="351" selection-end-line="363" selection-end-column="25" />
+            <state relative-caret-position="734">
+              <caret line="419" column="52" selection-start-line="419" selection-start-column="52" selection-end-line="419" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -197,6 +198,16 @@
       <find>endCallback</find>
       <find>this.companies</find>
       <find>operati</find>
+      <find>104004</find>
+      <find>104005</find>
+      <find>105001</find>
+      <find>106014</find>
+      <find>108002</find>
+      <find>110004</find>
+      <find>110003</find>
+      <find>110001</find>
+      <find>110002</find>
+      <find>110007</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -248,7 +259,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,6 +285,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -330,24 +341,24 @@
       <workItem from="1536901705875" duration="29511000" />
       <workItem from="1537038832042" duration="78000" />
       <workItem from="1537173346648" duration="18697000" />
-      <workItem from="1537260884559" duration="4229000" />
+      <workItem from="1537260884559" duration="12100000" />
+      <workItem from="1537345307176" duration="593000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76255000" />
+    <option name="totallyTimeSpent" value="84719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1362" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31626624" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31626624" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.1369863" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -367,18 +378,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/Models.tsx</url>
-          <line>599</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.dom.d.ts">
@@ -446,6 +445,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2205">
+          <caret line="153" column="64" selection-start-line="153" selection-start-column="64" selection-end-line="153" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FetchManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5100">
@@ -484,26 +500,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="698">
-          <caret line="153" column="64" selection-start-line="153" selection-start-column="64" selection-end-line="153" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FetchManager.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CompanyRow.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="90">
           <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -511,23 +510,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3499">
-          <caret line="351" selection-start-line="351" selection-end-line="363" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="245" column="65" selection-start-line="245" selection-start-column="65" selection-end-line="245" selection-end-column="65" />
+        <state relative-caret-position="4170">
+          <caret line="279" column="54" lean-forward="true" selection-start-line="279" selection-start-column="54" selection-end-line="279" selection-end-column="54" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
             <marker date="1537272975467" expanded="true" signature="12791:14001" ph="..." />
             <marker date="1537272975467" expanded="true" signature="12793:14001" ph="..." />
             <marker date="1537272975467" expanded="true" signature="13231:14001" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="734">
+          <caret line="419" column="52" selection-start-line="419" selection-start-column="52" selection-end-line="419" selection-end-column="52" />
         </state>
       </provider>
     </entry>
