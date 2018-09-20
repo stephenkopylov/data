@@ -5,6 +5,7 @@ import { DataManager } from "./DataManager";
 import { CompanyCategory } from "./Models";
 import { Table } from "./Table";
 import * as XLSX from 'xlsx';
+var FileSaver = require('file-saver');
 
 interface AppProps {
 }
@@ -69,7 +70,10 @@ class App extends React.Component<AppProps, AppState> {
                             const categoriesContainer: CategoriesContainer = new CategoriesContainer();
                             categoriesContainer.categories = categories;
 
-                            localStorage.setItem('categoriesContainer', JSON.stringify(categoriesContainer));
+                            const resultString:string = JSON.stringify(categoriesContainer);
+
+                            var blob = new Blob([resultString], {type: "text/plain;charset=utf-8"});
+                            FileSaver.saveAs(blob, "results.txt");
                         });
                     }}>
                     Load data
