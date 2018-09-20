@@ -299,8 +299,6 @@ export class CompanyData {
         if (Math.abs(num) >= 1000) {
             let numberFormatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 0, maximumFractionDigits: 0});
 
-            console.log('formatter = ', numberFormatter);
-
             return numberFormatter.format(num / 1000000);
         }
 
@@ -353,7 +351,6 @@ export enum Category {
     Technology,
     ConsumerDefensive,
     ConsumerCyclical,
-    FinancialServices,
     Utilities,
     Healthcare,
     Energy,
@@ -370,7 +367,6 @@ export const CategoryNames = {
     [Category.Technology]: 'Technology',
     [Category.ConsumerDefensive]: 'Consumer Defensive',
     [Category.ConsumerCyclical]: 'Consumer Cyclical',
-    [Category.FinancialServices]: 'Financial Services',
     [Category.Utilities]: 'Utilities',
     [Category.Healthcare]: 'Healthcare',
     [Category.Energy]: 'Energy',
@@ -388,13 +384,12 @@ export const SubCategories: FooMap = {
     [Category.Technology]: [101001, 101002, 101003, 101004, 101005],
     [Category.ConsumerDefensive]: [102001, 102002, 102003, 102004, 102005, 102006],
     [Category.ConsumerCyclical]: [103001, 103002, 103003, 103004, 103005, 103011, 103013, 103015, 103018, 103020, 103026],
-    [Category.FinancialServices]: [104001, 104002, 104003, 104004, 104005, 104006, 104007, 104013],
     [Category.Utilities]: [105001, 105002],
     [Category.Healthcare]: [106001, 106002, 106003, 106004, 106005, 106006, 106011, 106014],
     [Category.Energy]: [107001, 107002, 107003, 107004, 107005, 107006],
     [Category.BusinessServices]: [108001, 108002],
     [Category.RealEstate]: [109001, 109002],
-    [Category.BasicMaterials]: [110001, 110002, 110003, 110004, 110005, 110006, 110007],
+    [Category.BasicMaterials]: [110001],
     [Category.Other]: [111001],
     [Category.CommunicationServices]: [112001],
 };
@@ -609,8 +604,6 @@ export class CompanyCategory {
     private static nFormatter(num: number): string {
         if (Math.abs(num) >= 1000) {
             let numberFormatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-
-            console.log('formatter = ', numberFormatter);
 
             return numberFormatter.format(num / 1000000);
         }

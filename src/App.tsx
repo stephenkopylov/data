@@ -66,10 +66,23 @@ class App extends React.Component<AppProps, AppState> {
                 <button
                     onClick={() => {
                         DataManager.loadAllData().then((categories: CompanyCategory[]) => {
+                            const categoriesContainer: CategoriesContainer = new CategoriesContainer();
+                            categoriesContainer.categories = categories;
+
+                            localStorage.setItem('categoriesContainer', JSON.stringify(categoriesContainer));
+                        });
+                    }}>
+                    Load data
+                </button>
+
+                <button
+                    onClick={() => {
+                        let categoriesContainer: CategoriesContainer = JSON.parse(localStorage.getItem('categoriesContainer')) as CategoriesContainer;
+
+                        if (categoriesContainer) {
+                            /*
                             const catsArray: any[] = CompanyCategory.categoriesToJson(categories);
                             localStorage.setItem('rawData', JSON.stringify(catsArray));
-
-                            console.log('123123 = ', catsArray);
 
                             const catsArrayCalculated: any[] = CompanyCategory.categoriesCalculatedToJson(categories);
                             localStorage.setItem('calculatedData', JSON.stringify(catsArrayCalculated));
@@ -80,10 +93,12 @@ class App extends React.Component<AppProps, AppState> {
                             this.setRawJson(catsArray);
                             this.setCalculatedJson(catsArrayCalculated);
                             this.setMedianJson(catsArrayMedian);
-                        });
+                            */
+                        }
                     }}>
-                    Load data
+                    Generate tables
                 </button>
+
                 <div>
                     <button
                         onClick={() => {
@@ -180,5 +195,9 @@ class App extends React.Component<AppProps, AppState> {
         });
     }
 }
+
+export class CategoriesContainer {
+    public categories: CompanyCategory[] = [];
+};
 
 export default App;
