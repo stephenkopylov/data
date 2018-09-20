@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02ddec0c-7f4a-4ec5-99ad-9c0e5656a3bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/uglifyjs-webpack-plugin/content-v2/sha512/e7/93/194b5875d87a2686d2c648c25030b0d1b717586619faa97a66babdb1edb31047407c08b821b1650b3362584c8292cba80dce88c7c6c2c9837d35d497e1aa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/uglifyjs-webpack-plugin/index-v5/29/5a/25e368c6089a56aa2cfdfe8a1ee701c224625966de68e9db7acdc6c6a8fe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataManager.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -79,11 +73,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+            <state relative-caret-position="83">
+              <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -160,14 +154,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="195" column="1" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
+            <state relative-caret-position="330">
+              <caret line="220" column="62" lean-forward="true" selection-start-line="220" selection-start-column="62" selection-end-line="220" selection-end-column="62" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
-                <marker date="1537446380801" expanded="true" signature="6456:13274" ph="..." />
+                <marker date="1537457965753" expanded="true" signature="6456:13313" ph="..." />
               </folding>
             </state>
           </provider>
@@ -176,8 +170,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="377" column="2" selection-start-line="377" selection-start-column="2" selection-end-line="377" selection-end-column="2" />
+            <state relative-caret-position="637">
+              <caret line="391" column="28" selection-start-line="391" selection-start-column="14" selection-end-line="391" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -231,9 +225,9 @@
         <option value="$PROJECT_DIR$/src/CompanyRow.tsx" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/FetchManager.ts" />
-        <option value="$PROJECT_DIR$/src/DataManager.ts" />
-        <option value="$PROJECT_DIR$/src/Models.tsx" />
         <option value="$PROJECT_DIR$/src/App.tsx" />
+        <option value="$PROJECT_DIR$/src/Models.tsx" />
+        <option value="$PROJECT_DIR$/src/DataManager.ts" />
       </list>
     </option>
   </component>
@@ -352,12 +346,12 @@
       <workItem from="1537260884559" duration="12100000" />
       <workItem from="1537345307176" duration="593000" />
       <workItem from="1537443944094" duration="2075000" />
-      <workItem from="1537450988792" duration="3606000" />
+      <workItem from="1537450988792" duration="3739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90400000" />
+    <option name="totallyTimeSpent" value="90533000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -520,30 +514,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
+    <entry file="file://$PROJECT_DIR$/src/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="195" column="1" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
+        <state relative-caret-position="83">
+          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
           <folding>
-            <element signature="e#0#46#0" expanded="true" />
-            <marker date="1537446380801" expanded="true" signature="6456:13274" ph="..." />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="377" column="2" selection-start-line="377" selection-start-column="2" selection-end-line="377" selection-end-column="2" />
+        <state relative-caret-position="637">
+          <caret line="391" column="28" selection-start-line="391" selection-start-column="14" selection-end-line="391" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.tsx">
+    <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+        <state relative-caret-position="330">
+          <caret line="220" column="62" lean-forward="true" selection-start-line="220" selection-start-column="62" selection-end-line="220" selection-end-column="62" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#46#0" expanded="true" />
+            <marker date="1537457965753" expanded="true" signature="6456:13313" ph="..." />
           </folding>
         </state>
       </provider>
