@@ -399,6 +399,7 @@ export const SubCategories: FooMap = {
 };
 
 export class CompanyCategory {
+    public year: number = 0;
     public category: Category = 0;
     public categoryName: string = '';
     public subCategories: CompanySubCategory[] = [];
