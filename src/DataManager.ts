@@ -218,6 +218,18 @@ export class RequestData {
 
 
 const companiesData: CategoryRequestData[] = [
+    new CategoryRequestData(2018, Category.Industrials, 0),
+    new CategoryRequestData(2017, Category.Industrials, 0),
+    new CategoryRequestData(2016, Category.Industrials, 0),
+    new CategoryRequestData(2015, Category.Industrials, 0),
+    new CategoryRequestData(2014, Category.Industrials, 0),
+    new CategoryRequestData(2013, Category.Industrials, 0),
+    new CategoryRequestData(2012, Category.Industrials, 0),
+    new CategoryRequestData(2011, Category.Industrials, 0),
+    new CategoryRequestData(2010, Category.Industrials, 0),
+    new CategoryRequestData(2009, Category.Industrials, 0),
+    new CategoryRequestData(2008, Category.Industrials, 0),
+
     new CategoryRequestData(2018, Category.Technology, 0),
     new CategoryRequestData(2017, Category.Technology, 0),
     new CategoryRequestData(2016, Category.Technology, 0),

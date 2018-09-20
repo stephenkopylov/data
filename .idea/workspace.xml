@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02ddec0c-7f4a-4ec5-99ad-9c0e5656a3bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Models.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataManager.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -57,14 +58,14 @@
         <counts>
           <entry key="html" value="3" />
           <entry key="json" value="6" />
-          <entry key="ts" value="5676" />
+          <entry key="ts" value="5752" />
           <entry key="tsx" value="8979" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="3" />
-          <entry key="TypeScript" value="5676" />
+          <entry key="TypeScript" value="5752" />
           <entry key="TypeScript JSX" value="8979" />
           <entry key="tsconfig" value="6" />
         </counts>
@@ -154,24 +155,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="206" column="34" lean-forward="true" selection-start-line="206" selection-start-column="34" selection-end-line="206" selection-end-column="34" />
+            <state relative-caret-position="343">
+              <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
-                <marker date="1537459607076" expanded="true" signature="7474:14292" ph="..." />
+                <marker date="1537461936636" expanded="true" signature="7835:14653" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="357" column="15" lean-forward="true" selection-start-line="357" selection-start-column="15" selection-end-line="357" selection-end-column="15" />
+            <state relative-caret-position="291">
+              <caret line="382" column="25" selection-start-line="382" selection-start-column="14" selection-end-line="382" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -209,6 +210,12 @@
       <find>110007</find>
       <find>formatter</find>
       <find>112001</find>
+      <find>loadDataByCategory</find>
+      <find>loadRequestData</find>
+      <find>loadedSubCategories</find>
+      <find>numberOfSubCats</find>
+      <find>numberOfSubCategories</find>
+      <find>101001</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -226,8 +233,8 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/FetchManager.ts" />
         <option value="$PROJECT_DIR$/src/App.tsx" />
-        <option value="$PROJECT_DIR$/src/DataManager.ts" />
         <option value="$PROJECT_DIR$/src/Models.tsx" />
+        <option value="$PROJECT_DIR$/src/DataManager.ts" />
       </list>
     </option>
   </component>
@@ -346,12 +353,12 @@
       <workItem from="1537260884559" duration="12100000" />
       <workItem from="1537345307176" duration="593000" />
       <workItem from="1537443944094" duration="2075000" />
-      <workItem from="1537450988792" duration="5390000" />
+      <workItem from="1537450988792" duration="7194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92184000" />
+    <option name="totallyTimeSpent" value="93988000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -524,21 +531,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
+    <entry file="file://$PROJECT_DIR$/src/Models.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="206" column="34" lean-forward="true" selection-start-line="206" selection-start-column="34" selection-end-line="206" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-            <marker date="1537459607076" expanded="true" signature="7474:14292" ph="..." />
-          </folding>
+        <state relative-caret-position="291">
+          <caret line="382" column="25" selection-start-line="382" selection-start-column="14" selection-end-line="382" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models.tsx">
+    <entry file="file://$PROJECT_DIR$/src/DataManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="357" column="15" lean-forward="true" selection-start-line="357" selection-start-column="15" selection-end-line="357" selection-end-column="15" />
+        <state relative-caret-position="343">
+          <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+            <marker date="1537461936636" expanded="true" signature="7835:14653" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
