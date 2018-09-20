@@ -3,8 +3,6 @@ import { Category, CompanyCategory, CompanyData, CompanySubCategory, SubCategori
 
 
 export class DataManager {
-    public static numberOfSubCategories: number = 0;
-
     public static loadedSubCategories: CompanySubCategory[][] = [];
 
     public static loadedCategories: CompanyCategory[] = [];
@@ -38,18 +36,6 @@ export class DataManager {
         const categoryRequestData: CategoryRequestData = companiesData[this.loadedCategories.length];
 
         this.currentCategory = categoryRequestData;
-
-        const arrayOfSubcats: number[][] = SubCategories[this.currentCategory.category];
-
-        let numberOfSubCats: number = 0;
-
-        arrayOfSubcats.forEach((subcats: number[]) => {
-            subcats.forEach(() => {
-                numberOfSubCats++;
-            });
-        });
-
-        this.numberOfSubCategories = numberOfSubCats;
 
         this.loadRequestData(categoryRequestData)
             .then((category: CompanyCategory) => {
@@ -95,6 +81,8 @@ export class DataManager {
             this.companies = [];
 
             this.year = year;
+
+            console.log('year = ', year);
 
             this.category = categoryType;
 
@@ -151,6 +139,8 @@ export class DataManager {
                 loadedSubCat.push(subCategory);
 
                 if (loadedSubCat.length == subCategoryCodes.length) {
+                    console.log('all codes loaded');
+
                     this.loadedSubCategories.push(loadedSubCat);
 
                     this.companies = this.companies.concat(result);
