@@ -389,7 +389,7 @@ export const SubCategories: FooMap = {
     [Category.Energy]: [107001, 107002, 107003, 107004, 107005, 107006],
     [Category.BusinessServices]: [108001, 108002],
     [Category.RealEstate]: [109001, 109002],
-    [Category.BasicMaterials]: [110001],
+    [Category.BasicMaterials]: [110001, 110002, 110003, 110004, 110005, 110006, 110007],
     [Category.Other]: [111001],
     [Category.CommunicationServices]: [112001],
 };
