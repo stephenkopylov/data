@@ -3,7 +3,9 @@ import { Category, CompanyCategory, CompanyData, CompanySubCategory, SubCategori
 
 
 export class DataManager {
-    public static loadedSubCategories: CompanySubCategory[] = [];
+    public static numberOfSubCategories: number = 0;
+
+    public static loadedSubCategories: CompanySubCategory[][] = [];
 
     public static loadedCategories: CompanyCategory[] = [];
 
@@ -36,6 +38,18 @@ export class DataManager {
         const categoryRequestData: CategoryRequestData = companiesData[this.loadedCategories.length];
 
         this.currentCategory = categoryRequestData;
+
+        const arrayOfSubcats: number[][] = SubCategories[this.currentCategory.category];
+
+        let numberOfSubCats: number = 0;
+
+        arrayOfSubcats.forEach((subcats: number[]) => {
+            subcats.forEach(() => {
+                numberOfSubCats++;
+            });
+        });
+
+        this.numberOfSubCategories = numberOfSubCats;
 
         this.loadRequestData(categoryRequestData)
             .then((category: CompanyCategory) => {
@@ -85,7 +99,16 @@ export class DataManager {
             this.category = categoryType;
 
             this.subCategoriesLoaded = () => {
-                const category: CompanyCategory = new CompanyCategory(categoryType, this.loadedSubCategories, this.companies);
+
+                const subCats: CompanySubCategory[] = [];
+
+                this.loadedSubCategories.forEach((array: CompanySubCategory[]) => {
+                    array.forEach((subcat: CompanySubCategory) => {
+                        subCats.push(subcat);
+                    })
+                });
+
+                const category: CompanyCategory = new CompanyCategory(categoryType, subCats, this.companies);
 
                 resolve(category);
             };
@@ -114,27 +137,35 @@ export class DataManager {
     }
 
     public static loadNextSubcateogory() {
-        const subCategorieCodes: number[] = SubCategories[this.currentCategory.category];
+        const subCategorieCodes: number[][] = SubCategories[this.currentCategory.category];
 
-        const subCategoryCode: number = subCategorieCodes[this.loadedSubCategories.length];
+        const subCategoryCodes: number[] = subCategorieCodes[this.loadedSubCategories.length];
 
-        this.loadDataBySubCategory(this.year, subCategoryCode).then((result: CompanyData[]) => {
+        const loadedSubCat: CompanySubCategory[] = [];
 
-            const subCategory: CompanySubCategory = new CompanySubCategory(subCategoryCode, result);
+        subCategoryCodes.forEach((code: number) => {
+            this.loadDataBySubCategory(this.year, code).then((result: CompanyData[]) => {
 
-            this.loadedSubCategories.push(subCategory);
+                const subCategory: CompanySubCategory = new CompanySubCategory(code, result);
 
-            this.companies = this.companies.concat(result);
+                loadedSubCat.push(subCategory);
 
-            if (subCategorieCodes.length == this.loadedSubCategories.length) {
-                if (this.subCategoriesLoaded) {
-                    this.subCategoriesLoaded();
+                if (loadedSubCat.length == subCategoryCodes.length) {
+                    this.loadedSubCategories.push(loadedSubCat);
+
+                    this.companies = this.companies.concat(result);
+
+                    if (this.loadedSubCategories.length == subCategorieCodes.length) {
+                        if (this.subCategoriesLoaded) {
+                            this.subCategoriesLoaded();
+                        }
+                    } else {
+                        this.loadNextSubcateogory();
+                    }
                 }
-            } else {
+            }).catch(() => {
                 this.loadNextSubcateogory();
-            }
-        }).catch(() => {
-            this.loadNextSubcateogory();
+            });
         });
     }
 
