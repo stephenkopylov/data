@@ -121,6 +121,8 @@ export class DataManager {
         this.loadDataBySubCategory(this.year, subCategoryCode).then((result: CompanyData[]) => {
 
             const subCategory: CompanySubCategory = new CompanySubCategory(subCategoryCode, result);
+            
+            subCategory.year = this.year;
 
             this.loadedSubCategories.push(subCategory);
 

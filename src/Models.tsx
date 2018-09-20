@@ -39,6 +39,7 @@ export const IndicatorCode: {} = {
 };
 
 export class CompanyData {
+    public simId: number = 0;
     public name: string = '';
     public currentYearData: CompanyDataByYear;
     public nextYearData: CompanyDataByYear;
@@ -126,6 +127,8 @@ export class CompanyData {
 
         const currentYear: CompanyDataByYear = new CompanyDataByYear(year);
         const nextYear: CompanyDataByYear = new CompanyDataByYear(year + 1);
+
+        const simId: number = data['simId'];
 
         const valuesRaw: [] = data['values'];
 
@@ -285,6 +288,7 @@ export class CompanyData {
 
         companyData.currentYearData = currentYear;
         companyData.nextYearData = nextYear;
+        companyData.simId = simId;
 
         const calculated: boolean = companyData.calculateVars();
 
@@ -642,6 +646,7 @@ export class CompanyCategory {
 }
 
 export class CompanySubCategory {
+    public year: number = 0;
     public subCategoryId: number = 0;
     public companies: CompanyData[];
 
