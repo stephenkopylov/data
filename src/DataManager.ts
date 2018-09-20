@@ -89,8 +89,6 @@ export class DataManager {
 
                 category.year = year;
 
-                console.log('category = ', category);
-
                 resolve(category);
             };
 
@@ -126,10 +124,7 @@ export class DataManager {
 
             const subCategory: CompanySubCategory = new CompanySubCategory(subCategoryCode, result);
             
-
             subCategory.year = this.year;
-
-            console.log('subCategory = ', subCategory);
 
             this.loadedSubCategories.push(subCategory);
 
