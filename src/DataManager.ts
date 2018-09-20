@@ -233,18 +233,6 @@ const companiesData: CategoryRequestData[] = [
     new CategoryRequestData(2009, Category.ConsumerCyclical, 0),
     new CategoryRequestData(2008, Category.ConsumerCyclical, 0),
 
-    new CategoryRequestData(2018, Category.FinancialServices, 0),
-    new CategoryRequestData(2017, Category.FinancialServices, 0),
-    new CategoryRequestData(2016, Category.FinancialServices, 0),
-    new CategoryRequestData(2015, Category.FinancialServices, 0),
-    new CategoryRequestData(2014, Category.FinancialServices, 0),
-    new CategoryRequestData(2013, Category.FinancialServices, 0),
-    new CategoryRequestData(2012, Category.FinancialServices, 0),
-    new CategoryRequestData(2011, Category.FinancialServices, 0),
-    new CategoryRequestData(2010, Category.FinancialServices, 0),
-    new CategoryRequestData(2009, Category.FinancialServices, 0),
-    new CategoryRequestData(2008, Category.FinancialServices, 0),
-
     new CategoryRequestData(2018, Category.Utilities, 0),
     new CategoryRequestData(2017, Category.Utilities, 0),
     new CategoryRequestData(2016, Category.Utilities, 0),
