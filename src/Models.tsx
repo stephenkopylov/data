@@ -20,6 +20,20 @@ export enum Indicator {
     ReturnOnAssets,
 }
 
+const yearsWithWeight: number[] = [
+    2018,
+    2017, 2017,
+    2016, 2016, 2016,
+    2015, 2015, 2015, 2015,
+    2014, 2014, 2014, 2014, 2014,
+    2013, 2013, 2013, 2013, 2013, 2013,
+    2012, 2012, 2012, 2012, 2012, 2012, 2012,
+    2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011,
+    2010, 2010, 2010, 2010, 2010, 2010, 2010, 2010, 2010,
+    2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009,
+    2008, 2008, 2008, 2008, 2008, 2008, 2008, 2008, 2008, 2008, 2008,
+];
+
 export const IndicatorCode: {} = {
     '0-1': Indicator.NameOfCompany,
     '1-1': Indicator.Revenues,
@@ -302,6 +316,7 @@ export class CompanyData {
         return companyData;
     }
 
+
     public static filterCompaniesByYear(companies: CompanyData[]): { [id: number]: { [id: number]: CompanyData } } {
 
         const uniqueCompanies: { [id: number]: { [id: number]: CompanyData } } = {}
@@ -323,6 +338,36 @@ export class CompanyData {
                 uniqueCompanies[company.simId] = companyByYear;
             }
         });
+
+        Object.keys(uniqueCompanies).forEach(function (key, index) {
+            const companyByYear: { [id: number]: CompanyData } = uniqueCompanies[key];
+
+            const companyYears: number[] = Object.keys(companyByYear).map((strKey: string) => {
+                return Number(strKey);
+            });
+
+            companyYears.sort();
+            companyYears.reverse();
+
+            const weightedCompanyYears: number[] = [];
+
+            companyYears.forEach((year: number, index: number) => {
+                for (let i: number = 0; i < index + 1; i++) {
+                    weightedCompanyYears.push(year);
+                }
+            });
+
+            let year: number = weightedCompanyYears[Math.floor(Math.random() * weightedCompanyYears.length)];
+
+            const data: { [id: number]: CompanyData } = {};
+
+            const companyData: CompanyData = uniqueCompanies[key][year];
+
+            data[companyData.companyCategory.year] = companyData;
+
+            uniqueCompanies[key] = data;
+        });
+
 
         return uniqueCompanies;
     }
