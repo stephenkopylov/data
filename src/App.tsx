@@ -84,26 +84,23 @@ class App extends React.Component<AppProps, AppState> {
 
                 <button
                     onClick={() => {
-
                         let categoriesContainer: CategoriesContainer = resultsData as CategoriesContainer;
 
-                        const catsArray: any[] = CompanyCategory.categoriesToJson(categoriesContainer.categories);
-
                         if (categoriesContainer) {
-                            /*
-                            const catsArray: any[] = CompanyCategory.categoriesToJson(categories);
+                            const filteredCategories: CompanyCategory[] = CompanyCategory.filterCategories(categoriesContainer.categories);
+
+                            const catsArray: any[] = CompanyCategory.categoriesToJson(filteredCategories);
                             localStorage.setItem('rawData', JSON.stringify(catsArray));
 
-                            const catsArrayCalculated: any[] = CompanyCategory.categoriesCalculatedToJson(categories);
+                            const catsArrayCalculated: any[] = CompanyCategory.categoriesCalculatedToJson(filteredCategories);
                             localStorage.setItem('calculatedData', JSON.stringify(catsArrayCalculated));
 
-                            const catsArrayMedian: any[] = CompanyCategory.categoriesMedianToJson(categories);
+                            const catsArrayMedian: any[] = CompanyCategory.categoriesMedianToJson(filteredCategories);
                             localStorage.setItem('medianData', JSON.stringify(catsArrayMedian));
 
                             this.setRawJson(catsArray);
                             this.setCalculatedJson(catsArrayCalculated);
                             this.setMedianJson(catsArrayMedian);
-                            */
                         }
                     }}>
                     Generate tables

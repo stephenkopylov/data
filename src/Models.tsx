@@ -317,9 +317,9 @@ export class CompanyData {
     }
 
 
-    public static filterCompaniesByYear(companies: CompanyData[]): { [id: number]: { [id: number]: CompanyData } } {
+    public static filterCompaniesByYear(companies: CompanyData[]): CompanyData[] {
 
-        const uniqueCompanies: { [id: number]: { [id: number]: CompanyData } } = {}
+        const uniqueCompanies: { [id: number]: { [id: number]: CompanyData } } = {};
 
         companies.forEach((company: CompanyData) => {
             const companyById: { [id: number]: CompanyData } = uniqueCompanies[company.simId];
@@ -338,6 +338,8 @@ export class CompanyData {
                 uniqueCompanies[company.simId] = companyByYear;
             }
         });
+
+        const superUniqueCompanies: CompanyData[] = [];
 
         Object.keys(uniqueCompanies).forEach(function (key, index) {
             const companyByYear: { [id: number]: CompanyData } = uniqueCompanies[key];
@@ -365,11 +367,11 @@ export class CompanyData {
 
             data[companyData.companyCategory.year] = companyData;
 
-            uniqueCompanies[key] = data;
+            superUniqueCompanies.push(companyData);
         });
 
 
-        return uniqueCompanies;
+        return superUniqueCompanies;
     }
 
 
@@ -478,12 +480,47 @@ export class CompanyCategory {
     public categoryName: string = '';
     public subCategories: CompanySubCategory[] = [];
     public companies: CompanyData[] = [];
+    public filteredCompanies: CompanyData[] = [];
 
     constructor(category: Category, subCategories: CompanySubCategory[], companies: CompanyData[]) {
         this.category = category;
         this.categoryName = CategoryNames[category];
         this.subCategories = subCategories;
         this.companies = companies;
+    }
+
+    public static filterCategories(categories: CompanyCategory[]): CompanyCategory[] {
+        let companies: CompanyData[] = [];
+
+        const categoriesById: { [id: number]: CompanyCategory } = {};
+
+        categories.forEach((category: CompanyCategory) => {
+            if (category.companies.length > 0 && category.subCategories.length > 0 && category.subCategories[0].companies.length > 0) {
+                category.companies.forEach((company: CompanyData) => {
+                    company.companyCategory = category;
+                });
+                category.filteredCompanies = [];
+
+                companies = companies.concat(category.companies);
+
+                categoriesById[category.category] = category;
+            }
+        });
+
+        const uniqueCompanies: CompanyData[] = CompanyData.filterCompaniesByYear(companies);
+
+        uniqueCompanies.forEach((companyData: CompanyData) => {
+            const category: CompanyCategory = categoriesById[companyData.companyCategory.category];
+            category.filteredCompanies.push(companyData);
+        });
+
+        let filteredCategories: CompanyCategory[] = [];
+
+        Object.keys(categoriesById).forEach((key: any) => {
+            filteredCategories.push(categoriesById[key]);
+        });
+
+        return filteredCategories;
     }
 
     public static categoriesToJson(categories: CompanyCategory[]): any[] {
@@ -507,102 +544,85 @@ export class CompanyCategory {
             'Return on assets', '',
         ]];
 
-        let companies: CompanyData[] = [];
-
         categories.forEach((category: CompanyCategory) => {
-            if (category.companies.length > 0 && category.subCategories.length > 0 && category.subCategories[0].companies.length > 0) {
-                category.companies.forEach((company: CompanyData) => {
-                    company.companyCategory = category;
-                });
 
-                companies = companies.concat(category.companies);
+            catJson.push(['']);
 
-                // catJson.push(['']);
+            catJson.push([`${category.categoryName}`,
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                'first year', 'last year',
+                "",
+                'first year', 'last year',
+                'first year', 'last year',
+            ]);
 
-                // const currentYear = category.subCategories[0].companies[0].currentYearData.year;
-                // const nextYear = category.subCategories[0].companies[0].nextYearData.year;
-                //
-                // catJson.push([`${category.categoryName}(${currentYear}-${nextYear})`,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                //     "",
-                //     currentYear, nextYear,
-                //     currentYear, nextYear,
-                // ]);
-                //
-                // category.companies.forEach((company: CompanyData) => {
-                //     const companyArray: any[] = [];
-                //
-                //     companyArray.push(company.name);
-                //
-                //     companyArray.push(company.currentYearData.sRevenues);
-                //     companyArray.push(company.nextYearData.sRevenues);
-                //
-                //     companyArray.push(company.currentYearData.sSellingGeneralAndAdministrative);
-                //     companyArray.push(company.nextYearData.sSellingGeneralAndAdministrative);
-                //
-                //     companyArray.push(company.currentYearData.sIncomeFromContinuingOperations);
-                //     companyArray.push(company.nextYearData.sIncomeFromContinuingOperations);
-                //
-                //
-                //     companyArray.push(company.currentYearData.sReceivablesNet);
-                //     companyArray.push(company.nextYearData.sReceivablesNet);
-                //
-                //     companyArray.push(company.currentYearData.sTotalCurrentAssets);
-                //     companyArray.push(company.nextYearData.sTotalCurrentAssets);
-                //
-                //     companyArray.push(company.currentYearData.sPropertyPlantAndEquipmentNet);
-                //     companyArray.push(company.nextYearData.sPropertyPlantAndEquipmentNet);
-                //
-                //     companyArray.push(company.currentYearData.sTotalAssets);
-                //     companyArray.push(company.nextYearData.sTotalAssets);
-                //
-                //     companyArray.push(company.currentYearData.sTotalCurrentLiabilities);
-                //     companyArray.push(company.nextYearData.sTotalCurrentLiabilities);
-                //
-                //     companyArray.push(company.currentYearData.sTotalDebt);
-                //     companyArray.push(company.nextYearData.sTotalDebt);
-                //
-                //     companyArray.push(company.currentYearData.sDepreciationAmortisation);
-                //     companyArray.push(company.nextYearData.sDepreciationAmortisation);
-                //
-                //     companyArray.push(company.currentYearData.sOperatingCashFlow);
-                //     companyArray.push(company.nextYearData.sOperatingCashFlow);
-                //
-                //     companyArray.push(company.currentYearData.sGrossMargin);
-                //     companyArray.push(company.nextYearData.sGrossMargin);
-                //
-                //     companyArray.push(company.currentYearData.sDebtToAssetRatio);
-                //     companyArray.push(company.nextYearData.sDebtToAssetRatio);
-                //
-                //     companyArray.push(company.sMarketCap);
-                //
-                //     companyArray.push(company.currentYearData.sCurrentRatio);
-                //     companyArray.push(company.nextYearData.sCurrentRatio);
-                //
-                //     companyArray.push(company.currentYearData.sReturnOnAssets);
-                //     companyArray.push(company.nextYearData.sReturnOnAssets);
-                //
-                //     catJson.push(companyArray);
-                // });
-            }
+            category.filteredCompanies.forEach((company: CompanyData) => {
+                const companyArray: any[] = [];
+
+                companyArray.push(`${company.name} (${company.currentYearData.year} - ${company.nextYearData.year})`);
+
+                companyArray.push(company.currentYearData.sRevenues);
+                companyArray.push(company.nextYearData.sRevenues);
+
+                companyArray.push(company.currentYearData.sSellingGeneralAndAdministrative);
+                companyArray.push(company.nextYearData.sSellingGeneralAndAdministrative);
+
+                companyArray.push(company.currentYearData.sIncomeFromContinuingOperations);
+                companyArray.push(company.nextYearData.sIncomeFromContinuingOperations);
+
+
+                companyArray.push(company.currentYearData.sReceivablesNet);
+                companyArray.push(company.nextYearData.sReceivablesNet);
+
+                companyArray.push(company.currentYearData.sTotalCurrentAssets);
+                companyArray.push(company.nextYearData.sTotalCurrentAssets);
+
+                companyArray.push(company.currentYearData.sPropertyPlantAndEquipmentNet);
+                companyArray.push(company.nextYearData.sPropertyPlantAndEquipmentNet);
+
+                companyArray.push(company.currentYearData.sTotalAssets);
+                companyArray.push(company.nextYearData.sTotalAssets);
+
+                companyArray.push(company.currentYearData.sTotalCurrentLiabilities);
+                companyArray.push(company.nextYearData.sTotalCurrentLiabilities);
+
+                companyArray.push(company.currentYearData.sTotalDebt);
+                companyArray.push(company.nextYearData.sTotalDebt);
+
+                companyArray.push(company.currentYearData.sDepreciationAmortisation);
+                companyArray.push(company.nextYearData.sDepreciationAmortisation);
+
+                companyArray.push(company.currentYearData.sOperatingCashFlow);
+                companyArray.push(company.nextYearData.sOperatingCashFlow);
+
+                companyArray.push(company.currentYearData.sGrossMargin);
+                companyArray.push(company.nextYearData.sGrossMargin);
+
+                companyArray.push(company.currentYearData.sDebtToAssetRatio);
+                companyArray.push(company.nextYearData.sDebtToAssetRatio);
+
+                companyArray.push(company.sMarketCap);
+
+                companyArray.push(company.currentYearData.sCurrentRatio);
+                companyArray.push(company.nextYearData.sCurrentRatio);
+
+                companyArray.push(company.currentYearData.sReturnOnAssets);
+                companyArray.push(company.nextYearData.sReturnOnAssets);
+
+                catJson.push(companyArray);
+            });
         });
-
-        const uniqueCompanies: { [id: number]: { [id: number]: CompanyData } } = CompanyData.filterCompaniesByYear(companies);
-
-        console.log(uniqueCompanies);
-        console.log(Object.keys(uniqueCompanies).length);
 
         return catJson;
     }
@@ -621,8 +641,8 @@ export class CompanyCategory {
         const LEVI: any[] = ['LEVI:'];
 
         categories.forEach((category: CompanyCategory) => {
-            if (category.companies.length > 0 && category.subCategories.length > 0 && category.subCategories[0].companies.length > 0) {
-                category.companies.forEach((company: CompanyData) => {
+            if (category.filteredCompanies.length > 0) {
+                category.filteredCompanies.forEach((company: CompanyData) => {
                     names.push(company.name);
 
                     DSR.push(company.DSR);
@@ -644,8 +664,8 @@ export class CompanyCategory {
         let companies: CompanyData[] = [];
 
         categories.forEach((category: CompanyCategory) => {
-            if (category.companies.length > 0 && category.subCategories.length > 0 && category.subCategories[0].companies.length > 0) {
-                companies = companies.concat(category.companies);
+            if (category.companies.length > 0) {
+                companies = companies.concat(category.filteredCompanies);
             }
         });
 
