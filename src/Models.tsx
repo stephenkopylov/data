@@ -1,3 +1,5 @@
+import { bool, number } from "prop-types";
+
 export enum Indicator {
     NameOfCompany,
     Revenues,
@@ -39,6 +41,7 @@ export const IndicatorCode: {} = {
 };
 
 export class CompanyData {
+    public companyCategory: CompanyCategory = null;
     public simId: number = 0;
     public name: string = '';
     public currentYearData: CompanyDataByYear;
@@ -299,6 +302,32 @@ export class CompanyData {
         return companyData;
     }
 
+    public static filterCompaniesByYear(companies: CompanyData[]): { [id: number]: { [id: number]: CompanyData } } {
+
+        const uniqueCompanies: { [id: number]: { [id: number]: CompanyData } } = {}
+
+        companies.forEach((company: CompanyData) => {
+            const companyById: { [id: number]: CompanyData } = uniqueCompanies[company.simId];
+
+            if (companyById != null) {
+                const companyByYear: CompanyData = companyById[company.companyCategory.year];
+
+                if (!companyByYear) {
+                    companyById[company.companyCategory.year] = company;
+                }
+            } else {
+                const companyByYear: { [id: number]: CompanyData } = {}
+
+                companyByYear[company.companyCategory.year] = company;
+
+                uniqueCompanies[company.simId] = companyByYear;
+            }
+        });
+
+        return uniqueCompanies;
+    }
+
+
     private static nFormatter(num: number): string {
         if (Math.abs(num) >= 1000) {
             let numberFormatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 0, maximumFractionDigits: 0});
@@ -433,89 +462,102 @@ export class CompanyCategory {
             'Return on assets', '',
         ]];
 
+        let companies: CompanyData[] = [];
+
         categories.forEach((category: CompanyCategory) => {
             if (category.companies.length > 0 && category.subCategories.length > 0 && category.subCategories[0].companies.length > 0) {
-                catJson.push(['']);
-
-                const currentYear = category.subCategories[0].companies[0].currentYearData.year;
-                const nextYear = category.subCategories[0].companies[0].nextYearData.year;
-
-                catJson.push([`${category.categoryName}(${currentYear}-${nextYear})`,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                    "",
-                    currentYear, nextYear,
-                    currentYear, nextYear,
-                ]);
-
                 category.companies.forEach((company: CompanyData) => {
-                    const companyArray: any[] = [];
-
-                    companyArray.push(company.name);
-
-                    companyArray.push(company.currentYearData.sRevenues);
-                    companyArray.push(company.nextYearData.sRevenues);
-
-                    companyArray.push(company.currentYearData.sSellingGeneralAndAdministrative);
-                    companyArray.push(company.nextYearData.sSellingGeneralAndAdministrative);
-
-                    companyArray.push(company.currentYearData.sIncomeFromContinuingOperations);
-                    companyArray.push(company.nextYearData.sIncomeFromContinuingOperations);
-
-
-                    companyArray.push(company.currentYearData.sReceivablesNet);
-                    companyArray.push(company.nextYearData.sReceivablesNet);
-
-                    companyArray.push(company.currentYearData.sTotalCurrentAssets);
-                    companyArray.push(company.nextYearData.sTotalCurrentAssets);
-
-                    companyArray.push(company.currentYearData.sPropertyPlantAndEquipmentNet);
-                    companyArray.push(company.nextYearData.sPropertyPlantAndEquipmentNet);
-
-                    companyArray.push(company.currentYearData.sTotalAssets);
-                    companyArray.push(company.nextYearData.sTotalAssets);
-
-                    companyArray.push(company.currentYearData.sTotalCurrentLiabilities);
-                    companyArray.push(company.nextYearData.sTotalCurrentLiabilities);
-
-                    companyArray.push(company.currentYearData.sTotalDebt);
-                    companyArray.push(company.nextYearData.sTotalDebt);
-
-                    companyArray.push(company.currentYearData.sDepreciationAmortisation);
-                    companyArray.push(company.nextYearData.sDepreciationAmortisation);
-
-                    companyArray.push(company.currentYearData.sOperatingCashFlow);
-                    companyArray.push(company.nextYearData.sOperatingCashFlow);
-
-                    companyArray.push(company.currentYearData.sGrossMargin);
-                    companyArray.push(company.nextYearData.sGrossMargin);
-
-                    companyArray.push(company.currentYearData.sDebtToAssetRatio);
-                    companyArray.push(company.nextYearData.sDebtToAssetRatio);
-
-                    companyArray.push(company.sMarketCap);
-
-                    companyArray.push(company.currentYearData.sCurrentRatio);
-                    companyArray.push(company.nextYearData.sCurrentRatio);
-
-                    companyArray.push(company.currentYearData.sReturnOnAssets);
-                    companyArray.push(company.nextYearData.sReturnOnAssets);
-
-                    catJson.push(companyArray);
+                    company.companyCategory = category;
                 });
+
+                companies = companies.concat(category.companies);
+
+                // catJson.push(['']);
+
+                // const currentYear = category.subCategories[0].companies[0].currentYearData.year;
+                // const nextYear = category.subCategories[0].companies[0].nextYearData.year;
+                //
+                // catJson.push([`${category.categoryName}(${currentYear}-${nextYear})`,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                //     "",
+                //     currentYear, nextYear,
+                //     currentYear, nextYear,
+                // ]);
+                //
+                // category.companies.forEach((company: CompanyData) => {
+                //     const companyArray: any[] = [];
+                //
+                //     companyArray.push(company.name);
+                //
+                //     companyArray.push(company.currentYearData.sRevenues);
+                //     companyArray.push(company.nextYearData.sRevenues);
+                //
+                //     companyArray.push(company.currentYearData.sSellingGeneralAndAdministrative);
+                //     companyArray.push(company.nextYearData.sSellingGeneralAndAdministrative);
+                //
+                //     companyArray.push(company.currentYearData.sIncomeFromContinuingOperations);
+                //     companyArray.push(company.nextYearData.sIncomeFromContinuingOperations);
+                //
+                //
+                //     companyArray.push(company.currentYearData.sReceivablesNet);
+                //     companyArray.push(company.nextYearData.sReceivablesNet);
+                //
+                //     companyArray.push(company.currentYearData.sTotalCurrentAssets);
+                //     companyArray.push(company.nextYearData.sTotalCurrentAssets);
+                //
+                //     companyArray.push(company.currentYearData.sPropertyPlantAndEquipmentNet);
+                //     companyArray.push(company.nextYearData.sPropertyPlantAndEquipmentNet);
+                //
+                //     companyArray.push(company.currentYearData.sTotalAssets);
+                //     companyArray.push(company.nextYearData.sTotalAssets);
+                //
+                //     companyArray.push(company.currentYearData.sTotalCurrentLiabilities);
+                //     companyArray.push(company.nextYearData.sTotalCurrentLiabilities);
+                //
+                //     companyArray.push(company.currentYearData.sTotalDebt);
+                //     companyArray.push(company.nextYearData.sTotalDebt);
+                //
+                //     companyArray.push(company.currentYearData.sDepreciationAmortisation);
+                //     companyArray.push(company.nextYearData.sDepreciationAmortisation);
+                //
+                //     companyArray.push(company.currentYearData.sOperatingCashFlow);
+                //     companyArray.push(company.nextYearData.sOperatingCashFlow);
+                //
+                //     companyArray.push(company.currentYearData.sGrossMargin);
+                //     companyArray.push(company.nextYearData.sGrossMargin);
+                //
+                //     companyArray.push(company.currentYearData.sDebtToAssetRatio);
+                //     companyArray.push(company.nextYearData.sDebtToAssetRatio);
+                //
+                //     companyArray.push(company.sMarketCap);
+                //
+                //     companyArray.push(company.currentYearData.sCurrentRatio);
+                //     companyArray.push(company.nextYearData.sCurrentRatio);
+                //
+                //     companyArray.push(company.currentYearData.sReturnOnAssets);
+                //     companyArray.push(company.nextYearData.sReturnOnAssets);
+                //
+                //     catJson.push(companyArray);
+                // });
             }
         });
+
+        const uniqueCompanies: { [id: number]: { [id: number]: CompanyData } } = CompanyData.filterCompaniesByYear(companies);
+
+        console.log(uniqueCompanies);
+        console.log(Object.keys(uniqueCompanies).length);
 
         return catJson;
     }
