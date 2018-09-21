@@ -720,34 +720,47 @@ export class CompanyCategory {
         const salesGrowth: number[] = [];
 
         companies.forEach((companyData: CompanyData) => {
+            assets.push(companyData.currentYearData.totalAssets);
             assets.push(companyData.nextYearData.totalAssets);
+
+            sales.push(companyData.currentYearData.revenues);
             sales.push(companyData.nextYearData.revenues);
+
             marketCap.push(companyData.marketCap);
 
+            wCapToTotalAssel.push((companyData.currentYearData.totalCurrentAssets - companyData.currentYearData.totalCurrentLiabilities) / companyData.currentYearData.totalAssets);
             wCapToTotalAssel.push((companyData.nextYearData.totalCurrentAssets - companyData.nextYearData.totalCurrentLiabilities) / companyData.nextYearData.totalAssets);
+
+            currentRatio.push(companyData.currentYearData.currentRatio);
             currentRatio.push(companyData.nextYearData.currentRatio);
+
+            totalDebtToTotalAssets.push(companyData.currentYearData.debtToAssetRatio);
             totalDebtToTotalAssets.push(companyData.nextYearData.debtToAssetRatio);
 
+            returnOnAssets.push(companyData.currentYearData.returnOnAssets);
             returnOnAssets.push(companyData.nextYearData.returnOnAssets);
+
             salesGrowth.push((companyData.nextYearData.revenues - companyData.currentYearData.revenues) / companyData.currentYearData.revenues);
         });
 
-        console.log(marketCap);
+        console.log('sales:', JSON.stringify(sales));
+
+        console.log('Average sales = ', this.average(sales));
 
         return [
             ['', 'Mean', 'Median'],
             ['Size', '', ''],
-            ['Assets', this.nFormatter(this.average(assets)), this.nFormatter(this.median(assets))],
-            ['Sales', this.nFormatter(this.average(sales)), this.nFormatter(this.median(sales))],
+            ['Assets', this.nFormatter(this.average(assets) / 2), this.nFormatter(this.median(assets) / 2)],
+            ['Sales', this.nFormatter(this.average(sales) / 2), this.nFormatter(this.median(sales) / 2)],
             ['Market Value', this.nFormatter(this.average(marketCap)), this.nFormatter(this.median(marketCap))],
             ['', '', ''],
             ['Leverage/liquidity', '', ''],
-            ['Working capital to total assets', this.average(wCapToTotalAssel).toString(), this.median(wCapToTotalAssel).toString()],
-            ['Current ratio', this.average(currentRatio).toString(), this.median(currentRatio).toString()],
-            ['Total debt to total assets', this.average(totalDebtToTotalAssets).toString(), this.median(totalDebtToTotalAssets).toString()],
+            ['Working capital to total assets', (this.average(wCapToTotalAssel) / 2).toString(), (this.median(wCapToTotalAssel) / 2).toString()],
+            ['Current ratio', (this.average(currentRatio) / 2).toString(), (this.median(currentRatio) / 2).toString()],
+            ['Total debt to total assets', (this.average(totalDebtToTotalAssets) / 2).toString(), (this.median(totalDebtToTotalAssets) / 2).toString()],
             ['', '', ''],
             ['Profitability/Growth', '', ''],
-            ['Return on assets', this.average(returnOnAssets).toString(), this.median(returnOnAssets).toString()],
+            ['Return on assets', (this.average(returnOnAssets) / 2).toString(), (this.median(returnOnAssets) / 2).toString()],
             ['Sales Growth', this.average(salesGrowth).toString(), this.median(salesGrowth).toString()],
         ];
     }
@@ -785,6 +798,9 @@ export class CompanyCategory {
             sum = values.reduce(function (a, b) {
                 return a + b;
             });
+
+            console.log('sum = ', sum, "number of companies = ", values.length);
+
             avg = sum / values.length;
         }
 
