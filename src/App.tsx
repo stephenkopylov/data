@@ -5,7 +5,10 @@ import { DataManager } from "./DataManager";
 import { CompanyCategory } from "./Models";
 import { Table } from "./Table";
 import * as XLSX from 'xlsx';
+
 var FileSaver = require('file-saver');
+
+var resultsData = require('src/results.json');
 
 interface AppProps {
 }
@@ -70,7 +73,7 @@ class App extends React.Component<AppProps, AppState> {
                             const categoriesContainer: CategoriesContainer = new CategoriesContainer();
                             categoriesContainer.categories = categories;
 
-                            const resultString:string = JSON.stringify(categoriesContainer);
+                            const resultString: string = JSON.stringify(categoriesContainer);
 
                             var blob = new Blob([resultString], {type: "text/plain;charset=utf-8"});
                             FileSaver.saveAs(blob, "results.txt");
@@ -81,7 +84,10 @@ class App extends React.Component<AppProps, AppState> {
 
                 <button
                     onClick={() => {
-                        let categoriesContainer: CategoriesContainer = JSON.parse(localStorage.getItem('categoriesContainer')) as CategoriesContainer;
+
+                        let categoriesContainer: CategoriesContainer = resultsData as CategoriesContainer;
+
+                        const catsArray: any[] = CompanyCategory.categoriesToJson(categoriesContainer.categories);
 
                         if (categoriesContainer) {
                             /*
