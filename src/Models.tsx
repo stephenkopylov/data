@@ -458,6 +458,7 @@ export const CategoryNames = {
 };
 
 type FooMap = { [key in Category]: number[] }
+type BarMap = { [key in Category]: number }
 
 export const SubCategories: FooMap = {
     [Category.Industrials]: [100001, 100002, 100003, 100004, 100005, 100006, 100007, 100008, 100009, 100010, 100011, 100012, 100013],
@@ -476,6 +477,7 @@ export const SubCategories: FooMap = {
 
 export class CompanyCategory {
     public year: number = 0;
+    public maxCompanies: number = 0;
     public category: Category = 0;
     public categoryName: string = '';
     public subCategories: CompanySubCategory[] = [];
@@ -494,8 +496,21 @@ export class CompanyCategory {
 
         const categoriesById: { [id: number]: CompanyCategory } = {};
 
+        const filterRules: {} = {
+            [Category.BasicMaterials]: 20,
+            [Category.ConsumerCyclical]: 10,
+            [Category.ConsumerDefensive]: 20,
+            [Category.Energy]: 20,
+            [Category.Healthcare]: 28,
+            [Category.Industrials]: 30,
+            [Category.Technology]: 43,
+        };
+
         categories.forEach((category: CompanyCategory) => {
-            if (category.companies.length > 0 && category.subCategories.length > 0 && category.subCategories[0].companies.length > 0) {
+            const numberOfCompanies = filterRules[category.category];
+
+            if (numberOfCompanies > 0) {
+                category.maxCompanies = numberOfCompanies;
                 category.companies.forEach((company: CompanyData) => {
                     company.companyCategory = category;
                 });
@@ -511,7 +526,9 @@ export class CompanyCategory {
 
         uniqueCompanies.forEach((companyData: CompanyData) => {
             const category: CompanyCategory = categoriesById[companyData.companyCategory.category];
-            category.filteredCompanies.push(companyData);
+            if (category && category.filteredCompanies.length <= category.maxCompanies) {
+                category.filteredCompanies.push(companyData);
+            }
         });
 
         let filteredCategories: CompanyCategory[] = [];
@@ -519,6 +536,16 @@ export class CompanyCategory {
         Object.keys(categoriesById).forEach((key: any) => {
             filteredCategories.push(categoriesById[key]);
         });
+
+        filteredCategories.sort((a: CompanyCategory, b: CompanyCategory) => {
+            if (a.filteredCompanies.length < b.filteredCompanies.length) {
+                return 1;
+            }
+
+            return 0;
+        });
+
+        console.log(filteredCategories);
 
         return filteredCategories;
     }
@@ -664,7 +691,7 @@ export class CompanyCategory {
         let companies: CompanyData[] = [];
 
         categories.forEach((category: CompanyCategory) => {
-            if (category.companies.length > 0) {
+            if (category.filteredCompanies.length > 0) {
                 companies = companies.concat(category.filteredCompanies);
             }
         });
