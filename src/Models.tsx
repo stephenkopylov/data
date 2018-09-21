@@ -534,7 +534,19 @@ export class CompanyCategory {
         let filteredCategories: CompanyCategory[] = [];
 
         Object.keys(categoriesById).forEach((key: any) => {
-            filteredCategories.push(categoriesById[key]);
+            const category: CompanyCategory = categoriesById[key];
+
+            category.filteredCompanies = category.filteredCompanies.sort((a: CompanyData, b: CompanyData) => {
+                if (a.marketCap > b.marketCap) {
+                    return -1;
+                } else if (a.marketCap < b.marketCap) {
+                    return 1;
+                }
+
+                return 0;
+            });
+
+            filteredCategories.push(category);
         });
 
         filteredCategories.sort((a: CompanyCategory, b: CompanyCategory) => {
