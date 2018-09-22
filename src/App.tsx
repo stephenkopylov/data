@@ -171,7 +171,6 @@ class App extends React.Component<AppProps, AppState> {
         sheet['!merges'].push({s: {r: 0, c: 21}, e: {r: 0, c: 22}});
         sheet['!merges'].push({s: {r: 0, c: 23}, e: {r: 0, c: 24}});
         sheet['!merges'].push({s: {r: 0, c: 25}, e: {r: 0, c: 26}});
-        // sheet['!merges'].push({s: {r: 0, c: 27}, e: {r: 0, c: 28}});
         sheet['!merges'].push({s: {r: 0, c: 28}, e: {r: 0, c: 29}});
         sheet['!merges'].push({s: {r: 0, c: 30}, e: {r: 0, c: 31}});
 

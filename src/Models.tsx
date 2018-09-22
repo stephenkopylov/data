@@ -750,17 +750,17 @@ export class CompanyCategory {
         return [
             ['', 'Mean', 'Median'],
             ['Size', '', ''],
-            ['Assets', this.nFormatter(this.average(assets) / 2), this.nFormatter(this.median(assets) / 2)],
-            ['Sales', this.nFormatter(this.average(sales) / 2), this.nFormatter(this.median(sales) / 2)],
+            ['Assets', this.nFormatter(this.average(assets)), this.nFormatter(this.median(assets))],
+            ['Sales', this.average(sales), this.median(sales)],
             ['Market Value', this.nFormatter(this.average(marketCap)), this.nFormatter(this.median(marketCap))],
             ['', '', ''],
             ['Leverage/liquidity', '', ''],
-            ['Working capital to total assets', (this.average(wCapToTotalAssel) / 2).toString(), (this.median(wCapToTotalAssel) / 2).toString()],
-            ['Current ratio', (this.average(currentRatio) / 2).toString(), (this.median(currentRatio) / 2).toString()],
-            ['Total debt to total assets', (this.average(totalDebtToTotalAssets) / 2).toString(), (this.median(totalDebtToTotalAssets) / 2).toString()],
+            ['Working capital to total assets', (this.average(wCapToTotalAssel)).toString(), (this.median(wCapToTotalAssel)).toString()],
+            ['Current ratio', (this.average(currentRatio)).toString(), (this.median(currentRatio)).toString()],
+            ['Total debt to total assets', (this.average(totalDebtToTotalAssets)).toString(), (this.median(totalDebtToTotalAssets)).toString()],
             ['', '', ''],
             ['Profitability/Growth', '', ''],
-            ['Return on assets', (this.average(returnOnAssets) / 2).toString(), (this.median(returnOnAssets) / 2).toString()],
+            ['Return on assets', (this.average(returnOnAssets)).toString(), (this.median(returnOnAssets)).toString()],
             ['Sales Growth', this.average(salesGrowth).toString(), this.median(salesGrowth).toString()],
         ];
     }
@@ -782,7 +782,7 @@ export class CompanyCategory {
 
         if (values.length === 0) return 0;
 
-        var half = Math.floor(values.length / 2);
+        let half = Math.floor(values.length / 2);
 
         if (values.length % 2)
             return values[half];
