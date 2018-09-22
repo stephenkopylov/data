@@ -751,7 +751,7 @@ export class CompanyCategory {
             ['', 'Mean', 'Median'],
             ['Size', '', ''],
             ['Assets', this.nFormatter(this.average(assets)), this.nFormatter(this.median(assets))],
-            ['Sales', this.average(sales), this.median(sales)],
+            ['Sales', this.nFormatter(this.average(sales)), this.nFormatter(this.median(sales))],
             ['Market Value', this.nFormatter(this.average(marketCap)), this.nFormatter(this.median(marketCap))],
             ['', '', ''],
             ['Leverage/liquidity', '', ''],
